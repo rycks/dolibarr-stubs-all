@@ -10,10 +10,10 @@ Include stubs in PHPStan configuration file.
 ```yaml
 parameters:
 	scanDirectories:
-		- /your_path/dolibarr-stubs-all/dolibarr-18/htdocs/
+		- /your_path/dolibarr-stubs-all/dolibarr-18/
 	excludePaths:
 		analyse:
-			- /your_path/dolibarr-stubs-all/dolibarr-18/htdocs/
+			- /your_path/dolibarr-stubs-all/dolibarr-18/
 ```
 
 ## Support package maintenance
