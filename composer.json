@@ -1,0 +1,14 @@
+{
+    "name": "caprel/dolibarr-stubs-all",
+    "description": "Dolibarr stubs for static analysis or integration in your IDE.",
+    "keywords": [
+        "dolibarr",
+        "static analysis",
+        "phpstan"
+    ],
+    "homepage": "https://github.com/rycks/dolibarr-stubs-all",
+    "license": "GPL-3.0-or-later",
+    "require-dev": {
+        "php": ">=7.3"
+    }
+}
