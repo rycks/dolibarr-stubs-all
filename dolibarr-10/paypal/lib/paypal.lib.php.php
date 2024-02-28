@@ -1,0 +1,214 @@
+<?php
+
+/* Copyright (C) 2008-2012	Laurent Destailleur	<eldy@users.sourceforge.net>
+ * Copyright (C) 2011-2012	Regis Houssin		<regis.houssin@inodbox.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+/**
+ *	\file			htdocs/paypal/lib/paypal.lib.php
+ *  \ingroup		paypal
+ *  \brief			Library for common paypal functions
+ */
+/**
+ *  Define head array for tabs of paypal tools setup pages
+ *
+ *  @return			Array of head
+ */
+function paypaladmin_prepare_head()
+{
+}
+/**
+ * Return string with full Url
+ *
+ * @param   string	$type		Type of URL ('free', 'order', 'invoice', 'contractline', 'membersubscription' ...)
+ * @param	string	$ref		Ref of object
+ * @return	string				Url string
+ */
+function showPaypalPaymentUrl($type, $ref)
+{
+}
+/**
+ * Return string with full Url
+ *
+ * @param   int		$mode		0=True url, 1=Url formated with colors
+ * @param   string	$type		Type of URL ('free', 'order', 'invoice', 'contractline', 'membersubscription' ...)
+ * @param	string	$ref		Ref of object
+ * @param	int		$amount		Amount
+ * @param	string	$freetag	Free tag
+ * @return	string				Url string
+ */
+function getPaypalPaymentUrl($mode, $type, $ref = '', $amount = '9.99', $freetag = 'your_tag')
+{
+}
+/**
+ * Send redirect to paypal to browser
+ *
+ * @param	float	$paymentAmount		Amount
+ * @param   string	$currencyCodeType	Currency code
+ * @param	string	$paymentType		Payment type
+ * @param  	string	$returnURL			Url to use if payment is OK
+ * @param   string	$cancelURL			Url to use if payment is KO
+ * @param   string	$tag				Full tag
+ * @return	string						No return (a redirect is done) if OK, or Error message if KO
+ */
+function print_paypal_redirect($paymentAmount, $currencyCodeType, $paymentType, $returnURL, $cancelURL, $tag)
+{
+}
+/**
+ *-------------------------------------------------------------------------------------------------------------------------------------------
+ * Purpose:     Prepares the parameters for the SetExpressCheckout API Call.
+ * Inputs:
+ *      paymentAmount:      Total value of the shopping cart
+ *      currencyCodeType:   Currency code value the PayPal API
+ *      paymentType:        paymentType has to be one of the following values: Sale or Order or Authorization
+ *      returnURL:          the page where buyers return to after they are done with the payment review on PayPal
+ *      cancelURL:          the page where buyers return to when they cancel the payment review on PayPal
+ *      shipToName:     the Ship to name entered on the merchant's site
+ *      shipToStreet:       the Ship to Street entered on the merchant's site
+ *      shipToCity:         the Ship to City entered on the merchant's site
+ *      shipToState:        the Ship to State entered on the merchant's site
+ *      shipToCountryCode:  the Code for Ship to Country entered on the merchant's site
+ *      shipToZip:          the Ship to ZipCode entered on the merchant's site
+ *      shipToStreet2:      the Ship to Street2 entered on the merchant's site
+ *      phoneNum:           the phoneNum  entered on the merchant's site
+ *      email:              the buyer email
+ *      desc:               Product description
+ * See https://developer.paypal.com/docs/classic/api/merchant/SetExpressCheckout_API_Operation_NVP/
+ *
+ * @param 	double 			$paymentAmount		Payment amount
+ * @param 	string 			$currencyCodeType	Currency
+ * @param 	string 			$paymentType		Payment type
+ * @param 	string 			$returnURL			Return Url
+ * @param 	string 			$cancelURL			Cancel Url
+ * @param 	string 			$tag				Full tag
+ * @param 	string 			$solutionType		Type ('Mark' or 'Sole')
+ * @param 	string 			$landingPage		Landing page ('Login' or 'Billing')
+ * @param	string			$shipToName			Ship to name
+ * @param	string			$shipToStreet		Ship to street
+ * @param	string			$shipToCity			Ship to city
+ * @param	string			$shipToState		Ship to state
+ * @param	string			$shipToCountryCode	Ship to country code
+ * @param	string			$shipToZip			Ship to zip
+ * @param	string			$shipToStreet2		Ship to street2
+ * @param	string			$phoneNum			Phone
+ * @param	string			$email				Email
+ * @param	string			$desc				Description
+ * @return	array								Array
+ */
+function callSetExpressCheckout($paymentAmount, $currencyCodeType, $paymentType, $returnURL, $cancelURL, $tag, $solutionType, $landingPage, $shipToName, $shipToStreet, $shipToCity, $shipToState, $shipToCountryCode, $shipToZip, $shipToStreet2, $phoneNum, $email = '', $desc = '')
+{
+}
+/**
+ * 	Prepares the parameters for the GetExpressCheckoutDetails API Call.
+ *
+ *	@param	string	$token		Token
+ *	@return	array				The NVP Collection object of the GetExpressCheckoutDetails Call Response.
+ */
+function getDetails($token)
+{
+}
+/**
+ *	Validate payment
+ *
+ *	@param	string	$token				Token
+ *	@param	string	$paymentType		Type
+ *	@param	string	$currencyCodeType	Currency
+ *	@param	string	$payerID			Payer ID
+ *	@param	string	$ipaddress			IP Address
+ *	@param	string	$FinalPaymentAmt	Amount
+ *	@param	string	$tag				Full tag
+ *	@return	void
+ */
+function confirmPayment($token, $paymentType, $currencyCodeType, $payerID, $ipaddress, $FinalPaymentAmt, $tag)
+{
+}
+/**
+ *	This function makes a DoDirectPayment API call
+ *
+ *  paymentType:        paymentType has to be one of the following values: Sale or Order or Authorization
+ *  paymentAmount:      total value of the shopping cart
+ *  currencyCode:       currency code value the PayPal API
+ *  firstName:          first name as it appears on credit card
+ *  lastName:           last name as it appears on credit card
+ *  street:             buyer's street address line as it appears on credit card
+ *  city:               buyer's city
+ *  state:              buyer's state
+ *  countryCode:        buyer's country code
+ *  zip:                buyer's zip
+ *  creditCardType:     buyer's credit card type (i.e. Visa, MasterCard ... )
+ *  creditCardNumber:   buyers credit card number without any spaces, dashes or any other characters
+ *  expDate:            credit card expiration date
+ *  cvv2:               Card Verification Value
+ *	@return		array	The NVP Collection object of the DoDirectPayment Call Response.
+ */
+/*
+function DirectPayment($paymentType, $paymentAmount, $creditCardType, $creditCardNumber, $expDate, $cvv2, $firstName, $lastName, $street, $city, $state, $zip, $countryCode, $currencyCode, $tag)
+{
+    //declaring of global variables
+    global $conf, $langs;
+    global $API_Endpoint, $API_Url, $API_version, $USE_PROXY, $PROXY_HOST, $PROXY_PORT;
+    global $PAYPAL_API_USER, $PAYPAL_API_PASSWORD, $PAYPAL_API_SIGNATURE;
+
+    //Construct the parameter string that describes DoDirectPayment
+    $nvpstr = '';
+    $nvpstr = $nvpstr . "&AMT=" . urlencode($paymentAmount);              // deprecated by paypal
+    $nvpstr = $nvpstr . "&CURRENCYCODE=" . urlencode($currencyCode);
+    $nvpstr = $nvpstr . "&PAYMENTACTION=" . urlencode($paymentType);      // deprecated by paypal
+    $nvpstr = $nvpstr . "&CREDITCARDTYPE=" . urlencode($creditCardType);
+    $nvpstr = $nvpstr . "&ACCT=" . urlencode($creditCardNumber);
+    $nvpstr = $nvpstr . "&EXPDATE=" . urlencode($expDate);
+    $nvpstr = $nvpstr . "&CVV2=" . urlencode($cvv2);
+    $nvpstr = $nvpstr . "&FIRSTNAME=" . urlencode($firstName);
+    $nvpstr = $nvpstr . "&LASTNAME=" . urlencode($lastName);
+    $nvpstr = $nvpstr . "&STREET=" . urlencode($street);
+    $nvpstr = $nvpstr . "&CITY=" . urlencode($city);
+    $nvpstr = $nvpstr . "&STATE=" . urlencode($state);
+    $nvpstr = $nvpstr . "&COUNTRYCODE=" . urlencode($countryCode);
+    $nvpstr = $nvpstr . "&IPADDRESS=" . $_SERVER['REMOTE_ADDR'];
+    $nvpstr = $nvpstr . "&INVNUM=" . urlencode($tag);
+
+    $resArray=hash_call("DoDirectPayment", $nvpstr);
+
+    return $resArray;
+}
+*/
+/**
+ * hash_call: Function to perform the API call to PayPal using API signature
+ *
+ * @param	string	$methodName 	is name of API  method.
+ * @param	string	$nvpStr 		is nvp string.
+ * @return	array					returns an associtive array containing the response from the server.
+ */
+function hash_call($methodName, $nvpStr)
+{
+}
+/**
+ * This function will take NVPString and convert it to an Associative Array and it will decode the response.
+ * It is usefull to search for a particular key and displaying arrays.
+ *
+ * @param	string	$nvpstr 		NVPString
+ * @return	array					nvpArray = Associative Array
+ */
+function deformatNVP($nvpstr)
+{
+}
+/**
+ * 	Get API errors
+ *
+ * 	@return	array		Array of errors
+ */
+function getApiError()
+{
+}
