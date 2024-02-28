@@ -1,0 +1,42 @@
+<?php
+
+namespace Sabre\VObject;
+
+/**
+ * VObject ElementList.
+ *
+ * This class represents a list of elements. Lists are the result of queries,
+ * such as doing $vcalendar->vevent where there's multiple VEVENT objects.
+ *
+ * @copyright Copyright (C) fruux GmbH (https://fruux.com/)
+ * @author Evert Pot (http://evertpot.com/)
+ * @license http://sabre.io/license/ Modified BSD License
+ */
+class ElementList extends \ArrayIterator
+{
+    /* {{{ ArrayAccess Interface */
+    /**
+     * Sets an item through ArrayAccess.
+     *
+     * @param int $offset
+     * @param mixed $value
+     *
+     * @return void
+     */
+    function offsetSet($offset, $value)
+    {
+    }
+    /**
+     * Sets an item through ArrayAccess.
+     *
+     * This method just forwards the request to the inner iterator
+     *
+     * @param int $offset
+     *
+     * @return void
+     */
+    function offsetUnset($offset)
+    {
+    }
+    /* }}} */
+}
