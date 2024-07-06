@@ -1,0 +1,14 @@
+<?php
+
+\define('NOCSRFCHECK', 1);
+\define('NOTOKENRENEWAL', 1);
+\define('NOREQUIREMENU', 1);
+\define('NOREQUIREHTML', 1);
+\define('NOBROWSERNOTIF', 1);
+\define('DISABLE_JQUERY_TABLEDND', 1);
+\define('DISABLE_JQUERY_JNOTIFY', 1);
+\define('DISABLE_JQUERY_FLOT', 1);
+\define('DISABLE_JQUERY_JEDITABLE', 1);
+\define('DISABLE_CKEDITOR', 1);
+\define('DISABLE_DATE_PICKER', 1);
+\define('DISABLE_SELECT2', 1);

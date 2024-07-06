@@ -450,19 +450,19 @@ class Product extends \CommonObject
     /**
      * Regular product
      */
-    const TYPE_PRODUCT = 0;
+    public const TYPE_PRODUCT = 0;
     /**
      * Service
      */
-    const TYPE_SERVICE = 1;
+    public const TYPE_SERVICE = 1;
     /**
      * Advanced feature: assembly kit
      */
-    const TYPE_ASSEMBLYKIT = 2;
+    public const TYPE_ASSEMBLYKIT = 2;
     /**
      * Advanced feature: stock kit
      */
-    const TYPE_STOCKKIT = 3;
+    public const TYPE_STOCKKIT = 3;
     /**
      *  Constructor
      *
