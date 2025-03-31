@@ -1,6 +1,9 @@
 # Dolibarr Stubs (all stubs in one repository)
 
-The stubs are generated directly from the dolibarr [sources](https://github.com/dolibarr/dolibarr) using [dolibarr-stubs tools](https://github.com/rycks/dolibarr-stubs).
+The stubs are generated directly from the dolibarr [sources](https://github.com/dolibarr/dolibarr)
+using [dolibarr-stubs tools](https://github.com/rycks/dolibarr-stubs) (github).
+
+[dolibarr-stubs tools](https://packagist.org/packages/caprel/dolibarr-stubs) is available on packagist too.
 
 ## Usage in PHPStan
 

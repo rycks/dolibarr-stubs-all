@@ -1,0 +1,58 @@
+<?php
+
+/*
+ * This file is part of SwiftMailer.
+ * (c) 2011 Fabien Potencier
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+/**
+ * Stores all sent emails for further usage.
+ *
+ * @author Fabien Potencier
+ */
+class Swift_Plugins_MessageLogger implements \Swift_Events_SendListener
+{
+    /**
+     * @var Swift_Mime_SimpleMessage[]
+     */
+    private $messages;
+    public function __construct()
+    {
+    }
+    /**
+     * Get the message list.
+     *
+     * @return Swift_Mime_SimpleMessage[]
+     */
+    public function getMessages()
+    {
+    }
+    /**
+     * Get the message count.
+     *
+     * @return int count
+     */
+    public function countMessages()
+    {
+    }
+    /**
+     * Empty the message list.
+     */
+    public function clear()
+    {
+    }
+    /**
+     * Invoked immediately before the Message is sent.
+     */
+    public function beforeSendPerformed(\Swift_Events_SendEvent $evt)
+    {
+    }
+    /**
+     * Invoked immediately after the Message is sent.
+     */
+    public function sendPerformed(\Swift_Events_SendEvent $evt)
+    {
+    }
+}
