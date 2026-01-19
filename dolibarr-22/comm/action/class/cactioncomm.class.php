@@ -1,0 +1,117 @@
+<?php
+
+/* Copyright (C) 2002-2003 Rodolphe Quiedeville <rodolphe@quiedeville.org>
+ * Copyright (C) 2004-2014 Laurent Destailleur  <eldy@users.sourceforge.net>
+ * Copyright (C) 2024-2025	MDW					<mdeweerd@users.noreply.github.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+/**
+ *       \file       htdocs/comm/action/class/cactioncomm.class.php
+ *       \ingroup    agenda
+ *       \brief      File of class to manage type of agenda events
+ */
+/**
+ *      Class to manage different types of events
+ */
+class CActionComm
+{
+    /**
+     * @var string Error code (or message)
+     */
+    public $error = '';
+    /**
+     * @var DoliDB Database handler.
+     */
+    public $db;
+    /**
+     * @var int ID
+     */
+    public $id;
+    /**
+     * @var string code
+     */
+    public $code;
+    /**
+     * @var string type
+     */
+    public $type;
+    /**
+     * @var string label
+     * @deprecated Use $label
+     * @see $label
+     */
+    public $libelle;
+    /**
+     * @var string Type of agenda event label
+     */
+    public $label;
+    /**
+     * @var int active
+     */
+    public $active;
+    /**
+     * @var string color hex
+     */
+    public $color;
+    /**
+     * @var string String with name of icon for myobject. Must be the part after the 'object_' into object_myobject.png
+     */
+    public $picto;
+    /**
+     * @var array{id:array<int,string>,code:array<string,string>,all:array<string,array{id:string,label:string,type:string,color:mixed,picto:string}>}	Used to return value by some methods
+     */
+    public $liste_array;
+    /**
+     *  Constructor
+     *
+     *  @param	DoliDB		$db		Database handler
+     */
+    public function __construct($db)
+    {
+    }
+    /**
+     *  Load action type from database
+     *
+     *  @param  int|string	$id     id or code of action type to read
+     *  @return int             	1=ok, 0=not found, -1=error
+     */
+    public function fetch($id)
+    {
+    }
+    // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
+    /**
+     *  Return list of event types: array(id=>label) or array(code=>label)
+     *
+     *  @param  ''|int<0,1>  $active         1 or 0 to filter on event state active or not ('' by default = no filter)
+     *  @param  'id'|'code'|'all'      $idorcode       'id' or 'code' or 'all'
+     *  @param  string		$excludetype    Type to exclude ('system' or 'systemauto')
+     *  @param  int<-2,1>	$onlyautoornot  1=Group all type AC_XXX into 1 line AC_MANUAL. 0=Keep details of type, -1 or -2=Keep details and add a combined line per calendar (Default, Auto, BoothConf, ...)
+     *  @param  string      $morefilter     Add more SQL filter
+     *  @param  int<0,1>	$shortlabel     1=Get short label instead of long label
+     *	@return	int<-1,-1>|array{id:array<int,string>,code:array<string,string>,all:array<string,array{id:string,label:string,type:string,color:mixed,picto:string}>,AC_OTH_AUTO?:mixed}	Array of all event types if OK, <0 if KO. Key of array is id or code depending on parameter $idorcode.
+     */
+    public function liste_array($active = '', $idorcode = 'id', $excludetype = '', $onlyautoornot = 0, $morefilter = '', $shortlabel = 0)
+    {
+    }
+    /**
+     *  Return name of action type as a label translated
+     *
+     *	@param	int		$withpicto		0=No picto, 1=Include picto into link, 2=Picto only
+     *  @return string|-1		      	Label of action type, or -1 if error
+     */
+    public function getNomUrl($withpicto = 0)
+    {
+    }
+}
