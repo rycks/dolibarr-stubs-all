@@ -1,0 +1,24 @@
+<?php
+
+\define('NOTOKENRENEWAL', '1');
+\define('NOREQUIREMENU', '1');
+\define('NOREQUIREHTML', '1');
+\define('NOREQUIREAJAX', '1');
+/**
+ * @var Conf $conf
+ * @var DoliDB $db
+ * @var HookManager $hookmanager
+ * @var Societe $mysoc
+ * @var Translate $langs
+ * @var User $user
+ */
+$place = \GETPOST('place', 'aZ09') ? \GETPOST('place', 'aZ09') : 0;
+// $place is id of table for Ba or Restaurant
+$invoiceid = \GETPOSTINT('invoiceid');
+/*
+ * View
+ */
+$invoice = new \Facture($db);
+$head = '';
+$arrayofcss = array('/takepos/css/pos.css.php');
+$arrayofjs = array();

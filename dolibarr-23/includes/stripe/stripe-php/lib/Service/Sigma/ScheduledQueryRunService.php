@@ -1,0 +1,34 @@
+<?php
+
+namespace Stripe\Service\Sigma;
+
+class ScheduledQueryRunService extends \Stripe\Service\AbstractService
+{
+    /**
+     * Returns a list of scheduled query runs.
+     *
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Collection<\Stripe\Sigma\ScheduledQueryRun>
+     */
+    public function all($params = null, $opts = null)
+    {
+    }
+    /**
+     * Retrieves the details of an scheduled query run.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|array|\Stripe\Util\RequestOptions $opts
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     *
+     * @return \Stripe\Sigma\ScheduledQueryRun
+     */
+    public function retrieve($id, $params = null, $opts = null)
+    {
+    }
+}

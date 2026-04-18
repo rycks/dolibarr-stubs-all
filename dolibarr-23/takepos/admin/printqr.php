@@ -1,0 +1,3 @@
+<?php
+
+$id = \GETPOSTINT('id');

@@ -1,0 +1,16 @@
+<?php
+
+\define('NOTOKENRENEWAL', 1);
+\define('NOREQUIREMENU', '1');
+\define('NOREQUIREHTML', '1');
+/**
+ * @var Conf $conf
+ * @var DoliDB $db
+ * @var HookManager $hookmanager
+ * @var Translate $langs
+ * @var User $user
+ */
+$id = \GETPOSTINT('id');
+$element = \GETPOST('element', 'alpha');
+$action = \GETPOST('action', 'aZ09');
+$facture = new \Facture($db);

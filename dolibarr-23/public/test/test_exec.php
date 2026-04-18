@@ -1,0 +1,18 @@
+<?php
+
+\define('NOREQUIREUSER', '1');
+\define('NOREQUIREDB', '1');
+\define('NOREQUIRESOC', '1');
+\define('NOREQUIRETRAN', '1');
+\define('NOSTYLECHECK', '1');
+\define('NOREQUIREMENU', '1');
+\define('NOREQUIREHTML', '1');
+\define('NOREQUIREAJAX', '1');
+\define("NOLOGIN", '1');
+\define("NOSESSION", '1');
+$out = '';
+$ret = 0;
+$file = '/tmp/test.txt';
+$f = \fopen($file, 'r');
+$ret = 0;
+$out = \null;

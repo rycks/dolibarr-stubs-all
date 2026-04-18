@@ -1,0 +1,10 @@
+<?php
+
+// Define tradMonths javascript array (we define this in datepicker AND in parent page to avoid errors with IE8)
+$tradMonths = array(\dol_escape_js($langs->transnoentitiesnoconv("Month01")), \dol_escape_js($langs->transnoentitiesnoconv("Month02")), \dol_escape_js($langs->transnoentitiesnoconv("Month03")), \dol_escape_js($langs->transnoentitiesnoconv("Month04")), \dol_escape_js($langs->transnoentitiesnoconv("Month05")), \dol_escape_js($langs->transnoentitiesnoconv("Month06")), \dol_escape_js($langs->transnoentitiesnoconv("Month07")), \dol_escape_js($langs->transnoentitiesnoconv("Month08")), \dol_escape_js($langs->transnoentitiesnoconv("Month09")), \dol_escape_js($langs->transnoentitiesnoconv("Month10")), \dol_escape_js($langs->transnoentitiesnoconv("Month11")), \dol_escape_js($langs->transnoentitiesnoconv("Month12")));
+$tradMonthsShort = array($langs->trans("MonthShort01"), $langs->trans("MonthShort02"), $langs->trans("MonthShort03"), $langs->trans("MonthShort04"), $langs->trans("MonthShort05"), $langs->trans("MonthShort06"), $langs->trans("MonthShort07"), $langs->trans("MonthShort08"), $langs->trans("MonthShort09"), $langs->trans("MonthShort10"), $langs->trans("MonthShort11"), $langs->trans("MonthShort12"));
+$tradDays = array($langs->trans("Sunday"), $langs->trans("Monday"), $langs->trans("Tuesday"), $langs->trans("Wednesday"), $langs->trans("Thursday"), $langs->trans("Friday"), $langs->trans("Saturday"));
+$tradDaysShort = array($langs->trans("ShortSunday"), $langs->trans("ShortMonday"), $langs->trans("ShortTuesday"), $langs->trans("ShortWednesday"), $langs->trans("ShortThursday"), $langs->trans("ShortFriday"), $langs->trans("ShortSaturday"));
+$tradDaysMin = array($langs->trans("SundayMin"), $langs->trans("MondayMin"), $langs->trans("TuesdayMin"), $langs->trans("WednesdayMin"), $langs->trans("ThursdayMin"), $langs->trans("FridayMin"), $langs->trans("SaturdayMin"));
+$dec = ',';
+$thousand = ' ';
