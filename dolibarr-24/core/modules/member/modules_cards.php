@@ -1,0 +1,39 @@
+<?php
+
+/**
+ *	Parent class of document generator for members cards.
+ */
+class ModelePDFCards
+{
+    /**
+     * @var string Error code (or message)
+     */
+    public $error = '';
+    // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
+    /**
+     *  Return list of active generation modules
+     *
+     *  @param  DoliDB  	$db                 Database handler
+     *  @param  int<0,max>	$maxfilenamelength  Max length of value to show
+     *  @return string[]|int<-1,0>				List of templates
+     */
+    public static function liste_modeles($db, $maxfilenamelength = 0)
+    {
+    }
+}
+// phpcs:disable PEAR.NamingConventions.ValidFunctionName.NotCamelCaps
+/**
+ *	Create a document for visit card according to template defined in ADHERENT_CARDS_ADDON_PDF
+ *
+ *	@param	DoliDB		$db				Database handler
+ *	@param	array<array{textleft:string,textheader:string,textfooter:string,textright:string,id:int,ref:string,photo:string}>		$arrayofmembers	Array of members
+ *	@param	string		$modele			Force modele to use ('' to not force)
+ *	@param	Translate	$outputlangs	Object langs to use for translation
+ *	@param	string		$outputdir		Output directory
+ *	@param	string		$template		pdf generenate document class to use default 'standard'
+ *  @param	string		$filename		Name of output file (without extension)
+ *	@return int							Return integer <0 if KO, >0 if OK
+ */
+function members_card_pdf_create($db, $arrayofmembers, $modele, $outputlangs, $outputdir = '', $template = 'standard_member', $filename = 'tmp_cards')
+{
+}

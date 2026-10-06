@@ -1,0 +1,40 @@
+<?php
+
+/**
+ *  Class of triggers for Webhook module
+ */
+class InterfaceWebhookTriggers extends \DolibarrTriggers
+{
+    /**
+     * Constructor
+     *
+     * @param DoliDB $db Database handler
+     */
+    public function __construct($db)
+    {
+    }
+    /**
+     * Function called when a Dolibarr business event is done.
+     * All functions "runTrigger" are triggered if file of function is inside directory core/triggers.
+     *
+     * @param string 		$action 	Event action code
+     * @param CommonObject 	$object 	Object
+     * @param User 			$user 		Object user
+     * @param Translate 	$langs 		Object langs
+     * @param Conf 			$conf 		Object conf
+     * @return int              		Return integer <0 if KO, 0 if no triggered ran, >0 if OK
+     */
+    public function runTrigger($action, $object, \User $user, \Translate $langs, \Conf $conf)
+    {
+    }
+    /**
+     *  Remove the db property from a payload, including the objects nested into its arrays.
+     *
+     *  @param	object|array<mixed>	$payload	Payload to clean, modified in place
+     *  @param	int					$depth		Current recursion depth, used as a safety stop
+     *  @return	void
+     */
+    private function removeDbFromPayload(&$payload, $depth = 0)
+    {
+    }
+}
