@@ -1,0 +1,362 @@
+<?php
+
+/*
+ * PHPDoc corrections for the Dolibarr core classes analysed through the stubs.
+ *
+ * Load it with the "stubFiles" parameter of PHPStan, next to the dolibarr-NN
+ * directory given to "scanDirectories":
+ *
+ *     parameters:
+ *         stubFiles:
+ *             - /path/to/dolibarr-stubs-all/phpstan/dolibarr-core.stub
+ *
+ * Reference it from the clone rather than copying it into a module: copies drift
+ * apart. It applies to every Dolibarr version of this repository, the comments
+ * below say when a fix only matters from a given version on.
+ *
+ * The types below are wrong upstream and make PHPStan reject correct code from
+ * level 4 up:
+ *  - Database::fetch_object() is documented "@return Object" while it returns
+ *    null at the end of the cursor, so "while ($obj = $db->fetch_object($resql))"
+ *    looks like an endless loop and everything after it looks unreachable.
+ *  - the CommonObject properties below are declared without a value and stay null
+ *    until an explicit fetch (fetch_thirdparty(), setDocModel(), ...), so the
+ *    empty() and ?? guards written around them are not redundant.
+ *  - Conf::$entity defaults to 1 in the class body but holds the current entity
+ *    at runtime, so comparing it to 1 is not a constant expression.
+ *
+ * Only the PHPDoc is read from this file, the bodies are never analysed.
+ */
+
+interface Database
+{
+	/**
+	 * @param	resource|object		$resultset	Handler of the request
+	 * @return	object|null						Result line, or null at the end of the cursor
+	 */
+	public function fetch_object($resultset);
+
+	/**
+	 * @param	resource|object		$resultset			Handler of the request
+	 * @return	array<int|string, mixed>|null			Result line, or null at the end of the cursor
+	 */
+	public function fetch_array($resultset);
+
+	/**
+	 * @param	resource|object		$resultset			Handler of the request
+	 * @return	array<int|string, mixed>|null			Result line, or null at the end of the cursor
+	 */
+	public function fetch_row($resultset);
+}
+
+abstract class CommonObject
+{
+	/**
+	 * @var string|null ID to identify managed object
+	 */
+	public $element;
+
+	/**
+	 * @var string|null Key value used to track if data is coming from import wizard
+	 */
+	public $import_key;
+
+	/**
+	 * @var string|null Old value of a modified ref
+	 */
+	public $oldref;
+
+	/**
+	 * @var int|null The object's status
+	 */
+	public $statut;
+
+	/**
+	 * @var int|null The object's status. Dolibarr 20 annotates it
+	 *               "int|array<int, string>" one line after calling it "an int",
+	 *               which turns every "$this->status == self::STATUS_X" into
+	 *               "Comparison between array<int, string>|int and 1".
+	 */
+	public $status;
+
+	/**
+	 * @var int|string 0, 1, or 'field@table' for the entity-aware variants.
+	 *                 Annotated int<0, 1>|string from Dolibarr 20 on, which no
+	 *                 module builder class can restate without breaking
+	 *                 covariance.
+	 */
+	public $ismultientitymanaged;
+
+	/**
+	 * @var int Same story, annotated int<0, 1> from Dolibarr 20 on.
+	 */
+	public $isextrafieldmanaged;
+
+	/**
+	 * @var array<string, array<string, mixed>> Field descriptors. Dolibarr 21
+	 *      annotates this with a closed shape listing the keys it knows, while
+	 *      the core itself reads others ('helplist', 'comment', 'csslist'...)
+	 *      and every module builder class declares some. Keeping the shape open
+	 *      is what matches the runtime contract.
+	 */
+	public $fields;
+
+	/**
+	 * @var string|null
+	 */
+	public $model_pdf;
+
+	/**
+	 * @var string|null
+	 */
+	public $modelpdf;
+
+	/**
+	 * @var int|string|null
+	 */
+	public $date_modification;
+
+	/**
+	 * @var Societe|null A related thirdparty object, null until fetch_thirdparty()
+	 */
+	public $thirdparty;
+
+	/**
+	 * @var Contact|null A related contact, null until fetch_contact()
+	 */
+	public $contact;
+
+	/**
+	 * @var string|null Label of the object, null until it is fetched. Declared
+	 *                  "@var string" upstream, which forbids a subclass from
+	 *                  narrowing it back to string|null (covariance).
+	 */
+	public $name;
+
+	/**
+	 * @var string|null The object's reference, null until it is fetched and on
+	 *                  the objects that number themselves on validation only.
+	 */
+	public $ref;
+
+	/**
+	 * @var string|null ISO country code on 2 chars, null until the object or its
+	 *                  country is fetched.
+	 */
+	public $country_code;
+
+	/**
+	 * @var User|null A related user, null until fetch_user()
+	 */
+	public $user;
+
+	/**
+	 * @var array<int|string, string> Status labels, filled by the object itself.
+	 *      Declared "array()" without PHPDoc up to Dolibarr 19 and annotated
+	 *      differently from Dolibarr 20 on, so a module that annotates them
+	 *      cannot satisfy every supported version at once.
+	 */
+	public $labelStatus;
+
+	/**
+	 * @var array<int|string, string> Short status labels, same story as $labelStatus
+	 */
+	public $labelStatusShort;
+
+	/**
+	 * @var string|null Currency code, null until the object is fetched. Annotated
+	 *      "string" from Dolibarr 19 and "array<string>|string" from 23 on.
+	 */
+	public $multicurrency_code;
+
+	/**
+	 * @var int|string|null Last modification timestamp, null before the fetch
+	 */
+	public $tms;
+
+	/**
+	 * @var int|null Author, null until the object is fetched. Annotated
+	 *      differently from Dolibarr 20 on, hence this single open shape.
+	 */
+	public $fk_user_creat;
+
+	/**
+	 * @var int|null Last modifier, same story as $fk_user_creat
+	 */
+	public $fk_user_modif;
+
+	/**
+	 * @var User|null Author object, null until fetch_user()
+	 */
+	public $user_creation;
+
+	/**
+	 * @var User|null Validating user object, null until fetch_user()
+	 */
+	public $user_validation;
+}
+
+/**
+ * Declared only so the @var above can name it: a stub file resolves class names
+ * against the stubs, not against the scanned Dolibarr sources. The empty body
+ * adds nothing, the real Societe keeps its own members.
+ */
+class Societe extends CommonObject
+{
+	/**
+	 * @var string|null Professional ID 1 (Siren in France), null when the
+	 *                  thirdparty carries none: the column is nullable.
+	 */
+	public $idprof1;
+
+	/**
+	 * @var string|null Professional ID 2 (Siret in France), same as idprof1
+	 */
+	public $idprof2;
+
+	/**
+	 * @var float|null Capital, null when the thirdparty carries none
+	 */
+	public $capital;
+
+	/**
+	 * @var string|null Thirdparty name. Declared "@var string" upstream, but it
+	 *                  is null until the object is fetched, so the ?? and empty()
+	 *                  guards written around it are not redundant.
+	 */
+	public $name;
+
+	/**
+	 * @var string|null Postal address. llx_societe.address is "varchar(255)" with
+	 *                  no NOT NULL, so the column is nullable and the property
+	 *                  holds null both before a fetch and on a thirdparty that
+	 *                  carries no address.
+	 */
+	public $address;
+
+	/**
+	 * @var string|null Zipcode, nullable column (varchar(25)), same as $address
+	 */
+	public $zip;
+
+	/**
+	 * @var string|null Town, nullable column (varchar(50)), same as $address
+	 */
+	public $town;
+
+	/**
+	 * @var string|null Phone number, nullable column (varchar(20)), same as $address
+	 */
+	public $phone;
+
+	/**
+	 * @var string|null Email, nullable column (varchar(128)), same as $address
+	 */
+	public $email;
+}
+
+/**
+ * Same as Societe: named by the properties below, so it must exist here.
+ */
+abstract class CommonInvoice extends CommonObject
+{
+}
+
+class Facture extends CommonInvoice
+{
+	/**
+	 * @var string|null Customer reference of the invoice, null when the user
+	 *                  left the field empty: the column is nullable.
+	 */
+	public $ref_client;
+
+	/**
+	 * @var string|null Same reference under its newer name, same nullability
+	 */
+	public $ref_customer;
+
+	/**
+	 * @var string|null Currency code of the invoice, null until it is fetched
+	 */
+	public $multicurrency_code;
+}
+
+abstract class CommonObjectLine
+{
+	/**
+	 * @var string|null Unit code of the line ('km', 'm', 'p', ...), null on a
+	 *                  line that carries no unit.
+	 */
+	public $fk_unit;
+}
+
+abstract class CommonInvoiceLine extends CommonObjectLine
+{
+	/**
+	 * @var float|null VAT rate, null until the line is fetched
+	 */
+	public $tva_tx;
+}
+
+class CMailFile
+{
+	/**
+	 * @var string|null Message id of the mail just sent, null when the transport
+	 *                  did not return one. Carries no PHPDoc at all upstream, so
+	 *                  PHPStan infers "string" from the constructor and calls the
+	 *                  guards around it redundant.
+	 */
+	public $msgid;
+}
+
+/**
+ * Same as Societe: named by a property above, so it must exist here.
+ */
+class Contact extends CommonObject
+{
+}
+
+class User
+{
+	/**
+	 * @var string|null user login
+	 */
+	public $login;
+}
+
+class Conf
+{
+	/**
+	 * @var int Current entity, not the 1 the class body defaults to
+	 */
+	public $entity;
+}
+
+abstract class DolibarrModules
+{
+	/**
+	 * Documented "@var string[]" upstream, but the core itself reads both forms:
+	 * core/lib/admin.lib.php:1174 says "this->depends may be array('modModule1',
+	 * 'modModule2') or array('always'=>array('modModule1'), 'FR'=>array(...))"
+	 * and iterates "as $key => $modulestringorarray". The nested form is also the
+	 * one the modulebuilder template documents in the generated comment, so a
+	 * module declaring it is correct and only the PHPDoc is wrong.
+	 *
+	 * @var array<int|string, string|array<int, string>>
+	 */
+	public $depends;
+
+	/**
+	 * Same two accepted forms as $depends, same wrong PHPDoc upstream.
+	 *
+	 * @var array<int|string, string|array<int, string>>
+	 */
+	public $requiredby;
+
+	/**
+	 * Same two accepted forms as $depends, same wrong PHPDoc upstream.
+	 *
+	 * @var array<int|string, string|array<int, string>>
+	 */
+	public $conflictwith;
+}
