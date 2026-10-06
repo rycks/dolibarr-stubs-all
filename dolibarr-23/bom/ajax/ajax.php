@@ -14,7 +14,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$idproduct = \GETPOSTINT('idproduct');
-$product = new \Product($db);
-$res = $product->fetch($idproduct);
-$result = array();

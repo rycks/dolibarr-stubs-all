@@ -9,4 +9,3 @@
  * @var FormCardWebPortal 		$formCard
  */
 $formCard = $this->formCard;
-$fieldShowList = $formCard->fieldsmanager->getAllFieldsInfos($formCard->object, $formCard->extrafields, 'view', 2, array(1 => $formCard->key_for_break));

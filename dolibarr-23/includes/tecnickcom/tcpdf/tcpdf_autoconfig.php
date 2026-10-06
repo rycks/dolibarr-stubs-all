@@ -2,11 +2,8 @@
 
 \define('K_PATH_MAIN', \dirname(__FILE__) . '/');
 \define('K_PATH_FONTS', \K_PATH_MAIN . 'fonts/');
-$k_path_url = \K_PATH_MAIN;
 \define('K_PATH_URL', $k_path_url);
-$tcpdf_header_logo = '';
 \define('PDF_HEADER_LOGO', $tcpdf_header_logo);
-$K_PATH_CACHE = \ini_get('upload_tmp_dir') ? \ini_get('upload_tmp_dir') : \sys_get_temp_dir();
 \define('K_PATH_CACHE', $K_PATH_CACHE);
 \define('K_BLANK_IMAGE', '_blank.png');
 \define('PDF_PAGE_FORMAT', 'A4');

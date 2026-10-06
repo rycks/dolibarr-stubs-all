@@ -9,5 +9,3 @@
 \define('NOREQUIREHTML', '1');
 \define('NOREQUIREAJAX', '1');
 \define('NOSESSION', '1');
-$manifest = new \stdClass();
-$icon = new \stdClass();

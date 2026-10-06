@@ -52,21 +52,5 @@ function llxFooter($comment = '', $zone = 'private', $disabledoutputofmessages =
  * @var Translate $langs
  */
 $error = 0;
-$websitekey = \GETPOST('website', 'alpha');
-$pageid = \GETPOST('page', 'alpha') ? \GETPOST('page', 'alpha') : \GETPOST('pageid', 'alpha');
-$pageref = \GETPOST('pageref', 'alphanohtml') ? \GETPOST('pageref', 'alphanohtml') : '';
-// If page is xx/pagename, xx is a language, we set $pageref to pagename
-$reg = array();
-$accessallowed = 1;
-$type = '';
-$object = new \Website($db);
-$objectpage = new \WebsitePage($db);
-$objectpage = new \WebsitePage($db);
-$result = $objectpage->fetch($pageid);
-$appli = \constant('DOL_APPLICATION_TITLE');
-// Find the subdirectory name as the reference
-$refname = \basename(\dirname($original_file) . "/");
-$filename = \basename($original_file);
-$original_file_osencoded = \dol_osencode($original_file);
 // Output page content
 \define('USEDOLIBARRSERVER', 1);

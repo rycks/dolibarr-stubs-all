@@ -28,5 +28,3 @@
  */
 // Javascript code on logon page only to detect user tz, dst_observed, dst_first, dst_second
 $arrayofjs = array('/core/js/dst.js' . (empty($conf->dol_use_jmobile) ? '' : '?version=' . \urlencode(\DOL_VERSION)));
-$prefix = \dol_getprefix('');
-$callbackUrl = $_COOKIE["DOL_rollback_url_" . $prefix];

@@ -1,6 +1,5 @@
 <?php
 
-$action = \GETPOST('action', 'aZ09');
 /** @var array<string,array{family:string,position:int,enabled:bool,picto?:string,warning?:string,deprecated?:int<0,1>,reloadpage?:int<0,1>}> $workflowcodes */
 $workflowcodes = array(
     // Automatic creation
@@ -63,20 +62,3 @@ $workflowcodes = array(
     // This one depends on previous one WORKFLOW_TICKET_LINK_CONTRACT
     'WORKFLOW_TICKET_USE_PARENT_COMPANY_CONTRACTS' => array('family' => 'link_ticket', 'position' => 501, 'enabled' => \isModEnabled('ticket') && \isModEnabled('contract') && \getDolGlobalString('WORKFLOW_TICKET_LINK_CONTRACT'), 'picto' => 'ticket'),
 );
-// remove not available workflows (based on activated modules and global defined keys)
-$workflowcodes = \array_filter(
-    $workflowcodes,
-    /**
-     * @param array{enabled:int<0,1>} $var
-     * @return bool
-     */
-    static function ($var) {
-        return (bool) $var['enabled'];
-    }
-);
-$linkback = '<a href="' . \dolBuildUrl(\DOL_URL_ROOT . '/admin/modules.php', ['restore_lastsearch_values' => 1]) . '">' . \img_picto($langs->trans("BackToModuleList"), 'back', 'class="pictofixedwidth"') . '<span class="hideonsmartphone">' . $langs->trans("BackToModuleList") . '</span></a>';
-// Sort on position
-$workflowcodes = \dol_sort_array($workflowcodes, 'position');
-$oldfamily = '';
-$tableopen = 0;
-$atleastoneline = 0;

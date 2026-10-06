@@ -2,8 +2,7 @@
 
 /**
  * @var CommonObject $object
- * @var CommonObject $this
+ * @var int[] $selectedLines
  * @var CommonObjectLine $line
  */
 $line_color = $object->getSubtotalColors($line->qty);
-$selected = 1;

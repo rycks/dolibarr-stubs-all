@@ -1,27 +1,5 @@
 <?php
 
-$action = \GETPOST('action');
-$job = new \Job($db);
-// Permissions
-$permissiontoread = $user->hasRight('hrm', 'evaluation', 'read') || $user->hasRight('hrm', 'compare_advance', 'read');
-$permissiontoadd = 0;
-/*
- * View
- */
-$css = array('/hrm/css/style.css');
-$head = array();
-$h = 0;
-$fk_usergroup2 = 0;
-$fk_job = (int) \GETPOST('fk_job');
-$fk_usergroup1 = \GETPOSTINT('fk_usergroup1');
-$j = new \Job($db);
-$jobs = $j->fetchAll();
-$TJobs = array();
-$TUser1 = $TUser2 = array();
-$userlist1 = \displayUsersListWithPicto($TUser1, $fk_usergroup1, 'list1');
-// This fill also the $TUser1
-$TSkill1 = \getSkillForUsers($TUser1);
-$TMergedSkills = \mergeSkills($TSkill1, $TSkill2);
 /**
  * 	Return a html list element with diff  between required rank  and user rank
  *

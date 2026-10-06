@@ -27,37 +27,3 @@
  */
 // Load Dolibarr environment
 $res = 0;
-// Try main.inc.php into web root detected using web root calculated from SCRIPT_FILENAME
-$tmp = empty($_SERVER['SCRIPT_FILENAME']) ? '' : $_SERVER['SCRIPT_FILENAME'];
-$tmp2 = \realpath(__FILE__);
-$i = \strlen($tmp) - 1;
-$j = \strlen($tmp2) - 1;
-$action = \GETPOST('action', 'aZ09');
-$now = \dol_now();
-$max = \getDolGlobalInt('MAIN_SIZE_SHORTLIST_LIMIT', 5);
-// Security check - Protection if external user
-$socid = \GETPOSTINT('socid');
-// Initialize a technical object to manage hooks. Note that conf->hooks_modules contains array
-//$hookmanager->initHooks(array($object->element.'index'));
-// Security check (enable the most restrictive one)
-//if ($user->socid > 0) accessforbidden();
-//if ($user->socid > 0) $socid = $user->socid;
-//if (!isModEnabled('mymodule')) {
-//	accessforbidden('Module not enabled');
-//}
-//if (! $user->hasRight('mymodule', 'myobject', 'read')) {
-//	accessforbidden();
-//}
-//restrictedArea($user, 'mymodule', 0, 'mymodule_myobject', 'myobject', '', 'rowid');
-//if (empty($user->admin)) {
-//	accessforbidden('Must be admin');
-//}
-/*
- * Actions
- */
-// None
-/*
- * View
- */
-$form = new \Form($db);
-$formfile = new \FormFile($db);

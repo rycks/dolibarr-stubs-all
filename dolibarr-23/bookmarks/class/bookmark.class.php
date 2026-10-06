@@ -89,7 +89,7 @@ class Bookmark extends \CommonObject
      *    Directs the bookmark
      *
      *    @param    int		$id		Bookmark Id Loader
-     *    @return	int				Return integer <0 if KO, >0 if OK
+     *    @return	int				Return integer <0 if KO, 0 if not found, >0 if OK
      */
     public function fetch($id)
     {

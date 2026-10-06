@@ -27,4 +27,14 @@ class InterfaceWebhookTriggers extends \DolibarrTriggers
     public function runTrigger($action, $object, \User $user, \Translate $langs, \Conf $conf)
     {
     }
+    /**
+     *  Remove the db property from a payload, including the objects nested into its arrays.
+     *
+     *  @param	object|array<mixed>	$payload	Payload to clean, modified in place
+     *  @param	int					$depth		Current recursion depth, used as a safety stop
+     *  @return	void
+     */
+    private function removeDbFromPayload(&$payload, $depth = 0)
+    {
+    }
 }

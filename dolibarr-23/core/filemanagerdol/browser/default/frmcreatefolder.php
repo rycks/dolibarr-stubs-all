@@ -20,6 +20,3 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 \define('NOTOKENRENEWAL', 1);
-// Output style sheets (optioncss='print' or ''). Note: $conf->css looks like '/theme/eldy/style.css.php'
-$themepath = \dol_buildpath($conf->css, 1);
-$themesubdir = '';

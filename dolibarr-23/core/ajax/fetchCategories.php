@@ -15,13 +15,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$lang = \GETPOST('lang', 'aZ09');
-$type = \GETPOST('type');
-/*
- * Actions
- */
-// None
-/*
- * View
- */
-$form = new \Form($db);

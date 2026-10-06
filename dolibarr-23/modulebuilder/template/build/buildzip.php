@@ -110,8 +110,3 @@ function rcopy($src, $dst)
 function zipDir($folder, &$zip, $root = "")
 {
 }
-$outzip = \sys_get_temp_dir() . "/module_" . $mod . "-" . $version . ".zip";
-//copy all sources into system temp directory
-$tmpdir = \tempnam(\sys_get_temp_dir(), $mod . "-module");
-$dst = $tmpdir . "/" . $mod;
-$z = new \ZipArchive();

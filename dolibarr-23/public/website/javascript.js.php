@@ -52,21 +52,5 @@ function llxFooter($comment = '', $zone = 'private', $disabledoutputofmessages =
  * @var Translate $langs
  */
 $error = 0;
-$website = \GETPOST('website', 'alpha');
-$websiteid = \GETPOSTINT('websiteid');
-$pageid = \GETPOST('page', 'alpha') ? \GETPOST('page', 'alpha') : \GETPOST('pageid', 'alpha');
-$accessallowed = 1;
-$type = '';
-/*
- * View
- */
-$appli = \constant('DOL_APPLICATION_TITLE');
-$object = new \Website($db);
-$objectpage = new \WebsitePage($db);
-$original_file = $dolibarr_main_data_root . ($conf->entity > 1 ? '/' . $conf->entity : '') . '/website/' . $website . '/javascript.js.php';
-// Find the subdirectory name as the reference
-$refname = \basename(\dirname($original_file) . "/");
-$filename = \basename($original_file);
-$original_file_osencoded = \dol_osencode($original_file);
 // Output page content
 \define('USEDOLIBARRSERVER', 1);

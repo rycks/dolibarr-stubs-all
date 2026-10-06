@@ -1,8 +1,5 @@
 <?php
 
-$level = 0;
-$tnums = \count($tasks);
-$old_project_id = 0;
 /**
  * Add a gantt chart line
  *

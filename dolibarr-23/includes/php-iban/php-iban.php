@@ -1,8 +1,5 @@
 <?php
 
-# PHP IBAN - http://github.com/globalcitizen/php-iban - LGPLv3
-# Global flag by request
-$__disable_iiban_gmp_extension = \false;
 # Verify an IBAN number.
 #  If $machine_format_only, do not tolerate unclean (eg. spaces, dashes, leading 'IBAN ' or 'IIBAN ', lower case) input.
 #  (Otherwise, input can be printed 'IIBAN xx xx xx...' or 'IBAN xx xx xx...' or machine 'xxxxx' format.)
@@ -238,7 +235,6 @@ function iban_country_get_is_eu_member($iban_country)
 function iban_mistranscription_suggestions($incorrect_iban)
 {
 }
-$_iban_registry = array();
 function _iban_load_registry()
 {
 }

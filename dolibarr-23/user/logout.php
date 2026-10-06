@@ -12,15 +12,3 @@
  * @var User $user
  */
 $error = 0;
-// Call trigger
-$result = $user->call_trigger('USER_LOGOUT', $user);
-// End call triggers
-// Hooks on logout
-$action = '';
-$parameters = array();
-$reshook = $hookmanager->executeHooks('afterLogout', $parameters, $user, $action);
-// Define url to go after disconnect
-$urlfrom = empty($_SESSION["urlfrom"]) ? \GETPOST('urlfrom') : $_SESSION["urlfrom"];
-// Define url to go
-$url = \DOL_URL_ROOT . "/index.php";
-$url = \getDolGlobalString('MAIN_AUTHENTICATION_OIDC_LOGOUT_URL') . '?client_id=' . \getDolGlobalString('MAIN_AUTHENTICATION_OIDC_CLIENT_ID') . '&returnTo=' . \urlencode($url);

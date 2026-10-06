@@ -6,4 +6,3 @@
 \define('NOREQUIREAJAX', '1');
 \define('NOREQUIRESOC', '1');
 \define('NOREQUIRETRAN', '1');
-$result = \restrictedArea($user, 'variants');

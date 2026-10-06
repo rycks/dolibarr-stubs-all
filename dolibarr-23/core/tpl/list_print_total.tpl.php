@@ -11,4 +11,3 @@
 function printTotalValCell($type, $val)
 {
 }
-$i = 0;

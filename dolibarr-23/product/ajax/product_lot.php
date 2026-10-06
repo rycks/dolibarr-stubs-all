@@ -13,9 +13,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$productId = \GETPOSTINT('product_id');
-$batch = \GETPOST('batch', 'alphanohtml');
-$permissiontoread = $user->hasRight('stock', 'lire');
-$rows = array();
-$productLot = new \Productlot($db);
-$result = $productLot->fetch(0, $productId, $batch);

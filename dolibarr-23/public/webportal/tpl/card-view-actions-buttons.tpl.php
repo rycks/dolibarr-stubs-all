@@ -9,6 +9,3 @@
  * @var FormCardWebPortal 		$formCard
  */
 $formCard = $this->formCard;
-$url = $context->getControllerUrl($context->controller) . '&id=' . $formCard->object->id;
-$parameters = array();
-$reshook = $hookmanager->executeHooks('addMoreActionsButtons', $parameters, $context);

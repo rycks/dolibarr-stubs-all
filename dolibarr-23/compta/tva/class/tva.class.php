@@ -142,6 +142,15 @@ class Tva extends \CommonObject
     public function fetch($id, $ref = '')
     {
     }
+    // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
+    /**
+     *  Return if a VAT declaration can be deleted: not once a payment exists, as for invoices
+     *
+     *  @return    int         Return integer <=0 if no, >0 if yes
+     */
+    public function is_erasable()
+    {
+    }
     /**
      *  Delete object in database
      *

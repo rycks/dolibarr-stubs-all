@@ -25,8 +25,3 @@
  *					 For a reinstall this page redirect to page check.php
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
-$err = 0;
-/*
- * View
- */
-$formadmin = new \FormAdmin(\null);

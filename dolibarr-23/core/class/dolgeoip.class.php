@@ -55,6 +55,18 @@ class DolGeoIP
     {
     }
     /**
+     * Return the ISO country code for an IP or a host name using the embedded GeoIP2 reader.
+     * A Country database is read with country(), but a City database (which also embeds the
+     * country record) is read with city(), so a City datafile configured as the country
+     * datafile still resolves instead of failing with a BadMethodCallException.
+     *
+     * @param	string	$ipOrName	IP address or host name to look up
+     * @return	string				Country code (two letters, upper case) or '' if not found
+     */
+    private function getGeoIp2IsoCode($ipOrName)
+    {
+    }
+    /**
      * Return in lower case the country code from an ip
      *
      * @param	string	$ip		IP to scan

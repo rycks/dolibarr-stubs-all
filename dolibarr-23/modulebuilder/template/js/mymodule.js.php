@@ -17,8 +17,3 @@
  */
 // Load Dolibarr environment
 $res = 0;
-// Try main.inc.php into web root detected using web root calculated from SCRIPT_FILENAME
-$tmp = empty($_SERVER['SCRIPT_FILENAME']) ? '' : $_SERVER['SCRIPT_FILENAME'];
-$tmp2 = \realpath(__FILE__);
-$i = \strlen($tmp) - 1;
-$j = \strlen($tmp2) - 1;

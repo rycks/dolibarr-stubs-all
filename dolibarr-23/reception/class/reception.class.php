@@ -306,6 +306,16 @@ class Reception extends \CommonObject
     public function delete(\User $user)
     {
     }
+    /**
+     *	Delete a line of the reception. Only allowed while the reception is a draft.
+     *
+     *	@param	User	$user		User that deletes
+     *	@param	int		$lineid		Id of the line to delete (llx_receptiondet_batch.rowid)
+     *	@return	int					>0 if OK, <0 if KO
+     */
+    public function deleteLine($user, $lineid)
+    {
+    }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
      *	Load lines

@@ -43,33 +43,3 @@
 //if (! defined('NOTOKENRENEWAL'))           define('NOTOKENRENEWAL', '1');					// Do not roll the Anti CSRF token (used if MAIN_SECURITY_CSRF_WITH_TOKEN is on)
 // Load Dolibarr environment
 $res = 0;
-// Try main.inc.php into web root detected using web root calculated from SCRIPT_FILENAME
-$tmp = empty($_SERVER['SCRIPT_FILENAME']) ? '' : $_SERVER['SCRIPT_FILENAME'];
-$tmp2 = \realpath(__FILE__);
-$i = \strlen($tmp) - 1;
-$j = \strlen($tmp2) - 1;
-// Get parameters
-$id = \GETPOSTINT('id');
-$ref = \GETPOST('ref', 'alpha');
-$action = \GETPOST('action', 'aZ09');
-$cancel = \GETPOST('cancel');
-$backtopage = \GETPOST('backtopage', 'alpha');
-// Initialize a technical objects
-$object = new \MyObject($db);
-$extrafields = new \ExtraFields($db);
-$diroutputmassaction = $conf->mymodule->dir_output . '/temp/massgeneration/' . $user->id;
-// There is several ways to check permission.
-// Set $enablepermissioncheck to 1 to enable a minimum low level of checks
-$enablepermissioncheck = \getDolGlobalInt('MYMODULE_ENABLE_PERMISSION_CHECK');
-/*
- * Actions
- */
-$parameters = array();
-$reshook = $hookmanager->executeHooks('doActions', $parameters, $object, $action);
-/*
- * View
- */
-$form = new \Form($db);
-$title = $langs->trans('MyObject') . ' - ' . $langs->trans("Notes");
-//$title = $object->ref." - ".$langs->trans("Notes");
-$help_url = '';

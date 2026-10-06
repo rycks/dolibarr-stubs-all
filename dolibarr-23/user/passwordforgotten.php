@@ -25,39 +25,3 @@
  *       \brief      Page to ask a new password
  */
 \define("NOLOGIN", 1);
-$action = \GETPOST('action', 'aZ09');
-$mode = $dolibarr_main_authentication;
-$username = \GETPOST('username', 'alphanohtml');
-$passworduidhash = \GETPOST('passworduidhash', 'alpha');
-$setnewpassword = \GETPOST('setnewpassword', 'aZ09');
-/*
- * Actions
- */
-$parameters = array('username' => $username);
-$reshook = $hookmanager->executeHooks('doActions', $parameters, $object, $action);
-/*
- * View
- */
-$dol_url_root = \DOL_URL_ROOT;
-$appli = \constant('DOL_APPLICATION_TITLE');
-$applicustom = \getDolGlobalString('MAIN_APPLICATION_TITLE');
-// Title
-$title = $appli;
-// $title is used in .tpl file
-// Select templates dir
-$template_dir = '';
-// Show logo (search in order: small company logo, large company logo, theme logo, common logo)
-$width = 0;
-$rowspan = 2;
-$urllogo = \DOL_URL_ROOT . '/theme/common/login_logo.png';
-// Send password button enabled ?
-$disabled = 'disabled';
-// Security graphical code
-$captcha = '';
-// Execute hook getPasswordForgottenPageOptions (for table)
-$parameters = array('entity' => \GETPOSTINT('entity'));
-// Execute hook getPasswordForgottenPageExtraOptions (eg for js)
-$parameters = array('entity' => \GETPOSTINT('entity'));
-$reshook = $hookmanager->executeHooks('getPasswordForgottenPageExtraOptions', $parameters);
-// Note that $action and $object may have been modified by some hooks.
-$moreloginextracontent = $hookmanager->resPrint;

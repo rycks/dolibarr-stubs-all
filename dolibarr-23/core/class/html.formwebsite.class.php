@@ -106,6 +106,7 @@ class FormWebsite
      *
      * @param   string      $htmlContent    HTML name of WYSIWYG field
      * @return 	string      HTML for model page boxes
+     * @see getEmailLayoutSelector()
      */
     public function getContentPageTemplate($htmlContent = 'message')
     {

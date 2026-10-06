@@ -29,31 +29,3 @@
  *	\brief      Test if file conf can be modified and if does not exists, test if install process can create it
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
-$err = 0;
-$allowinstall = 0;
-$allowupgrade = \false;
-$checksok = 1;
-$setuplang = \GETPOST("selectlang", 'aZ09', 3) ? \GETPOST("selectlang", 'aZ09', 3) : $langs->getDefaultLang();
-// Now we load forced/pre-set values from install.forced.php file.
-$useforcedwizard = \false;
-$forcedfile = "./install.forced.php";
-// Check browser
-$useragent = $_SERVER['HTTP_USER_AGENT'];
-$tmp = \getBrowserInfo($_SERVER["HTTP_USER_AGENT"]);
-$browserversion = $tmp['browserversion'];
-$browsername = $tmp['browsername'];
-// Check PHP version min
-$arrayphpminversionerror = array(7, 1, 0);
-$arrayphpminversionwarning = array(7, 2, 0);
-// Check PHP version max
-$arrayphpmaxversionwarning = array(8, 5, 0);
-$extensionok = array();
-$extensionko = array();
-// Check memory
-$memrequiredorig = '64M';
-$memrequired = 64 * 1024 * 1024;
-$memmaxorig = @\ini_get("memory_limit");
-$memmax = @\ini_get("memory_limit");
-$reg = array();
-$confexists = 1;
-$databaseok = 1;

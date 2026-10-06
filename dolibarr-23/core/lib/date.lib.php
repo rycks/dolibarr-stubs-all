@@ -54,14 +54,17 @@ function getServerTimeZoneInt($refgmtdate = 'now')
 /**
  *  Add a delay to a date
  *
- *  @param      int			$time               Date timestamp (Must be a UTC timestamp)
+ *  @param      int			$time               Date timestamp (Must be a UTC timestamp, unless $tz is set)
  *  @param      float		$duration_value     Value of delay to add
  *  @param      string		$duration_unit      Unit of added delay (d, m, y, w, h, i)
  *  @param      int<0,1>    $ruleforendofmonth  Change the behavior when $duration_unit = 'm' and new date reaches a non existing date. Use 0 (PHP behaviour) or 1
+ *  @param      string      $tz                 Timezone in which days, months and years are added: '' (UTC, or timezone of the server if MAIN_DATE_IN_MEMORY_ARE_NOT_GMT is set),
+ *                                              'gmt', 'tzserver' (for a date read from database with jdate(), like midnight in the timezone of the server), or a timezone name.
+ *                                              Ex: on a server in Europe/Paris, 1 October 00:00 + 3 months is 1 January 00:00 with 'tzserver', but 30 December 23:00 with ''.
  *  @return     int      			        	New timestamp
  *  @see convertSecondToTime(), convertTimeToSeconds()
  */
-function dol_time_plus_duree($time, $duration_value, $duration_unit, $ruleforendofmonth = 0)
+function dol_time_plus_duree($time, $duration_value, $duration_unit, $ruleforendofmonth = 0, $tz = '')
 {
 }
 /**

@@ -37,30 +37,3 @@
  *         It (re)creates the install.lock and shows the final message.
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
-$versionfrom = \GETPOST("versionfrom", 'alpha', 3) ? \GETPOST("versionfrom", 'alpha', 3) : (empty($argv[1]) ? '' : $argv[1]);
-$versionto = \GETPOST("versionto", 'alpha', 3) ? \GETPOST("versionto", 'alpha', 3) : (empty($argv[2]) ? '' : $argv[2]);
-$setuplang = \GETPOST('selectlang', 'aZ09', 3) ? \GETPOST('selectlang', 'aZ09', 3) : (empty($argv[3]) ? 'auto' : $argv[3]);
-$action = \GETPOST('action', 'alpha') ? \GETPOST('action', 'alpha') : (empty($argv[4]) ? '' : $argv[4]);
-// Define targetversion used to update MAIN_VERSION_LAST_INSTALL for first install
-// or MAIN_VERSION_LAST_UPGRADE for upgrade.
-$targetversion = \DOL_VERSION;
-// If it's an old upgrade
-$tmp = \explode('_', $action, 2);
-$login = \GETPOST('login', 'alpha') ? \GETPOST('login', 'alpha') : (empty($argv[5]) ? '' : $argv[5]);
-$pass = \GETPOST('pass', 'password') ? \GETPOST('pass', 'password') : (empty($argv[6]) ? '' : $argv[6]);
-$pass_verif = \GETPOST('pass_verif', 'password') ? \GETPOST('pass_verif', 'password') : (empty($argv[7]) ? '' : $argv[7]);
-$success = 0;
-$useforcedwizard = \false;
-$forcedfile = "./install.forced.php";
-$useforcedwizard = \true;
-$force_install_lockinstall = (int) (!empty($force_install_lockinstall) ? $force_install_lockinstall : (\GETPOST('installlock', 'aZ09') ? \GETPOST('installlock', 'aZ09') : (empty($argv[8]) ? '' : $argv[8])));
-$error = 0;
-/*
- *	View
- */
-$morehtml = '';
-$error = 0;
-$db = \getDoliDBInstance($conf->db->type, $conf->db->host, $conf->db->user, $conf->db->pass, $conf->db->name, (int) $conf->db->port);
-$hookmanager = new \HookManager($db);
-$ok = 0;
-$ret = 0;

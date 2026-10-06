@@ -44,34 +44,3 @@ function llxHeader($head = '', $title = '', $help_url = '', $target = '', $disab
 function llxFooter($comment = '', $zone = 'private', $disabledoutputofmessages = 0)
 {
 }
-$login = \GETPOST('login', 'alphanohtml');
-$password = \GETPOST('password', 'password');
-$caller = \GETPOST('caller', 'alphanohtml');
-$called = \GETPOST('called', 'alphanohtml');
-// Sanitize input data to avoid to use the wrapper to inject malicious paylod into asterisk
-$login = \preg_replace('/[\\n\\r]/', '', $login);
-$password = \preg_replace('/[\\n\\r]/', '', $password);
-$caller = \preg_replace('/[\\n\\r]/', '', $caller);
-$called = \preg_replace('/[\\n\\r]/', '', $called);
-// IP address of Asterisk server
-$strHost = \getDolGlobalString('ASTERISK_HOST', '127.0.0.1');
-// Specify the type of extension through which your extension is connected.
-// ex: SIP/, IAX2/, ZAP/, etc
-$channel = \getDolGlobalString('ASTERISK_TYPE', 'SIP/');
-// Outgoing call sign
-$prefix = \getDolGlobalString('ASTERISK_INDICATIF', '0');
-// Asterisk Port
-$port = \getDolGlobalInt('ASTERISK_PORT', 5038);
-// Context ( generalement from-internal )
-$strContext = \getDolGlobalString('ASTERISK_CONTEXT', 'from-internal');
-// Waiting time before hanging up
-$strWaitTime = \getDolGlobalString('ASTERISK_WAIT_TIME', '30');
-// Priority
-$strPriority = \getDolGlobalString('ASTERISK_PRIORITY', '1');
-// Number of call attempts
-$strMaxRetry = \getDolGlobalString('ASTERISK_MAX_RETRY', "2");
-$sql = "SELECT s.nom as name FROM " . \MAIN_DB_PREFIX . "societe as s";
-$resql = $db->query($sql);
-$obj = $db->fetch_object($resql);
-$number = \strtolower($called);
-$pos = \strpos($number, "local");

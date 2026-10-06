@@ -28,23 +28,3 @@
  */
 // Load Dolibarr environment
 $res = 0;
-// Try main.inc.php into web root detected using web root calculated from SCRIPT_FILENAME
-$tmp = empty($_SERVER['SCRIPT_FILENAME']) ? '' : $_SERVER['SCRIPT_FILENAME'];
-$tmp2 = \realpath(__FILE__);
-$i = \strlen($tmp) - 1;
-$j = \strlen($tmp2) - 1;
-$extrafields = new \ExtraFields($db);
-$form = new \Form($db);
-// List of supported format
-$type2label = \ExtraFields::getListOfTypesLabels();
-$action = \GETPOST('action', 'aZ09');
-$attrname = \GETPOST('attrname', 'alpha');
-$elementtype = 'mymodule_myobject';
-/*
- * View
- */
-$textobject = $langs->transnoentitiesnoconv("MyObject");
-$help_url = '';
-$page_name = "MyModuleSetup";
-$linkback = '<a href="' . \dolBuildUrl(\DOL_URL_ROOT . '/admin/modules.php', ['restore_lastsearch_values' => 1]) . '">' . \img_picto($langs->trans("BackToModuleList"), 'back', 'class="pictofixedwidth"') . '<span class="hideonsmartphone">' . $langs->trans("BackToModuleList") . '</span></a>';
-$head = \mymoduleAdminPrepareHead();

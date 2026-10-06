@@ -12,17 +12,3 @@
 \define('DISABLE_CKEDITOR', 1);
 \define('DISABLE_DATE_PICKER', 1);
 \define('DISABLE_SELECT2', 1);
-$right = $langs->trans("DIRECTION") == 'rtl' ? 'left' : 'right';
-$left = $langs->trans("DIRECTION") == 'rtl' ? 'right' : 'left';
-$title = $langs->trans("Menu");
-// URL http://mydolibarr/core/get_menudiv.php?dol_use_jmobile=1 can be used for tests
-$head = '<!-- Menu -->' . "\n";
-// This is used by DoliDroid to know page is a menu page
-$arrayofjs = array();
-$arrayofcss = array();
-// Load the menu manager (only if not already done)
-$file_menu = $conf->standard_menu;
-$menufound = 0;
-$dirmenus = \array_merge(array("/core/menus/"), (array) $conf->modules_parts['menus']);
-// @phan-suppress-next-line PhanRedefinedClassReference
-$menumanager = new \MenuManager($db, empty($user->socid) ? 0 : 1);

@@ -24,20 +24,3 @@
  */
 \define('NOSCANPOSTFORINJECTION', 1);
 \define('NOSTYLECHECK', 1);
-// Force hide of left menu.
-$error = 0;
-$website = \GETPOST('website', 'alpha');
-$page = \GETPOST('page', 'alpha');
-$pageid = \GETPOSTINT('pageid');
-$action = \GETPOST('action', 'aZ09');
-//$permissiontoadd = $user->hasRight('collab', 'read');
-//$permissiontodelete = $user->hasRight('collab', 'delete');
-/*
- * Actions
- */
-// None
-/*
- * View
- */
-$form = new \Form($db);
-$help_url = '';

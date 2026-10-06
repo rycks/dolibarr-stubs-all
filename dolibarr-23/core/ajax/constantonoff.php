@@ -15,8 +15,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-// set or del
-$name = \GETPOST('name', 'alpha');
-$entity = \GETPOSTINT('entity');
-$value = \GETPOST('value', 'aZ09') != '' ? \GETPOST('value', 'aZ09') : 1;
-$userconst = \GETPOSTINT('userconst');

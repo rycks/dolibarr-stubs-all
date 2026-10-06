@@ -194,9 +194,20 @@ class ProductCustomerPrice extends \CommonObject
      *
      * @param User $user that deletes
      * @param int $notrigger triggers after, 1=disable triggers
+     * @param int $forceupdateaffiliate If set, also delete the price of this product on subsidiaries of the customer that have the same price line
      * @return int Return integer <0 if KO, >0 if OK
      */
-    public function delete($user, $notrigger = 0)
+    public function delete($user, $notrigger = 0, $forceupdateaffiliate = 0)
+    {
+    }
+    /**
+     * Delete the price of the same product on subsidiaries of the customer of this price line, when they carry
+     * the same price (propagated the same way setPriceOnAffiliateThirdparty() creates or updates it).
+     *
+     * @param 	User 	$user 	Object user
+     * @return 	int 			Return integer <0 if KO, >0 if OK
+     */
+    public function deletePriceOnAffiliateThirdparty($user)
     {
     }
     /**

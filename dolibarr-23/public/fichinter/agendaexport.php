@@ -7,10 +7,6 @@
 \define("NOLOGIN", 1);
 \define("NOCSRFCHECK", 1);
 \define('NOIPCHECK', '1');
-// For MultiCompany module.
-// Do not use GETPOST here, function is not defined and define must be done before including main.inc.php
-// Because 2 entities can have the same ref
-$entity = !empty($_GET['entity']) ? (int) $_GET['entity'] : (!empty($_POST['entity']) ? (int) $_POST['entity'] : 1);
 \define("DOLENTITY", $entity);
 /**
  * @var Conf $conf
@@ -21,20 +17,6 @@ $entity = !empty($_GET['entity']) ? (int) $_GET['entity'] : (!empty($_POST['enti
  * @var User $user
  */
 $fichinterStatic = new \Fichinter($db);
-// Define format, type and filter
-$format = 'ical';
-$type = 'event';
-$filters = array();
-// Note that $action and $object may have been modified by some
-$reshook = $hookmanager->executeHooks('doActions', $filters);
-// Define filename with prefix on filters predica (each predica set must have on cache file)
-$shortfilename = 'dolibarrcalendar';
-$filename = $shortfilename;
-$fichinter = new \Fichinter($db);
-$cachedelay = 0;
-$exportholidays = \GETPOSTINT('includeholidays');
-$result = \build_exportfile($format, $type, $cachedelay, $filename, $filters);
-$result = \build_exportfile($format, $type, $cachedelay, $filename, $filters);
 // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
 /**
  * Export events from database into a cal file.

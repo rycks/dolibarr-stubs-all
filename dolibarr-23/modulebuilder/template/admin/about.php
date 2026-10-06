@@ -24,26 +24,3 @@
  */
 // Load Dolibarr environment
 $res = 0;
-// Try main.inc.php into web root detected using web root calculated from SCRIPT_FILENAME
-$tmp = empty($_SERVER['SCRIPT_FILENAME']) ? '' : $_SERVER['SCRIPT_FILENAME'];
-$tmp2 = \realpath(__FILE__);
-$i = \strlen($tmp) - 1;
-$j = \strlen($tmp2) - 1;
-// Parameters
-$action = \GETPOST('action', 'aZ09');
-$backtopage = \GETPOST('backtopage', 'alpha');
-/*
- * Actions
- */
-// None
-/*
- * View
- */
-$form = new \Form($db);
-$help_url = '';
-$title = "MyModuleSetup";
-// Subheader
-$linkback = '<a href="' . ($backtopage ? $backtopage : \DOL_URL_ROOT . '/admin/modules.php?restore_lastsearch_values=1') . '">' . \img_picto($langs->trans("BackToModuleList"), 'back', 'class="pictofixedwidth"') . '<span class="hideonsmartphone">' . $langs->trans("BackToModuleList") . '</span></a>';
-// Configuration header
-$head = \mymoduleAdminPrepareHead();
-$tmpmodule = new \modMyModule($db);

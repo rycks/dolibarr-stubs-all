@@ -99,6 +99,10 @@ class Workstation extends \CommonObject
      * @var float thm machine estimated
      */
     public $thm_machine_estimated;
+    /**
+     * @var array<string,array{name:string,fk_element:string,enabled?:string}>	List of child tables. To test if we can delete object.
+     */
+    protected $childtables = array('product' => array('name' => 'Product', 'fk_element' => 'fk_default_workstation'), 'bom_bomline' => array('name' => 'BOM', 'fk_element' => 'fk_default_workstation', 'enabled' => 'isModEnabled("bom")'), 'mrp_production' => array('name' => 'ManufacturingOrder', 'fk_element' => 'fk_default_workstation', 'enabled' => 'isModEnabled("mrp")'));
     // END MODULEBUILDER PROPERTIES
     /**
      * @var int[] array of ID
@@ -108,6 +112,14 @@ class Workstation extends \CommonObject
      * @var int[] array of ID
      */
     public $usergroups;
+    /**
+     * @var string Name of the field, in the child tables, that holds the id of the workstation
+     */
+    public $fk_element = 'fk_workstation';
+    /**
+     * @var string[]	List of child tables. To know object to delete on cascade.
+     */
+    protected $childtablesoncascade = array('workstation_workstation_usergroup', 'workstation_workstation_resource');
     /**
      * Constructor
      *

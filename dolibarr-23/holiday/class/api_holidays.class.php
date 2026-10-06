@@ -15,6 +15,13 @@ class Holidays extends \DolibarrApi
      */
     public static $FIELDS = array('fk_user', 'date_debut', 'date_fin');
     /**
+     * @var string[]	Workflow fields that must not be set through the generic
+     *					create/update endpoints. They can only be changed via the
+     *					dedicated routes (validate, approve, refuse, cancel, reopen)
+     *					that enforce the proper permission checks.
+     */
+    public static $FIELDS_FORBIDDEN_FOR_API = array('status', 'statut', 'fk_validator', 'date_valid', 'fk_user_valid', 'date_approval', 'fk_user_approve', 'date_refuse', 'fk_user_refuse', 'detail_refuse');
+    /**
      * @var Holiday {@type Holiday}
      */
     public $holiday;

@@ -799,11 +799,6 @@ class PclZip
 \define('PCLZIP_ERROR_EXTERNAL', 0);
 \define('PCLZIP_TEMPORARY_DIR', '');
 \define('PCLZIP_TEMPORARY_FILE_RATIO', 0.47);
-// --------------------------------------------------------------------------------
-// ***** UNDER THIS LINE NOTHING NEEDS TO BE MODIFIED *****
-// --------------------------------------------------------------------------------
-// ----- Global variables
-$g_pclzip_version = "2.8.2";
 // ----- Error codes
 //   -1 : Unable to open file in binary write mode
 //   -2 : Unable to open file in binary read mode

@@ -15,11 +15,6 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$triggercode = \GETPOST('triggercode');
-$response = '';
-$objnotfound = 0;
-$json = new \stdClass();
-$response = \json_encode($json);
 /**
  * Find and init a specimen for the given object type
  *

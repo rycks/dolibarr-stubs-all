@@ -198,7 +198,7 @@ abstract class CommonObjectLine extends \CommonObject
     public $subprice;
     /**
      * Unit price including taxes
-     * @var float
+     * @var float|null
      */
     public $subprice_ttc;
     /**
@@ -218,7 +218,7 @@ abstract class CommonObjectLine extends \CommonObject
      */
     public $multicurrency_subprice;
     /**
-     * @var float Multicurrency unit price including taxes
+     * @var float|null Multicurrency unit price including taxes
      */
     public $multicurrency_subprice_ttc;
     /**

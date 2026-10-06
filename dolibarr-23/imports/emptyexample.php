@@ -47,20 +47,3 @@ function llxFooter($comment = '', $zone = 'private', $disabledoutputofmessages =
  * @var User $user
  */
 $datatoimport = \GETPOST('datatoimport');
-$format = \GETPOST('format');
-$filename = $langs->transnoentitiesnoconv("ExampleOfImportFile") . '_' . $datatoimport . '.' . $format;
-$objimport = new \Import($db);
-// Load arrays from descriptor module
-$fieldstarget = $objimport->array_import_fields[0];
-$valuestarget = $objimport->array_import_examplevalues[0];
-$attachment = \true;
-//$attachment = false;
-$contenttype = \dol_mimetype($format);
-//$contenttype='text/plain';
-$outputencoding = 'UTF-8';
-// List of targets fields
-$headerlinefields = array();
-// Array of fields (label to show)
-$contentlinevalues = array();
-// Array of example values
-$i = 0;

@@ -9,7 +9,3 @@
  * @var FormCardWebPortal 		$formCard
  */
 $formCard = $this->formCard;
-$formconfirm = '';
-// Call Hook formConfirm
-$parameters = array('formConfirm' => $formconfirm);
-$reshook = $hookmanager->executeHooks('formConfirm', $parameters, $context);

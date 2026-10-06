@@ -13,12 +13,3 @@
  * @var User $user
  */
 $place = \GETPOST('place', 'aZ09') ? \GETPOST('place', 'aZ09') : 0;
-// $place is id of table for Ba or Restaurant
-$invoiceid = \GETPOSTINT('invoiceid');
-/*
- * View
- */
-$invoice = new \Facture($db);
-$head = '';
-$arrayofcss = array('/takepos/css/pos.css.php');
-$arrayofjs = array();

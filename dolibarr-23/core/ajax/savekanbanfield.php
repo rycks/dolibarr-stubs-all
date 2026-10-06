@@ -7,8 +7,7 @@
 /**
  * @var Conf $conf
  * @var DoliDB $db
- * @var HookManager $hookmanager
  * @var Translate $langs
  * @var User $user
  */
-$idprod = \GETPOSTINT('idprod');
+$element = \GETPOST('element', 'aZ09');

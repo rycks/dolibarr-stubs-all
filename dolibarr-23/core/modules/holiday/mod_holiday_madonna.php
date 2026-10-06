@@ -8,6 +8,9 @@ class mod_holiday_madonna extends \ModelNumRefHolidays
     // variables inherited from ModelNumRefHolidays class
     public $name = 'Madonna';
     public $version = 'dolibarr';
+    /**
+     * @var int position
+     */
     public $position = 10;
     // variables not inherited
     /**

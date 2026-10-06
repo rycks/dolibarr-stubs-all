@@ -11,7 +11,7 @@ class Contracts extends \DolibarrApi
     /**
      * @var string[]       Mandatory fields, checked when create and update object
      */
-    public static $FIELDS = array('socid', 'date_contrat', 'commercial_signature_id', 'commercial_suivi_id');
+    public static $FIELDS = array('socid', 'date_contrat');
     /**
      * @var Contrat {@type Contrat}
      */

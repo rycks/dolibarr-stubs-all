@@ -41,39 +41,6 @@
  *	\brief      Upgrade some data
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
-$error = 0;
-// This page can be long. We increase the allowed delay, but this does not work when we are in safe_mode.
-$err = \error_reporting();
-$setuplang = \GETPOST("selectlang", 'aZ09', 3) ? \GETPOST("selectlang", 'aZ09', 3) : 'auto';
-$versionfrom = \GETPOST("versionfrom", 'alpha', 3) ? \GETPOST("versionfrom", 'alpha', 3) : (empty($argv[1]) ? '' : $argv[1]);
-$versionto = \GETPOST("versionto", 'alpha', 3) ? \GETPOST("versionto", 'alpha', 3) : (empty($argv[2]) ? '' : $argv[2]);
-$enablemodules = \GETPOST("enablemodules", 'alpha', 3) ? \GETPOST("enablemodules", 'alpha', 3) : (empty($argv[3]) ? '' : $argv[3]);
-// Test if batch mode
-$sapi_type = \php_sapi_name();
-$script_file = \basename(__FILE__);
-$db = \getDoliDBInstance($conf->db->type, $conf->db->host, $conf->db->user, $conf->db->pass, $conf->db->name, (int) $conf->db->port);
-// We init log handler for install
-$handlers = array('mod_syslog_file');
-$listofentities = array(1);
-$hookmanager = new \HookManager($db);
-$parameters = array('versionfrom' => $versionfrom, 'versionto' => $versionto);
-$object = new \stdClass();
-$action = "upgrade";
-$reshook = $hookmanager->executeHooks('doUpgradeBefore', $parameters, $object, $action);
-// Force to execute this at begin to avoid the new core code into Dolibarr to be broken.
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'user ADD COLUMN birth date';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'user ADD COLUMN dateemployment date';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'user ADD COLUMN dateemploymentend date';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'user ADD COLUMN default_range integer';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'user ADD COLUMN default_c_exp_tax_cat integer';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'extrafields ADD COLUMN langs varchar(24)';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'extrafields ADD COLUMN fieldcomputed text';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'extrafields ADD COLUMN fielddefault varchar(255)';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . "extrafields ADD COLUMN enabled varchar(255) DEFAULT '1'";
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'extrafields ADD COLUMN help text';
-$sql = 'ALTER TABLE ' . \MAIN_DB_PREFIX . 'user_rights ADD COLUMN entity integer DEFAULT 1 NOT NULL';
-$silent = 0;
-$ret = 0;
 /**
  * Records payment links for an invoice in a join table (link n<-->n for payments<-->invoices)
  *
@@ -514,6 +481,37 @@ function migrate_remise_entity($db, $langs, $conf)
  * @return	void
  */
 function migrate_remise_except_entity($db, $langs, $conf)
+{
+}
+/**
+ * Grant the "supplier prices" advanced permissions introduced in 23.0 (product/service
+ * read_supplier_prices and product write_supplier_prices) to the users and groups that already
+ * hold the matching product/service "read"/"create" rights.
+ *
+ * Before 23.0, access to supplier (purchase) prices followed the general product/service read and
+ * create rights. In "Advanced permissions" mode these are now gated by dedicated permissions that
+ * are not granted by default, so without this migration every user/group silently loses access to
+ * supplier prices on upgrade. Permission ids are resolved by name from llx_rights_def (populated by
+ * the module reload done just before this call) to avoid hardcoded permission ids. Idempotent.
+ *
+ * @param	DoliDB		$db		Database handler
+ * @param	Translate	$langs	Object langs
+ * @param	Conf		$conf	Object conf
+ * @return	int					Return integer <0 if KO, >=0 if OK
+ */
+function migrate_supplier_prices_permissions($db, $langs, $conf)
+{
+}
+/**
+ * Return the permission id (llx_rights_def.id) matching a module/perms/subperms triplet, or 0 if none.
+ *
+ * @param	DoliDB	$db			Database handler
+ * @param	string	$module		Module (rights_def.module)
+ * @param	string	$perms		First level permission (rights_def.perms)
+ * @param	string	$subperms	Second level permission (rights_def.subperms), '' for none
+ * @return	int					Permission id, or 0 if not found
+ */
+function migrate_get_rights_def_id($db, $module, $perms, $subperms)
 {
 }
 /**

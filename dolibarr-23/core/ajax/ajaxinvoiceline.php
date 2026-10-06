@@ -11,8 +11,3 @@
  * @var User $user
  */
 $invoice_id = \GETPOSTINT('id');
-// id of thirdparty
-$action = \GETPOST('action', 'aZ09');
-$htmlname = \GETPOST('htmlname', 'alpha');
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
-$return = array();

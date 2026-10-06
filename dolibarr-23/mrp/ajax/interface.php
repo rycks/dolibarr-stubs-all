@@ -15,11 +15,3 @@
  * @var User $user
  */
 $warehouse_id = \GETPOSTINT('warehouse_id');
-$batch = \GETPOST('batch', 'alphanohtml');
-$fk_product = \GETPOSTINT('product_id');
-$action = \GETPOST('action', 'alphanohtml');
-$result = \restrictedArea($user, 'mrp');
-$permissiontoproduce = $user->hasRight('mrp', 'write');
-$TRes = array();
-$sql = "SELECT pb.batch, pb.rowid, ps.fk_entrepot, pb.qty, e.ref as label, ps.fk_product";
-$resql = $db->query($sql);

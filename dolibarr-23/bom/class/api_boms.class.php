@@ -96,6 +96,23 @@ class Boms extends \DolibarrApi
     {
     }
     /**
+     * Validate BOM
+     *
+     * @param   int $id             BOM ID
+     * @param   int $notrigger      1=Does not execute triggers, 0= execute triggers
+     * @return  Object              Object with cleaned properties
+     *
+     * @url POST    {id}/validate
+     *
+     * @throws RestException 304
+     * @throws RestException 401
+     * @throws RestException 404
+     * @throws RestException 500 System error
+     */
+    public function validate($id, $notrigger = 0)
+    {
+    }
+    /**
      * Delete bom
      *
      * @param   int     $id   BOM ID

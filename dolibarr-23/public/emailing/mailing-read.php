@@ -50,21 +50,3 @@ function llxFooter($comment = '', $zone = 'private', $disabledoutputofmessages =
  * @var DoliDB $db
  */
 $mtid = \GETPOST('mtid');
-$email = \GETPOST('email');
-$tag = \GETPOST('tag');
-$securitykey = \GETPOST('securitykey');
-$sql = "SELECT mc.rowid, mc.email, mc.statut, mc.source_type, mc.source_id, m.entity";
-$resql = $db->query($sql);
-$obj = $db->fetch_object($resql);
-// TODO Test that mtid and email match also with the one found from $tag
-/*
-if ($obj->email != $email)
-{
-print 'Email does not match tagnot found. No need to unsubscribe.';
-exit;
-}
-*/
-// Update status of target
-$statut = '2';
-$sql = "UPDATE " . \MAIN_DB_PREFIX . "mailing_cibles SET statut=" . (int) $statut . " WHERE rowid = " . (int) $obj->rowid;
-$resql = $db->query($sql);

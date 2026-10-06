@@ -14,17 +14,6 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$module = \GETPOST('module', 'aZ09arobase');
-$uploaddirname = \dol_sanitizeFileName(\GETPOST('uploaddirname', 'alpha'));
-$flowFilename = \GETPOST('flowFilename', 'alpha');
-$flowIdentifier = \GETPOST('flowIdentifier', 'alpha');
-$flowChunkNumber = \GETPOST('flowChunkNumber', 'alpha');
-$flowChunkSize = \GETPOST('flowChunkSize', 'alpha');
-$flowTotalSize = \GETPOST('flowTotalSize', 'alpha');
-$result = \restrictedArea($user, $module ? $module : 'unknown', 0, '', '', 'fk_soc', 'rowid', 0, 1);
-$upload_dir = $conf->{$module}->dir_temp;
-$result = \false;
-$chunk_file = $temp_dir . '/' . $flowFilename . '.part' . $flowChunkNumber;
 /**
  * Check if all the parts exist, and gather all the parts of the file together.
  *

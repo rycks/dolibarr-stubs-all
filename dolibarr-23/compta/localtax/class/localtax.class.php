@@ -66,6 +66,10 @@ class Localtax extends \CommonObject
      */
     public $fk_user_modif;
     /**
+     * @var int<0,1>|string		0=No test on entity, 1=Test with field entity in local table
+     */
+    public $ismultientitymanaged = 1;
+    /**
      *	Constructor
      *
      *  @param		DoliDB		$db      Database handler

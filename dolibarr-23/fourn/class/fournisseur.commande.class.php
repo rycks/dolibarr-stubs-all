@@ -97,7 +97,7 @@ class CommandeFournisseur extends \CommonOrder
      */
     public $date_approve2;
     /**
-     * @var int|'' Date of the purchase order ordering
+     * @var int|''|null 	Date of the purchase order ordering
      */
     public $date_commande;
     /**

@@ -224,4 +224,18 @@ class Categories extends \DolibarrApi
     public function getObjects($id, $type, $onlyids = 0)
     {
     }
+    // phpcs:disable PEAR.NamingConventions.ValidFunctionName.PublicUnderscore
+    /**
+     * Check the user can access the object a category is linked to / unlinked from.
+     * Linking is a write on the target object, so the same restrictions as on its own API apply
+     * (sales representative and external user scoping, entity), not only the module permission.
+     *
+     * @param	string			$type		Category type (Categorie::TYPE_*)
+     * @param	CommonObject	$object		Fetched target object
+     * @return	void
+     * @throws	RestException	403
+     */
+    private function _checkAccessToLinkedObject($type, $object)
+    {
+    }
 }

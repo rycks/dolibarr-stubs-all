@@ -11,11 +11,3 @@
  * @var User $user
  */
 $id = \GETPOSTINT('id');
-// id of thirdparty
-$action = \GETPOST('action', 'aZ09');
-$htmlname = \GETPOST('htmlname', 'alpha');
-$showempty = \GETPOSTINT('showempty');
-// Security check
-$result = \restrictedArea($user, 'societe', $id, '&societe', '', 'fk_soc', 'rowid', 0);
-$form = new \Form($db);
-$return = array();

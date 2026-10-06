@@ -38,24 +38,3 @@
  *      \brief      Run migration script
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
-$ok = 0;
-// Cette page peut etre longue. On augmente le delai autorise.
-// Ne fonctionne que si on est pas en safe_mode.
-$err = \error_reporting();
-$setuplang = \GETPOST("selectlang", 'aZ09', 3) ? \GETPOST("selectlang", 'aZ09', 3) : 'auto';
-$versionfrom = \GETPOST("versionfrom", 'alpha', 3) ? \GETPOST("versionfrom", 'alpha', 3) : (empty($argv[1]) ? '' : $argv[1]);
-$versionto = \GETPOST("versionto", 'alpha', 3) ? \GETPOST("versionto", 'alpha', 3) : (empty($argv[2]) ? '' : $argv[2]);
-$dirmodule = \GETPOST("dirmodule", 'alpha', 3) && \GETPOST("dirmodule", 'alpha', 3) != 'ignoredbversion' ? \GETPOST("dirmodule", 'alpha', 3) : (empty($argv[3]) || $argv[3] == 'ignoredbversion' ? '' : $argv[3]);
-$ignoredbversion = \GETPOST('ignoredbversion', 'alpha', 3) == 'ignoredbversion' ? \GETPOST('ignoredbversion', 'alpha', 3) : (empty($argv[3]) || $argv[3] != 'ignoredbversion' ? '' : $argv[3]);
-// Test if batch mode
-$sapi_type = \php_sapi_name();
-$script_file = \basename(__FILE__);
-$path = __DIR__ . '/';
-$actiondone = 0;
-$actiondone = 1;
-$db = \getDoliDBInstance($conf->db->type, $conf->db->host, $conf->db->user, $conf->db->pass, $conf->db->name, (int) $conf->db->port);
-$hookmanager = new \HookManager($db);
-// Affiche version
-$versionarray = array();
-$ret = 0;
-$nonext = !$ok && !\GETPOST("ignoreerrors") ? 2 : 0;

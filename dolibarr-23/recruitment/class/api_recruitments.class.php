@@ -216,11 +216,12 @@ class Recruitments extends \DolibarrApi
      * Validate fields before create or update object
      *
      * @param	?array<string,mixed>		$data   Array of data to validate
+     * @param	CommonObject				$object Object to validate against
      * @return	array<string,mixed>
      *
      * @throws	RestException
      */
-    private function _validate($data)
+    private function _validate($data, $object)
     {
     }
 }

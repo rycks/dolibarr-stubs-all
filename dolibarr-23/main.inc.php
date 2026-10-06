@@ -41,58 +41,6 @@
 //@ini_set('memory_limit', '128M');	// This may be useless if memory is hard limited by your PHP
 // For optional tuning. Enabled if environment variable MAIN_SHOW_TUNING_INFO is defined.
 $micro_start_time = 0;
-$micro_start_time = (float) $usec + (float) $sec;
-// Init session. Name of session is specific to Dolibarr instance.
-// Must be done after the include of filefunc.inc.php so global variables of conf file are defined (like $dolibarr_main_instance_unique_id or $dolibarr_main_force_https).
-// Note: the function dol_getprefix() is defined into functions.lib.php but may have been defined to return a different key to manage another area to protect.
-$prefix = \dol_getprefix('');
-$sessionname = 'DOLSESSID_' . $prefix;
-$sessiontimeout = 'DOLSESSTIMEOUT_' . $prefix;
-$ok = 0;
-$debugbar = new \DolibarrDebugBar();
-$renderer = $debugbar->getJavascriptRenderer();
-$tmp = \getBrowserInfo($_SERVER["HTTP_USER_AGENT"]);
-$newurl = '';
-$listofip = \explode(',', $dolibarr_main_restrict_ip);
-$found = \false;
-// If an upgrade process is required, we call the install page.
-$checkifupgraderequired = \false;
-$versiontocompare = \getDolGlobalString('MAIN_VERSION_LAST_UPGRADE', \getDolGlobalString('MAIN_VERSION_LAST_INSTALL'));
-$dolibarrversionlastupgrade = \preg_split('/[.-]/', $versiontocompare);
-$dolibarrversionprogram = \preg_split('/[.-]/', \DOL_VERSION);
-$rescomp = \versioncompare($dolibarrversionprogram, $dolibarrversionlastupgrade);
-$tmpaction = \GETPOST('action', 'aZ09');
-// Array of action code where CSRFCHECK with token will be forced (so token must be provided on url request)
-$sensitiveget = \false;
-$sessiontokenforthisurl = empty($_SESSION['token']) ? '' : $_SESSION['token'];
-// Set current modulepart
-$modulepart = \explode("/", $_SERVER["PHP_SELF"]);
-/*
- * Phase authentication / login
- */
-$login = '';
-$error = 0;
-// Set authmode
-$authmode = \explode(',', $dolibarr_main_authentication);
-// If login request was already post, we retrieve login from the session
-// Call module if not realized that his request.
-// At the end of this phase, the variable $login is defined.
-$resultFetchUser = '';
-$test = \true;
-$dol_authmode = \null;
-// Define some constants used for style of arrays
-$bc = array(0 => 'class="impair"', 1 => 'class="pair"');
-$bcdd = array(0 => 'class="drag drop oddeven"', 1 => 'class="drag drop oddeven"');
-$bcnd = array(0 => 'class="nodrag nodrop nohover"', 1 => 'class="nodrag nodrop nohoverpair"');
-// Used for tr to add new lines
-// Define messages variables
-$mesg = '';
-$warning = '';
-$error = 0;
-// deprecated, see setEventMessages() and dol_htmloutput_events()
-$mesgs = array();
-$warnings = array();
-$errors = array();
 \define('ROWS_1', 1);
 \define('ROWS_2', 2);
 \define('ROWS_3', 3);
@@ -102,11 +50,6 @@ $errors = array();
 \define('ROWS_7', 7);
 \define('ROWS_8', 8);
 \define('ROWS_9', 9);
-$heightforframes = 52;
-// Load the menu manager (only if not already done)
-$file_menu = $conf->standard_menu;
-// @phan-suppress-next-line PhanRedefinedClassReference
-$menumanager = new \MenuManager($db, empty($user->socid) ? 0 : 1);
 /**
  *	Show HTML header HTML + BODY + Top menu + left menu + DIV
  *

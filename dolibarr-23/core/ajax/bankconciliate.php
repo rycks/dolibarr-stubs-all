@@ -13,4 +13,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$format = \GETPOST('format');

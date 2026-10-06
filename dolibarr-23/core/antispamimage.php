@@ -27,15 +27,3 @@
 \define('NOREQUIREMENU', 1);
 \define('NOREQUIRESOC', 1);
 \define('NOTOKENRENEWAL', 1);
-/*
- * View
- */
-$length = 5;
-$letters = 'aAbBCDeEFgGhHJKLmMnNpPqQRsStTuVwWXYZz2345679';
-$number = \strlen($letters);
-$string = '';
-//print $string;
-$sessionkey = 'dol_antispam_value';
-$img = \imagecreate(80, 32);
-$background_color = \imagecolorallocate($img, 250, 250, 250);
-$ecriture_color = \imagecolorallocate($img, 0, 0, 0);

@@ -11,6 +11,3 @@
  * @var User $user
  */
 $id = \GETPOSTINT('id');
-$element = \GETPOST('element', 'alpha');
-$action = \GETPOST('action', 'aZ09');
-$facture = new \Facture($db);

@@ -897,7 +897,7 @@ class Product extends \CommonObject
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *  Delete a price line
+     *  Delete a price line of this product
      *
      * @param  User	$user	Object user
      * @param  int	$rowid	Line id to delete

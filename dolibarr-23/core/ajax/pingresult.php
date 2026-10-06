@@ -14,15 +14,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$hash_unique_id = \GETPOST('hash_unique_id', 'alpha');
-$hash_algo = \GETPOST('hash_algo', 'alpha');
-// Security check
-// None. Being connected is enough.
-/*
- * Actions
- */
-// None
-/*
- * View
- */
-$now = \dol_now();

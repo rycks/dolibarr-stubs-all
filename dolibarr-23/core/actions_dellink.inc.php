@@ -31,12 +31,7 @@
  * @var Translate $langs
  *
  * @var string $action
+ * @var int $id
  * @var int $permissiondellink
  */
 $dellinkid = \GETPOSTINT('dellinkid');
-$addlink = \GETPOST('addlink', 'alpha');
-$addlinkids = \GETPOST('idtolinkto', 'array:int');
-$addlinkref = \GETPOST('reftolinkto', 'alpha');
-$cancellink = \GETPOST('cancel', 'alpha');
-$element_prop = \getElementProperties($addlink);
-$result = $object->deleteObjectLinked(0, '', 0, '', $dellinkid);

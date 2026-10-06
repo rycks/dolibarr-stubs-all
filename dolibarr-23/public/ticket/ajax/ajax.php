@@ -13,7 +13,3 @@
  * @var DoliDB $db
  */
 $action = \GETPOST('action', 'aZ09');
-$id = \GETPOSTINT('id');
-$email = \GETPOST('email', 'custom', 0, \FILTER_VALIDATE_EMAIL);
-// Test on permission not required here. Access is allowed only if TICKET_CREATE_THIRD_PARTY_WITH_CONTACT_IF_NOT_EXIST is on and option has been disabled because not secured.
-$return = array('contacts' => array(), 'error' => '');

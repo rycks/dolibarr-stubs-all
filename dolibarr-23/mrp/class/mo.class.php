@@ -183,6 +183,13 @@ class Mo extends \CommonObject
      */
     public $tpl = array();
     /**
+     * @var int[] Ids of BOM lines (with a sub-BOM) that must not be flattened into their raw materials
+     *            when generating the consume/produce lines, because the user asked to generate a child MO
+     *            for them instead (see mo_card.php "Generate Child MO"). A single MoLine anchored on the
+     *            sub-assembly product is created for these lines instead of recursing into the sub-BOM.
+     */
+    public $noFlattenBomLineIds = array();
+    /**
      * Constructor
      *
      * @param DoliDB $db Database handler
@@ -281,13 +288,13 @@ class Mo extends \CommonObject
     {
     }
     /**
-     * Recurse through BOM only adding products to list to consume/produce
+     * Recurse through BOM only adding products to the list of lines to consume/produce
      *
-     * @param  User $user      User that modifies
-     * @param  string $role    MoLine Role that products are added as
-     * @param  BOM $bom        BOM to parse lines from
-     * @param  float $quantity Quantity modifier for sub products/BOM
-     * @return int             Return integer <0 if KO, >0 if OK
+     * @param  User 	$user      	User that modifies
+     * @param  string 	$role    	MoLine Role that products are added as ('toproduce', 'toconsume', 'produced', 'consumed')
+     * @param  BOM 		$bom        BOM to parse lines from
+     * @param  float 	$quantity 	Quantity modifier for sub products/BOM
+     * @return int             		Return integer <0 if KO, >0 if OK
      */
     public function processBOM(\User $user, $role, $bom, $quantity)
     {

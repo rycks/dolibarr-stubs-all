@@ -12,7 +12,3 @@
  * @var User $user
  */
 $output = \GETPOST('output', 'alpha');
-$amount = \price2num(\GETPOST('amount', 'alpha'));
-$tva_tx = \str_replace('*', '', \GETPOST('tva_tx', 'alpha'));
-$return = array();
-$price = '';

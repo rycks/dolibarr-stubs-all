@@ -7,5 +7,3 @@
 \define('NOREQUIREMENU', '1');
 \define('NOREQUIREHTML', '1');
 \define('NOREQUIREAJAX', '1');
-$urlwithouturlroot = \preg_replace('/' . \preg_quote(\DOL_URL_ROOT, '/') . '$/i', '', \trim($dolibarr_main_url_root));
-$urlwithroot = $urlwithouturlroot . \DOL_URL_ROOT;

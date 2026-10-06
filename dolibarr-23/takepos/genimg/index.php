@@ -9,6 +9,3 @@
  * @var Conf $conf
  */
 $id = \GETPOSTINT('id');
-$w = \GETPOSTINT('w');
-$h = \GETPOSTINT('h');
-$query = \GETPOST('query', 'alpha');

@@ -15,10 +15,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$idticketgroup = \GETPOST('idticketgroup', 'aZ09');
-$idticketgroup = \GETPOST('idticketgroup', 'aZ09');
-$lang = \GETPOST('lang', 'aZ09');
-$response = '';
-$sql = "SELECT kr.rowid, kr.ref, kr.question, kr.answer, kr.url, ctc.code";
-$resql = $db->query($sql);
-$response = \json_encode($response);

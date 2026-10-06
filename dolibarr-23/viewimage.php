@@ -35,13 +35,6 @@
 \define('NOREQUIREMENU', '1');
 \define('NOREQUIREHTML', '1');
 \define('NOREQUIREAJAX', '1');
-// Some value of modulepart can be used to get resources that are public so no login are required.
-// Note that only directory logo is free to access without login.
-$needlogin = 1;
-// For MultiCompany module.
-// Do not use GETPOST here, function is not defined and define must be done before including main.inc.php
-// Because 2 entities can have the same ref.
-$entity = !empty($_GET['entity']) ? (int) $_GET['entity'] : (!empty($_POST['entity']) ? (int) $_POST['entity'] : 1);
 \define("DOLENTITY", $entity);
 /**
  * Header empty
@@ -89,42 +82,3 @@ function llxFooter($comment = '', $zone = 'private', $disabledoutputofmessages =
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$original_file = \GETPOST('file', 'alphanohtml');
-$hashp = \GETPOST('hashp', 'aZ09', 1);
-$extname = \GETPOST('extname', 'alpha', 1);
-$modulepart = \GETPOST('modulepart', 'alpha', 1);
-$urlsource = \GETPOST('urlsource', 'alpha');
-$entity = \GETPOSTINT('entity') ? \GETPOSTINT('entity') : $conf->entity;
-/*
- * Actions
- */
-// None
-/*
- * View
- */
-$cachestring = \GETPOST("cache", 'aZ09');
-$ecmfile = new \EcmFiles($db);
-$result = $ecmfile->fetch(0, '', '', '', $hashp);
-// Define mime type
-$type = 'application/octet-stream';
-// Security: Delete string ../ or ..\ into $original_file
-$original_file = \preg_replace('/\\.\\.+/', '..', $original_file);
-// Replace '... or more' with '..'
-$original_file = \str_replace('../', '/', $original_file);
-$original_file = \str_replace('..\\', '/', $original_file);
-// Find the subdirectory name as the reference
-$refname = \basename(\dirname($original_file) . "/");
-$check_access = \dol_check_secure_access_document($modulepart, $original_file, $entity, $user, $refname);
-$accessallowed = $check_access['accessallowed'];
-$sqlprotectagainstexternals = $check_access['sqlprotectagainstexternals'];
-$fullpath_original_file = $check_access['original_file'];
-$generator = \GETPOST("generator", "aZ09");
-$encoding = \GETPOST("encoding", "aZ09");
-$readable = \GETPOST("readable", 'aZ09') ? \GETPOST("readable", "aZ09") : "Y";
-// If $code is virtualcard_xxx_999.vcf, it is a file to read to get code
-$reg = array();
-$dirbarcode = \array_merge(array("/core/modules/barcode/doc/"), $conf->modules_parts['barcode']);
-$result = 0;
-// Load barcode class
-$classname = "mod" . \ucfirst($generator);
-$module = new $classname($db);

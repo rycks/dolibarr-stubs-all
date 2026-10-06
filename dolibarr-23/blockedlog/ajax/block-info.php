@@ -3,8 +3,6 @@
 \define('NOTOKENRENEWAL', 1);
 \define('NOREQUIREMENU', '1');
 \define('NOREQUIREHTML', '1');
-$id = \GETPOSTINT('id');
-$block = new \BlockedLog($db);
 /**
  * formatObject
  *

@@ -10,9 +10,3 @@
 \define('NOREQUIREAJAX', '1');
 \define("NOLOGIN", '1');
 \define("NOSESSION", '1');
-$out = '';
-$ret = 0;
-$file = '/tmp/test.txt';
-$f = \fopen($file, 'r');
-$ret = 0;
-$out = \null;

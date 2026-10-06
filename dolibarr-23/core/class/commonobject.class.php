@@ -223,7 +223,7 @@ abstract class CommonObject
      */
     public $contact_id;
     /**
-     * @var ?Societe 	A related thirdparty object
+     * @var ?Societe 		A related thirdparty object
      * @see fetch_thirdparty()
      */
     public $thirdparty;
@@ -233,17 +233,17 @@ abstract class CommonObject
      */
     public $user;
     /**
-     * @var ?Product 	Populated by fetch_product()
+     * @var ?Product 		Populated by fetch_product()
      * @see fetch_product()
      */
     public $product;
     /**
-     * @var string 		The type of originating object. Combined with `$origin_type`, it allows to reload `$origin_object`
+     * @var string 			The type of originating object. Combined with `$origin_id`, it allows to reload `$origin_object`
      * @see fetch_origin()
      */
     public $origin_type;
     /**
-     * @var int 		The id of originating object. Combined with `$origin_type`, it allows to reload `$origin_object`
+     * @var int 			The id of originating object. Combined with `$origin_type`, it allows to reload `$origin_object`
      * @see fetch_origin()
      */
     public $origin_id;
@@ -1340,6 +1340,18 @@ abstract class CommonObject
     public function getIdOfLine($rang)
     {
     }
+    /**
+     * Round a quantity up to the next multiple of a packaging quantity (options PRODUCT_USE_CUSTOMER_PACKAGING
+     * and PRODUCT_USE_SUPPLIER_PACKAGING). The rounding is done on the absolute value, so a negative quantity
+     * stays negative.
+     *
+     * @param	float|string		$qty		Quantity
+     * @param	float|string|null	$packaging	Packaging quantity. Nothing is done if it is empty or not > 0.
+     * @return	float|string					Quantity rounded to the packaging, or $qty if no rounding is needed
+     */
+    public function roundQtyToPackaging($qty, $packaging)
+    {
+    }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
      * 	Get max value used for position of line (rang)
@@ -2283,6 +2295,16 @@ abstract class CommonObject
      * @throws 	Exception
      */
     public function deleteByParentField($parentId = 0, $parentField = '', $filter = '', $filtermode = "AND")
+    {
+    }
+    /**
+     * Check that a line belongs to this object, using $this->table_element_line and $this->fk_element.
+     * Returns true when the object is not loaded or does not define them.
+     *
+     * @param	int		$lineid		Id of the line
+     * @return	bool				True if the line is a line of this object
+     */
+    public function isLineOfObject($lineid)
     {
     }
     /**

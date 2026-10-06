@@ -232,6 +232,7 @@ class Members extends \DolibarrApi
      * @throws	RestException	403		Access denied
      * @throws	RestException	404		Member not found
      * @throws	RestException	422		Malformed data
+     * @throws	RestException	500		server error
      */
     public function createSubscription($id, $start_date, $end_date, $amount, $label = '')
     {

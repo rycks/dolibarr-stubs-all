@@ -13,8 +13,3 @@
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$location = \GETPOST('location', 'alphanohtml');
-$stripeacc = \GETPOST('stripeacc', 'alphanohtml');
-$servicestatus = \GETPOSTINT('servicestatus');
-$amount = \GETPOSTINT('amount');
-$usestripeterminals = \getDolGlobalString('STRIPE_LOCATION');

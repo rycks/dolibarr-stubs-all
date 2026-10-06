@@ -16,14 +16,3 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 \define("NOCSRFCHECK", 1);
-$form = new \Form($db);
-$offsettz = (empty($_SESSION['dol_tz']) ? 0 : $_SESSION['dol_tz']) * 60 * 60;
-$offsetdst = (empty($_SESSION['dol_dst']) ? 0 : $_SESSION['dol_dst']) * 60 * 60;
-$array = array(1 => 'Value 1', 2 => 'Value 2', 3 => 'Value 3 with a very long text. aze eazeae e ae aeae a e a ea ea ea e a e aea e ae aeaeaeaze.');
-$selected = 3;
-$array = array(1 => 'Value 1', 2 => 'Value 2', 3 => 'Value 3');
-$selected = 3;
-$array = array(1 => 'Value 1', 2 => 'Value 2', 3 => 'Value 3');
-$selected = -1;
-$array = array(1 => 'Value 1', 2 => 'Value 2', 3 => 'Value 3');
-$arrayselected = array(1, 3);

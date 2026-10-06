@@ -25,19 +25,3 @@
  * @var Conf $conf
  */
 $now = \dol_now();
-$current_date = \dol_getdate($now);
-// Date range
-$year = \GETPOSTINT("year");
-$date_start = \dol_mktime(0, 0, 0, \GETPOSTINT("date_startmonth"), \GETPOSTINT("date_startday"), \GETPOSTINT("date_startyear"), 'tzserver');
-$date_end = \dol_mktime(23, 59, 59, \GETPOSTINT("date_endmonth"), \GETPOSTINT("date_endday"), \GETPOSTINT("date_endyear"), 'tzserver');
-// We define date_start and date_end
-$q = \GETPOSTINT("q");
-//print dol_print_date($date_start, 'day').' '.dol_print_date($date_end, 'day');
-$tmp = \dol_getdate($date_start);
-$date_start_day = $tmp['mday'];
-$date_start_month = $tmp['mon'];
-$date_start_year = $tmp['year'];
-$tmp = \dol_getdate($date_end);
-$date_end_day = $tmp['mday'];
-$date_end_month = $tmp['mon'];
-$date_end_year = $tmp['year'];

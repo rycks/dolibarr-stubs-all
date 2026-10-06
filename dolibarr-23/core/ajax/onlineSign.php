@@ -7,7 +7,6 @@
 \define("NOLOGIN", '1');
 \define('NOIPCHECK', '1');
 \define('NOBROWSERNOTIF', '1');
-$entity = !empty($_GET['entity']) ? (int) $_GET['entity'] : (!empty($_POST['entity']) ? (int) $_POST['entity'] : 1);
 \define("DOLENTITY", $entity);
 /**
  * @var Conf $conf
@@ -17,19 +16,6 @@ $entity = !empty($_GET['entity']) ? (int) $_GET['entity'] : (!empty($_POST['enti
  * @var User $user
  */
 $action = \GETPOST('action', 'aZ09');
-$signature = \GETPOST('signaturebase64');
-$ref = \GETPOST('ref', 'aZ09');
-$mode = \GETPOST('mode', 'aZ09');
-// 'proposal', ...
-$SECUREKEY = \GETPOST("securekey");
-// Secure key
-$online_sign_name = \GETPOST("onlinesignname");
-$error = 0;
-$response = "";
-$type = $mode;
-// Security check
-$securekeyseed = '';
-$issignatureok = !empty($signature) && $signature[0] == "image/png;base64";
 /**
  * Output the signature file into the PDF object.
  *

@@ -32,6 +32,3 @@ to change CSS behavior based on context.
 */
 // TODO : USE CSS VAR(--font-family)
 $fontlist = 'arial,tahoma,verdana,helvetica';
-$colorbacktitle1 = '#fff';
-$right = $langs->trans("DIRECTION") == 'rtl' ? 'left' : 'right';
-$left = $langs->trans("DIRECTION") == 'rtl' ? 'right' : 'left';

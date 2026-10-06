@@ -65,6 +65,11 @@ class ImportXlsx extends \ModeleImports
      */
     public $headers;
     /**
+     * @var int
+     */
+    public $countcolumns = 0;
+    // cached column count to avoid re-parsing the file on each row
+    /**
      *	Constructor
      *
      *	@param	DoliDB		$db				Database handler

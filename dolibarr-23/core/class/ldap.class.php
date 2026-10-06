@@ -201,7 +201,7 @@ class Ldap
      */
     public $ldapcharset = 'UTF-8';
     /**
-     * @var bool|resource The internal LDAP connection handle
+     * @var bool|resource|LDAP\Connection The internal LDAP connection handle
      */
     public $connection;
     /**
@@ -232,7 +232,6 @@ class Ldap
      * Use this->server, this->serverPort, this->ldapProtocolVersion, this->serverType, this->searchUser, this->searchPassword
      * After return, this->connection and $this->bind are defined
      *
-     * @see connect_bind renamed
      * @return		int		if KO: <0 || if bind anonymous: 1 || if bind auth: 2
      */
     public function connectBind()

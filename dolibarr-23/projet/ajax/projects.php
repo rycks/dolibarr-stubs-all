@@ -13,6 +13,3 @@
  * @var User $user
  */
 $htmlname = \GETPOST('htmlname', 'aZ09');
-$socid = \GETPOSTINT('socid');
-$mode = \GETPOST('mode', 'aZ09');
-$discard_closed = \GETPOSTINT('discardclosed');

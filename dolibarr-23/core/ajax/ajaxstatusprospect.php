@@ -13,13 +13,3 @@
  * @var User $user
  */
 $idstatus = \GETPOSTINT('id');
-$idprospect = \GETPOSTINT('prospectid');
-$action = \GETPOST('action', 'aZ09');
-$prospectstatic = new \Client($db);
-// var_dump(	$user, 'societe', $idprospect, '&societe');
-$result = \restrictedArea($user, 'societe', $idprospect, '&societe');
-$permisstiontoupdate = $user->hasRight('societe', 'creer');
-$response = "";
-// Load thirdparty
-$prospect = new \Societe($db);
-$result = $prospect->fetch($idprospect);

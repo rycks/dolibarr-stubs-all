@@ -26,45 +26,12 @@ function dol_session_regenerate_id()
 function dol_session_rotate($sessionname = '')
 {
 }
-// Define localization of conf file
-// --- Start of part replaced by Dolibarr packager makepack-dolibarr
-$conffile = "conf/conf.php";
-$conffiletoshow = "htdocs/conf/conf.php";
-// For debian/redhat like systems
-//$conffile = "/etc/dolibarr/conf.php";
-//$conffiletoshow = "/etc/dolibarr/conf.php";
-// Include configuration
-// --- End of part replaced by Dolibarr packager makepack-dolibarr
-// Include configuration
-// @phpstan-ignore-next-line
-$result = @(include_once $conffile);
-// Clean parameters
-$dolibarr_main_data_root = empty($dolibarr_main_data_root) ? '' : \trim($dolibarr_main_data_root);
-$dolibarr_main_url_root = \trim(\preg_replace('/\\/+$/', '', empty($dolibarr_main_url_root) ? '' : $dolibarr_main_url_root));
-$dolibarr_main_url_root_alt = empty($dolibarr_main_url_root_alt) ? '' : \trim($dolibarr_main_url_root_alt);
-$dolibarr_main_document_root = empty($dolibarr_main_document_root) ? '' : \trim($dolibarr_main_document_root);
-$dolibarr_main_document_root_alt = empty($dolibarr_main_document_root_alt) ? '' : \trim($dolibarr_main_document_root_alt);
 \define('DOL_DOCUMENT_ROOT', $dolibarr_main_document_root);
 // Define some constants
 \define('DOL_CLASS_PATH', 'class/');
 // Filesystem path to class dir (defined only for some code that want to be compatible with old versions without this parameter)
 \define('DOL_DATA_ROOT', $dolibarr_main_data_root);
-// Filesystem data (documents)
-// Try to autodetect DOL_MAIN_URL_ROOT and DOL_URL_ROOT when root is not directly the main domain.
-// Note: autodetect works only in case 1, 2, 3 and 4 of phpunit test CoreTest.php. For case 5, 6, only setting value into conf.php will works.
-$tmp = '';
-$found = 0;
-$real_dolibarr_main_document_root = \str_replace('\\', '/', \realpath($dolibarr_main_document_root));
-$paths = \explode('/', \str_replace('\\', '/', $_SERVER["SCRIPT_NAME"]));
-// C) Value reported by web server, to say full path on filesystem of a file. Ex: /dolibarr/htdocs/admin/system/phpinfo.php
-// Try to detect if $_SERVER["DOCUMENT_ROOT"]+start of $_SERVER["SCRIPT_NAME"] is $dolibarr_main_document_root. If yes, relative url to add before dol files is this start part.
-$concatpath = '';
-$tmp3 = '';
 \define('DOL_MAIN_URL_ROOT', $tmp);
-// URL absolute root (https://sss/dolibarr, ...)
-$uri = \preg_replace('/^http(s?):\\/\\//i', '', \constant('DOL_MAIN_URL_ROOT'));
-// $uri contains url without http*
-$suburi = \strstr($uri, '/');
 \define('DOL_URL_ROOT', $suburi);
 //print DOL_MAIN_URL_ROOT.'-'.DOL_URL_ROOT."\n";
 // Define prefix MAIN_DB_PREFIX

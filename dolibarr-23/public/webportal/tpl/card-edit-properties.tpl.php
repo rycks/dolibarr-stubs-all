@@ -9,4 +9,3 @@
  * @var FormCardWebPortal 		$formCard
  */
 $formCard = $this->formCard;
-$fieldShowList = $formCard->fieldsmanager->getAllFieldsInfos($formCard->object, $formCard->extrafields, 'edit', 1, array(), array('nonewbutton' => 1));

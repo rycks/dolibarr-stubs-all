@@ -11,9 +11,3 @@
  * @var User $user
  */
 $mens = (float) \price2num(\GETPOST('mens'));
-$capital = (float) \price2num(\GETPOST('capital'));
-$rate = (float) \price2num(\GETPOST('rate'));
-$echance = \GETPOSTINT('echeance');
-$nbterm = \GETPOSTINT('nbterm');
-$output = array();
-$output = \loanCalcMonthlyPayment($mens, $capital, $rate, $echance, $nbterm);

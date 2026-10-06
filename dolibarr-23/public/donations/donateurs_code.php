@@ -30,6 +30,3 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 function llxFooterVierge()
 {
 }
-$sql = "SELECT d.datedon as datedon, d.lastname, d.firstname, d.amount, d.public, d.societe";
-$resql = $db->query($sql);
-$num = $db->num_rows($resql);

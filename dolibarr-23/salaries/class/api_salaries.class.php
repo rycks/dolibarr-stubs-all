@@ -29,13 +29,14 @@ class Salaries extends \DolibarrApi
      * @param string    $sortorder  Sort order
      * @param int       $limit      Limit for list
      * @param int       $page       Page number
+     * @param string    $sqlfilters Other criteria to filter answers separated by a comma. Syntax example "(t.fk_user:=:6) and (t.datep:>:'20250101')"
      * @return array                List of salary objects
      * @phan-return Salary[]
      * @phpstan-return Salary[]
      *
      * @throws RestException
      */
-    public function index($sortfield = "t.rowid", $sortorder = 'ASC', $limit = 100, $page = 0)
+    public function index($sortfield = "t.rowid", $sortorder = 'ASC', $limit = 100, $page = 0, $sqlfilters = '')
     {
     }
     /**

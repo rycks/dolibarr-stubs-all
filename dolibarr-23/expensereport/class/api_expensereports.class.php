@@ -21,7 +21,7 @@ class ExpenseReports extends \DolibarrApi
     /**
      * @var string[]	Mandatory fields, checked when create and update object
      */
-    public static $FIELDSPAYMENT = array("fk_typepayment", 'datepaid', 'amounts');
+    public static $FIELDSPAYMENT = array("fk_typepayment", 'datep', 'amounts');
     /**
      * @var ExpenseReport {@type ExpenseReport}
      */
