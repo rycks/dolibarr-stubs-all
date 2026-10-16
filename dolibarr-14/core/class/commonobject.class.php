@@ -402,6 +402,10 @@ abstract class CommonObject
      */
     public $date_modification;
     // Date last change (tms field)
+    /**
+     * @var int|null		User id of validation
+     */
+    public $user_validation_id;
     public $next_prev_filter;
     /**
      * @var int 1 if object is specimen
