@@ -19,15 +19,15 @@ class Dolresource extends \CommonObject
      */
     public $picto = 'resource';
     /**
-     * @var string description
+     * @var string 		Description
      */
     public $description;
     /**
-     * @var string telephone number
+     * @var string		Phone number
      */
     public $phone;
     /**
-     * @var int Maximum users
+     * @var int|null 	Maximum users
      */
     public $max_users;
     /**

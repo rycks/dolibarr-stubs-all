@@ -129,7 +129,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *  Show payments table
      *
-     *  @param	TCPDF		$pdf            Object PDF
+     *  @param	TCPDI|TCPDF	$pdf			Object PDF
      *  @param  Facture		$object         Object invoice
      *  @param  int			$posy           Position y in PDF
      *  @param  Translate	$outputlangs    Object langs for output
@@ -141,7 +141,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *   Show miscellaneous information (payment mode, payment term, ...)
      *
-     *   @param		TCPDF		$pdf     		Object PDF
+     *   @param		TCPDI|TCPDF	$pdf			Object PDF
      *   @param		Facture		$object			Object to show
      *   @param		int			$posy			Y
      *   @param		Translate	$outputlangs	Langs object
@@ -154,7 +154,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *  Show total to pay
      *
-     *  @param	TCPDF		$pdf            Object PDF
+     *  @param	TCPDI|TCPDF	$pdf			Object PDF
      *	@param  Facture		$object         Object invoice
      *	@param  int			$deja_regle     Amount already paid (in the currency of invoice)
      *	@param	int			$posy			Position depart
@@ -180,7 +180,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *   Show table for lines
      *
-     *   @param		TCPDF		$pdf     		Object PDF
+     *   @param		TCPDI|TCPDF	$pdf			Object PDF
      *   @param		int 		$tab_top		Top position of table
      *   @param		int 		$tab_height		Height of table (rectangle)
      *   @param		int			$nexY			Y (not used)
@@ -198,7 +198,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *  Show top header of page. This include the logo, ref and address blocks
      *
-     *  @param	TCPDF		$pdf     		Object PDF
+     *  @param	TCPDI|TCPDF	$pdf			Object PDF
      *  @param  Facture		$object     	Object to show
      *  @param  int	    	$showaddress    0=no, 1=yes (usually set to 1 for first page, and 0 for next pages)
      *  @param  Translate	$outputlangs	Object lang for output
@@ -212,7 +212,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *   	Show footer of page. Need this->emetteur object
      *
-     *   	@param	TCPDF		$pdf     			PDF
+     *      @param	TCPDI|TCPDF	$pdf				Object PDF
      * 		@param	Facture		$object				Object to show
      *      @param	Translate	$outputlangs		Object lang for output
      *      @param	int			$hidefreetext		1=Hide free text
@@ -237,7 +237,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *   Show table for lines
      *
-     *   @param		TCPDF		$pdf	 		Object PDF
+     *   @param		TCPDI|TCPDF	$pdf			Object PDF
      *   @param		int  		$tab_top		Top position of table
      *   @param		int 		$tab_height		Height of table (rectangle)
      *   @param		int			$nexY			Y (not used)
@@ -307,7 +307,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      * Rect pdf
      *
-     * @param	TCPDF	$pdf			Object PDF
+     * @param	TCPDI|TCPDF	$pdf		Object PDF
      * @param	float	$x				Abscissa of first point
      * @param	float	$y				Ordinate of first point
      * @param	float	$l				??
@@ -333,7 +333,7 @@ class pdf_octopus extends \ModelePDFFactures
     /**
      *  Show last page with a resume of all invoices
      *
-     *  @param	TCPDF		$pdf			Object PDF
+     *  @param	TCPDI|TCPDF	$pdf			Object PDF
      *	@param  Facture		$object         Object invoice
      *	@param  int			$deja_regle     Amount already paid (in the currency of invoice)
      *	@param	int			$posy           Position depart

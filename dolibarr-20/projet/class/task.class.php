@@ -86,7 +86,7 @@ class Task extends \CommonObjectLine
     public $timespent_datehour;
     // More accurate start date (same than timespent_date but includes hours, minutes and seconds)
     public $timespent_withhour;
-    // 1 = we entered also start hours for timesheet line
+    // 0 or 1 = we have entered also start hours for timesheet line
     public $timespent_fk_user;
     public $timespent_thm;
     public $timespent_note;
@@ -371,7 +371,7 @@ class Task extends \CommonObjectLine
     {
     }
     /**
-     *	Update time spent
+     *	Update time spent line with id $this->timespent_id. New values are into ->timespent_xxx fields.
      *
      *  @param	User	$user           User id
      *  @param  int		$notrigger	    0=launch triggers after, 1=disable triggers

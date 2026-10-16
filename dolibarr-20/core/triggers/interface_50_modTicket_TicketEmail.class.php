@@ -54,4 +54,18 @@ class InterfaceTicketEmail extends \DolibarrTriggers
     private function composeAndSendCustomerMessage($sendto, $base_subject, $body, $see_ticket, \Ticket $object, \Translate $langs)
     {
     }
+    /**
+     * Composes and sends a message concerning a ticket, to be sent to user assigned to the ticket
+     *
+     * @param string 	$sendto			Addresses to send the mail, format "first@address.net, second@address.net, " etc.
+     * @param string 	$base_subject	email subject. Non-translated string.
+     * @param string	$body			email body (first line). Non-translated string.
+     * @param string 	$see_ticket		string indicating the ticket public address
+     * @param Ticket 	$object			the ticket thet the email refers to
+     * @param Translate $langs			the translation object
+     * @return void
+     */
+    private function composeAndSendAssigneeMessage($sendto, $base_subject, $body, $see_ticket, \Ticket $object, \Translate $langs)
+    {
+    }
 }

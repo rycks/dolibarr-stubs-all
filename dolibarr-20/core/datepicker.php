@@ -19,7 +19,7 @@ function xyzToUnixTimestamp($mysqldate)
 /**
  * Show box
  *
- * @param	string	$selectedDate	Date YYYMMDD
+ * @param	string	$selectedDate	Date YYYYMMDD
  * @param	int		$month			Month
  * @param 	int		$year			Year
  * @return	void

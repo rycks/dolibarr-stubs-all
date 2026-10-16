@@ -49,7 +49,7 @@ class EmailCollector extends \CommonObject
      */
     // BEGIN MODULEBUILDER PROPERTIES
     /**
-     * @var array<string,array{type:string,label:string,enabled:int<0,2>|string,position:int,notnull?:int,visible:int,noteditable?:int,default?:string,index?:int,foreignkey?:string,searchall?:int,isameasure?:int,css?:string,csslist?:string,help?:string,showoncombobox?:int,disabled?:int,arrayofkeyval?:array<int,string>,comment?:string}>  Array with all fields and their property. Do not use it as a static var. It may be modified by constructor.
+     * @var array<string,array{type:string,label:string,enabled:int<0,2>|string,position:int,notnull?:int,visible:int<-2,5>|string,noteditable?:int<0,1>,default?:string,index?:int,foreignkey?:string,searchall?:int<0,1>,isameasure?:int<0,1>,css?:string,csslist?:string,help?:string,showoncombobox?:int<0,2>,disabled?:int<0,1>,arrayofkeyval?:array<int|string,string>,comment?:string,validate?:int<0,1>}>  Array with all fields and their property. Do not use it as a static var. It may be modified by constructor.
      */
     public $fields = array(
         'rowid' => array('type' => 'integer', 'label' => 'TechnicalID', 'visible' => 2, 'enabled' => 1, 'position' => 1, 'notnull' => 1, 'index' => 1),
@@ -109,10 +109,6 @@ class EmailCollector extends \CommonObject
      */
     public $status;
     /**
-     * @var integer|string date_creation
-     */
-    public $date_creation;
-    /**
      * @var int ID
      */
     public $fk_user_creat;
@@ -137,7 +133,7 @@ class EmailCollector extends \CommonObject
     public $target_directory;
     public $maxemailpercollect;
     /**
-     * @var integer|string $datelastresult
+     * @var int|string $datelastresult
      */
     public $datelastresult;
     public $codelastresult;
@@ -211,7 +207,7 @@ class EmailCollector extends \CommonObject
      * @param   string  $sortorder      sorting order
      * @param   int     $limit          sort limit
      * @param   int     $page           page to start on
-     * @return  array   Array with key => EmailCollector object
+     * @return  EmailCollector[]		Array with key => EmailCollector object
      */
     public function fetchAll(\User $user, $activeOnly = 0, $sortfield = 's.rowid', $sortorder = 'ASC', $limit = 100, $page = 0)
     {
@@ -361,9 +357,9 @@ class EmailCollector extends \CommonObject
      * @param 	Object $mbox     	Structure
      * @param 	string $mid		    UID email
      * @param 	string $destdir	    Target dir for attachments. Leave blank to parse without writing to disk.
-     * @return 	void
+     * @return 	int
      */
-    private function getmsg($mbox, $mid, $destdir = '')
+    private function getmsg($mbox, $mid, $destdir = '') : int
     {
     }
     /* partno string

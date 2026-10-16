@@ -72,6 +72,9 @@ class Export
     // Tableau des listes de champ+Valeur a filtrer
     public $array_export_entities = array();
     // Tableau des listes de champ+alias a exporter
+    /**
+     * @var array<int,array<string,string>>
+     */
     public $array_export_dependencies = array();
     // array of list of entities that must take care of the DISTINCT if a field is added into export
     public $array_export_special = array();

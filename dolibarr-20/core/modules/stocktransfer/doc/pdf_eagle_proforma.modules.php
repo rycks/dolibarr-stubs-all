@@ -115,11 +115,11 @@ class pdf_eagle_proforma extends \ModelePDFStockTransfer
     /**
      *   	Show footer of page. Need this->emetteur object
      *
-     *   	@param	TCPDF		$pdf     			PDF
-     * 		@param	Object		$object				Object to show
-     *      @param	Translate	$outputlangs		Object lang for output
-     *      @param	int			$hidefreetext		1=Hide free text
-     *      @return	int								Return height of bottom margin including footer text
+     *   	@param	TCPDF			$pdf     			PDF
+     * 		@param	StockTransfer	$object				Object to show
+     *      @param	Translate		$outputlangs		Object lang for output
+     *      @param	int				$hidefreetext		1=Hide free text
+     *      @return	int									Return height of bottom margin including footer text
      */
     protected function _pagefoot(&$pdf, $object, $outputlangs, $hidefreetext = 0)
     {

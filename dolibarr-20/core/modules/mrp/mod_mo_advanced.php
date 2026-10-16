@@ -39,9 +39,9 @@ class mod_mo_advanced extends \ModeleNumRefMos
     /**
      * 	Return next free value
      *
-     *  @param	Product		$objprod    Object product
-     *  @param  Mo			$object		Object we need next value for
-     *  @return string|0      			Value if OK, 0 if KO
+     *  @param	Product			$objprod    Object product
+     *  @param  Mo				$object		Object we need next value for
+     *  @return string|int      			Value if OK, 0 if KO
      */
     public function getNextValue($objprod, $object)
     {

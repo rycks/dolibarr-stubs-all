@@ -2,7 +2,7 @@
 
 namespace OAuth\OAuth2\Service;
 
-class Microsoft extends \OAuth\OAuth2\Service\AbstractService
+class Microsoft2 extends \OAuth\OAuth2\Service\AbstractService
 {
     const SCOPE_BASIC = 'basic';
     const SCOPE_OFFLINE_ACCESS = 'offline_access';

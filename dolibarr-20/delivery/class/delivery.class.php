@@ -63,6 +63,9 @@ class Delivery extends \CommonObject
      * @var int user_author_id
      */
     public $user_author_id;
+    const STATUS_DRAFT = 0;
+    const STATUS_VALIDATED = 1;
+    const STATUS_CANCELED = -1;
     /**
      * Constructor
      *

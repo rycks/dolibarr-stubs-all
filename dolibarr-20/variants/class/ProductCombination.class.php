@@ -111,8 +111,8 @@ class ProductCombination
     /**
      * Retrieves a ProductCombination by its rowid
      *
-     * @param   int     $rowid      ID of the ProductCombination
-     * @return  -1|1                -1 if KO, 1 if OK
+     * @param   int     	$rowid      ID of the ProductCombination
+     * @return  int<-1,1>               -1 if KO, 1 if OK
      */
     public function fetch($rowid)
     {

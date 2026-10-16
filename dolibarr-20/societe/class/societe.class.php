@@ -747,6 +747,29 @@ class Societe extends \CommonObject
     {
     }
     /**
+     *    Search the thirdparty that match the most the provided parameters.
+     *    Searching rules try to find the existing third party.
+     *
+     *    @param	int		$rowid			Id of third party
+     *    @param    string	$ref			Reference of third party, name (Warning, this can return several records)
+     *    @param    string	$ref_ext       	External reference of third party (Warning, this information is a free field not provided by Dolibarr)
+     *    @param    string	$barcode       	Barcode of third party to load
+     *    @param    string	$idprof1		Prof id 1 of third party (Warning, this can return several records)
+     *    @param    string	$idprof2		Prof id 2 of third party (Warning, this can return several records)
+     *    @param    string	$idprof3		Prof id 3 of third party (Warning, this can return several records)
+     *    @param    string	$idprof4		Prof id 4 of third party (Warning, this can return several records)
+     *    @param    string	$idprof5		Prof id 5 of third party (Warning, this can return several records)
+     *    @param    string	$idprof6		Prof id 6 of third party (Warning, this can return several records)
+     *    @param    string	$email   		Email of third party (Warning, this can return several records)
+     *    @param    string	$ref_alias 		Name_alias of third party (Warning, this can return several records)
+     * 	  @param	int		$is_client		Only client third party
+     *    @param	int		$is_supplier	Only supplier third party
+     *    @return   int						ID of thirdparty found if OK, <0 if KO or if two records found, 0 if not found.
+     */
+    public function findNearest($rowid = 0, $ref = '', $ref_ext = '', $barcode = '', $idprof1 = '', $idprof2 = '', $idprof3 = '', $idprof4 = '', $idprof5 = '', $idprof6 = '', $email = '', $ref_alias = '', $is_client = 0, $is_supplier = 0)
+    {
+    }
+    /**
      *    Delete a third party from database and all its dependencies (contacts, rib...)
      *
      *    @param	int			$id             Id of third party to delete
@@ -886,7 +909,7 @@ class Societe extends \CommonObject
      *    	Return a link on thirdparty (with picto)
      *
      *		@param	int		$withpicto		          	Add picto into link (0=No picto, 1=Include picto with link, 2=Picto only)
-     *		@param	string	$option			          	Target of link ('', 'customer', 'prospect', 'supplier', 'project')
+     *		@param	string	$option			          	Target of link (''=auto, 'nolink'=no link, 'customer', 'prospect', 'supplier', 'project', 'agenda', ...)
      *		@param	int		$maxlen			          	Max length of name
      *      @param	int  	$notooltip		          	1=Disable tooltip
      *      @param  int     $save_lastsearch_value    	-1=Auto, 0=No save of lastsearch_values when clicking, 1=Save lastsearch_values whenclicking

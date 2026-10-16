@@ -36,8 +36,9 @@ class DoliStorage implements \OAuth\Common\Storage\TokenStorageInterface
      * @param 	DoliDB 	$db					Database handler
      * @param 	\Conf 	$conf				Conf object
      * @param	string	$keyforprovider		Key to manage several providers of the same type. For example 'abc' will be added to 'Google' to defined storage key.
+     * @param	string	$tenant				Value of tenant if used
      */
-    public function __construct(\DoliDB $db, \Conf $conf, $keyforprovider = '')
+    public function __construct(\DoliDB $db, \Conf $conf, $keyforprovider = '', $tenant = '')
     {
     }
     /**

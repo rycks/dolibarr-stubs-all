@@ -16,7 +16,7 @@ class FormListWebPortal
      */
     public $db;
     /**
-     * @var Form  Instance of the Form
+     * @var FormWebPortal  Instance of the Form
      */
     public $form;
     /**

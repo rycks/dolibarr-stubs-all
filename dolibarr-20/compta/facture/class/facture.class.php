@@ -18,6 +18,10 @@ class Facture extends \CommonInvoice
      */
     public $table_element_line = 'facturedet';
     /**
+     * @var string Name of class line
+     */
+    public $class_element_line = 'FactureLigne';
+    /**
      * @var string Fieldname with ID of parent key if this field has a parent
      */
     public $fk_element = 'fk_facture';
@@ -197,7 +201,7 @@ class Facture extends \CommonInvoice
         'datef' => array('type' => 'date', 'label' => 'DateInvoice', 'enabled' => 1, 'visible' => 1, 'position' => 20),
         'date_valid' => array('type' => 'date', 'label' => 'DateValidation', 'enabled' => 1, 'visible' => -1, 'position' => 22),
         'date_lim_reglement' => array('type' => 'date', 'label' => 'DateDue', 'enabled' => 1, 'visible' => 1, 'position' => 25),
-        'date_closing' => array('type' => 'datetime', 'label' => 'Date closing', 'enabled' => 1, 'visible' => -1, 'position' => 30),
+        'date_closing' => array('type' => 'datetime', 'label' => 'DateClosing', 'enabled' => 1, 'visible' => -1, 'position' => 30),
         'paye' => array('type' => 'smallint(6)', 'label' => 'InvoicePaidCompletely', 'enabled' => 1, 'visible' => -1, 'notnull' => 1, 'position' => 80),
         //'amount' =>array('type'=>'double(24,8)', 'label'=>'Amount', 'enabled'=>1, 'visible'=>-1, 'notnull'=>1, 'position'=>85),
         //'remise_percent' =>array('type'=>'double', 'label'=>'RelativeDiscount', 'enabled'=>1, 'visible'=>-1, 'position'=>90),
@@ -580,7 +584,7 @@ class Facture extends \CommonInvoice
      * @param   string	$force_number	Reference to force on invoice
      * @param	int		$idwarehouse	Id of warehouse to use for stock decrease if option to decrease on stock is on (0=no decrease)
      * @param	int		$notrigger		1=Does not execute triggers, 0= execute triggers
-     * @param	int		$batch_rule		0=do not decrement batch, else batch rule to use, 1=take in batches ordered by sellby and eatby dates
+     * @param	int		$batch_rule		0=do not decrement batch, else batch rule to use: 1=take lot/serial ordered by sellby and eatby dates
      * @return	int						Return integer <0 if KO, 0=Nothing done because invoice is not a draft, >0 if OK
      */
     public function validate($user, $force_number = '', $idwarehouse = 0, $notrigger = 0, $batch_rule = 0)
@@ -659,7 +663,7 @@ class Facture extends \CommonInvoice
      *  @param     	double		$remise_percent  	Percentage discount of the line
      *  @param     	int		    $date_start      	Date de debut de validite du service
      *  @param     	int		    $date_end        	Date de fin de validite du service
-     *  @param     	double		$txtva          	VAT Rate (Can be '8.5', '8.5 (ABC)')
+     *  @param     	double|string	$txtva          	VAT Rate (Can be '8.5', '8.5 (ABC)')
      * 	@param		double		$txlocaltax1		Local tax 1 rate
      *  @param		double		$txlocaltax2		Local tax 2 rate
      * 	@param     	string		$price_base_type 	HT or TTC
@@ -1113,6 +1117,10 @@ class FactureLigne extends \CommonInvoiceLine
     // Link to line into llx_remise_except
     public $rang = 0;
     public $fk_fournprice;
+    /**
+     * Buy price without taxes
+     * @var float|string|null
+     */
     public $pa_ht;
     public $marge_tx;
     public $marque_tx;

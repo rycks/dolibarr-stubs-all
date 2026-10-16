@@ -31,7 +31,7 @@ class Product extends \CommonObject
     /**
      * @var array<string, array<string>>	List of child tables. To test if we can delete object.
      */
-    protected $childtables = array('supplier_proposaldet' => array('name' => 'SupplierProposal', 'parent' => 'supplier_proposal', 'parentkey' => 'fk_supplier_proposal'), 'propaldet' => array('name' => 'Proposal', 'parent' => 'propal', 'parentkey' => 'fk_propal'), 'commandedet' => array('name' => 'Order', 'parent' => 'commande', 'parentkey' => 'fk_commande'), 'facturedet' => array('name' => 'Invoice', 'parent' => 'facture', 'parentkey' => 'fk_facture'), 'contratdet' => array('name' => 'Contract', 'parent' => 'contrat', 'parentkey' => 'fk_contrat'), 'facture_fourn_det' => array('name' => 'SupplierInvoice', 'parent' => 'facture_fourn', 'parentkey' => 'fk_facture_fourn'), 'commande_fournisseurdet' => array('name' => 'SupplierOrder', 'parent' => 'commande_fournisseur', 'parentkey' => 'fk_commande'), 'mrp_production' => array('name' => 'Mo', 'parent' => 'mrp_mo', 'parentkey' => 'fk_mo'));
+    protected $childtables = array('supplier_proposaldet' => array('name' => 'SupplierProposal', 'parent' => 'supplier_proposal', 'parentkey' => 'fk_supplier_proposal'), 'propaldet' => array('name' => 'Proposal', 'parent' => 'propal', 'parentkey' => 'fk_propal'), 'commandedet' => array('name' => 'Order', 'parent' => 'commande', 'parentkey' => 'fk_commande'), 'facturedet' => array('name' => 'Invoice', 'parent' => 'facture', 'parentkey' => 'fk_facture'), 'contratdet' => array('name' => 'Contract', 'parent' => 'contrat', 'parentkey' => 'fk_contrat'), 'facture_fourn_det' => array('name' => 'SupplierInvoice', 'parent' => 'facture_fourn', 'parentkey' => 'fk_facture_fourn'), 'commande_fournisseurdet' => array('name' => 'SupplierOrder', 'parent' => 'commande_fournisseur', 'parentkey' => 'fk_commande'), 'mrp_production' => array('name' => 'Mo', 'parent' => 'mrp_mo', 'parentkey' => 'fk_mo', 'enabled' => 'isModEnabled("mrp")'), 'bom_bom' => array('name' => 'BOM', 'enabled' => 'isModEnabled("bom")'), 'bom_bomline' => array('name' => 'BOMLine', 'parent' => 'bom_bom', 'parentkey' => 'fk_bom', 'enabled' => 'isModEnabled("bom")'));
     /**
      * @var string picto
      */
@@ -168,10 +168,14 @@ class Product extends \CommonObject
     /**
      * Cost price
      *
-     * @var float
+     * @var ?float
      */
     public $cost_price;
-    //! Average price value for product entry into stock (PMP)
+    /**
+     * Average price value for product entry into stock (PMP)
+     *
+     * @var ?float
+     */
     public $pmp;
     /**
      * Stock alert
@@ -405,7 +409,7 @@ class Product extends \CommonObject
      *
      * @var array
      */
-    public $sousprods;
+    public $sousprods = array();
     /**
      * @var array Path of subproducts. Build from ->sousprods with get_arbo_each_prod()
      */
@@ -469,7 +473,7 @@ class Product extends \CommonObject
         'import_key' => array('type' => 'varchar(14)', 'label' => 'ImportId', 'enabled' => 1, 'visible' => -2, 'notnull' => -1, 'index' => 0, 'position' => 1000),
         //'tosell'       =>array('type'=>'integer',      'label'=>'Status',           'enabled'=>1, 'visible'=>1,  'notnull'=>1, 'default'=>'0', 'index'=>1,  'position'=>1000, 'arrayofkeyval'=>array(0=>'Draft', 1=>'Active', -1=>'Cancel')),
         //'tobuy'        =>array('type'=>'integer',      'label'=>'Status',           'enabled'=>1, 'visible'=>1,  'notnull'=>1, 'default'=>'0', 'index'=>1,  'position'=>1000, 'arrayofkeyval'=>array(0=>'Draft', 1=>'Active', -1=>'Cancel')),
-        'mandatory_period' => array('type' => 'integer', 'label' => 'mandatoryperiod', 'enabled' => 1, 'visible' => 1, 'notnull' => 1, 'default' => '0', 'index' => 1, 'position' => 1000),
+        'mandatory_period' => array('type' => 'integer', 'label' => 'mandatoryperiod', 'enabled' => 1, 'visible' => -1, 'notnull' => 1, 'default' => '0', 'index' => 1, 'position' => 1000),
     );
     /**
      * Regular product

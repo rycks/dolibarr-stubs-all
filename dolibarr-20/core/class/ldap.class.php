@@ -5,6 +5,7 @@
  * Copyright (C) 2005-2021	Regis Houssin        <regis.houssin@inodbox.com>
  * Copyright (C) 2006-2021	Laurent Destailleur  <eldy@users.sourceforge.net>
  * Copyright (C) 2024		William Mead		<william.mead@manchenumerique.fr>
+ * Copyright (C) 2024		MDW							<mdeweerd@users.noreply.github.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -271,8 +272,8 @@ class Ldap
     /**
      * Unbind of LDAP server (close connection).
      *
-     * @return	boolean					true or false
-     * @see close()
+     * @return		boolean		true or false
+     * @see	close()
      */
     public function unbind()
     {

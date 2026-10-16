@@ -82,6 +82,10 @@ class UserGroup extends \CommonObject
      */
     protected $childtablesoncascade = array('usergroup_rights', 'usergroup_user');
     /**
+     * @var int<0,1>	Does object support extrafields ? 0=No, 1=Yes
+     */
+    public $isextrafieldmanaged = 1;
+    /**
      *    Class constructor
      *
      *    @param   DoliDB  $db     Database handler
@@ -90,7 +94,7 @@ class UserGroup extends \CommonObject
     {
     }
     /**
-     *  Charge un object group avec toutes ses caracteristiques (except ->members array)
+     *  Load a group object with all properties (except ->members array that is array of users in group)
      *
      *	@param      int		$id				Id of group to load
      *	@param      string	$groupname		Name of group to load

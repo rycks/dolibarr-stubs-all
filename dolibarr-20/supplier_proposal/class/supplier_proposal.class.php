@@ -96,6 +96,7 @@ class SupplierProposal extends \CommonObject
     public $cond_reglement_code;
     public $cond_reglement_doc;
     // label doc
+    public $cond_reglement_label;
     public $mode_reglement_code;
     /**
      * @deprecated
@@ -280,6 +281,16 @@ class SupplierProposal extends \CommonObject
      *	@return     int         			>0 if OK, <0 if KO
      */
     public function fetch($rowid, $ref = '')
+    {
+    }
+    /**
+     *  Update the header fields of the price request that can be edited without a dedicated action
+     *
+     *  @param	User	$user		Object user that modify
+     *  @param	int		$notrigger	1=Does not execute triggers, 0= execute triggers
+     *  @return	int					Return integer <0 if KO, >0 if OK
+     */
+    public function update($user, $notrigger = 0)
     {
     }
     /**

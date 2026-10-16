@@ -76,6 +76,10 @@ class Holiday extends \CommonObject
      */
     public $fk_user_approve;
     /**
+     * @var int 	ID of user that has approved, as read by dol_print_object_info()
+     */
+    public $user_approve_id;
+    /**
      * @var int 	Date for refuse
      */
     public $date_refuse = 0;

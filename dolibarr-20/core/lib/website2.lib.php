@@ -166,7 +166,7 @@ function showWebsiteTemplates(\Website $website)
  * @param	string		$phpfullcodestringold		PHP old string (before the change). For example "<?php echo 'a' ?><php echo 'b' ?>"
  * @param	string		$phpfullcodestring			PHP new string. For example "<?php echo 'a' ?><php echo 'c' ?>"
  * @return	int										Error or not
- * @see dolKeepOnlyPhpCode()
+ * @see dolKeepOnlyPhpCode(), dol_eval() to see sanitizing rules that should be very close.
  */
 function checkPHPCode(&$phpfullcodestringold, &$phpfullcodestring)
 {

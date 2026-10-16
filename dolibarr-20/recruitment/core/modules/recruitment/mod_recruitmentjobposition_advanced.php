@@ -39,8 +39,8 @@ class mod_recruitmentjobposition_advanced extends \ModeleNumRefRecruitmentJobPos
     /**
      * 	Return next free value
      *
-     *  @param  RecruitmentJobPosition	$object	Object we need next value for
-     *  @return string|0      					Next value if OK, 0 if KO
+     *  @param  RecruitmentJobPosition	$object		Object we need next value for
+     *  @return string|int      					Next value if OK, 0 if KO
      */
     public function getNextValue($object)
     {

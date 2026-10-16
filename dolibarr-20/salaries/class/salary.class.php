@@ -40,6 +40,8 @@ class Salary extends \CommonObject
      */
     public $fk_project;
     public $type_payment;
+    // TODO Rename into type_payment_id
+    public $type_payment_code;
     /**
      * @var string salary payments label
      */

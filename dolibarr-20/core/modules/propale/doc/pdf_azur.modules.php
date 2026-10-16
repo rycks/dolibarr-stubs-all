@@ -151,7 +151,7 @@ class pdf_azur extends \ModelePDFPropales
      *	Show area for the customer to sign
      *
      *	@param	TCPDF		$pdf            Object PDF
-     *	@param  Propal		$object         Object invoice
+     *	@param  Propal		$object         Object proposal
      *	@param	int			$posy			Position depart
      *	@param	Translate	$outputlangs	Object langs
      *	@return int							Position pour suite

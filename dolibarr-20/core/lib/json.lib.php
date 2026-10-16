@@ -9,6 +9,7 @@
  * @param	mixed	$elements		PHP Object to json encode
  * @return 	string					Json encoded string
  * @see json_encode()
+ * @deprecated Use native PHP json module
  */
 function dol_json_encode($elements)
 {
@@ -23,6 +24,19 @@ function _val($val)
 {
 }
 /**
+ * Convert a string from one UTF-8 char to one UTF-16 char
+ *
+ * Normally should be handled by mb_convert_encoding, but
+ * provides a slower PHP-only method for installations
+ * that lack the multibyte string extension.
+ *
+ * @param    string  $utf8		UTF-8 character
+ * @return   string  			UTF-16 character
+ */
+function utf82utf16($utf8)
+{
+}
+/**
  * Implement json_decode for PHP that does not support it
  * Use json_encode and json_decode in your code !
  *
@@ -30,6 +44,7 @@ function _val($val)
  * @param	bool	$assoc		False return an object, true return an array. Try to always use it with true !
  * @return 	mixed				Object or Array or false on error
  * @see json_decode()
+ * @deprecated Use native PHP json module
  */
 function dol_json_decode($json, $assoc = \false)
 {
@@ -54,18 +69,5 @@ function _unval($val)
  * @return   string  			UTF-8 character
  */
 function utf162utf8($utf16)
-{
-}
-/**
- * Convert a string from one UTF-8 char to one UTF-16 char
- *
- * Normally should be handled by mb_convert_encoding, but
- * provides a slower PHP-only method for installations
- * that lack the multibyte string extension.
- *
- * @param    string  $utf8		UTF-8 character
- * @return   string  			UTF-16 character
- */
-function utf82utf16($utf8)
 {
 }

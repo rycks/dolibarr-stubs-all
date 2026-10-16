@@ -101,8 +101,8 @@ function analyseVarsForSqlAndScriptsInjection(&$var, $type, $stopcode = 1)
  * 		                            			Syntax is: For a wiki page: EN:EnglishPage|FR:FrenchPage|ES:SpanishPage|DE:GermanPage
  *                                  			For other external page: http://server/url
  * @param	string			$target				Target to use on links
- * @param 	int    			$disablejs			More content into html header
- * @param 	int    			$disablehead		More content into html header
+ * @param 	int<0,1>		$disablejs			More content into html header
+ * @param 	int<0,1>		$disablehead		More content into html header
  * @param 	array|string  	$arrayofjs			Array of complementary js files
  * @param 	array|string  	$arrayofcss			Array of complementary css files
  * @param	string			$morequerystring	Query string to add to the link "print" to get same parameters (use only if autodetect fails)
@@ -197,7 +197,7 @@ function top_menu_bookmark()
 {
 }
 /**
- * Build the tooltip on top menu tsearch
+ * Build the tooltip on top menu search
  *
  * @return  string                  HTML content
  */

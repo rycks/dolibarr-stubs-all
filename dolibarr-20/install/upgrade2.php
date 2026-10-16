@@ -41,6 +41,11 @@
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
 /**
+ * @var Conf $conf
+ * @var Translate $langs
+ */
+$grant_query = '';
+/**
  * Reporte liens vers une facture de paiements sur table de jointure (lien n-n paiements factures)
  *
  * @param	DoliDB		$db		Database handler
@@ -547,7 +552,7 @@ function migrate_delete_old_dir($db, $langs, $conf)
  * @param	DoliDB		$db				Database handler
  * @param	Translate	$langs			Object langs
  * @param	Conf		$conf			Object conf
- * @param	array		$listofmodule	List of modules, like array('MODULE_KEY_NAME'=>', $reloadmode)
+ * @param	array		$listofmodule	List of modules, like array('MODULE_KEY_NAME'=>$reloadmode, ...)
  * @param   int         $force          1=Reload module even if not already loaded
  * @return	int					Return integer <0 if KO, >0 if OK
  */
@@ -642,5 +647,13 @@ function migrate_export_import_profiles($mode = 'export')
  * @return  void
  */
 function migrate_contractdet_rank()
+{
+}
+/**
+ * Invoice exports been shifted (facture_1 => facture_0, facture_2 => facture_1) in version 20, shift export models accordingly
+ *
+ * @return  void
+ */
+function migrate_invoice_export_models()
 {
 }

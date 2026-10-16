@@ -22,6 +22,8 @@ class FormCategory extends \Form
     }
     /**
      *    Prints a select form for products categories
+     *    TODO Remove this. We should already have a generic method to get list of product category.
+     *
      *    @param    int 	$selected          	Id category pre-selection
      *    @param    string	$htmlname          	Name of HTML field
      *    @param    int		$showempty         	Add an empty field

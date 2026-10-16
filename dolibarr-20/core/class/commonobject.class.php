@@ -80,7 +80,7 @@ abstract class CommonObject
      */
     public $array_options = array();
     /**
-     * @var array<string,array{type:string,label:string,enabled:int<0,2>|string,position:int,notnull?:int,visible:int,noteditable?:int,default?:string,index?:int,foreignkey?:string,searchall?:int,isameasure?:int,css?:string,csslist?:string,help?:string,showoncombobox?:int,disabled?:int,arrayofkeyval?:array<int,string>,comment?:string}>  Array with all fields and their property. Do not use it as a static var. It may be modified by constructor.
+     * @var array		Array with all fields and their property. Do not use it as a static var. It may be modified by constructor.
      */
     public $fields = array();
     /**
@@ -181,17 +181,17 @@ abstract class CommonObject
      */
     public $thirdparty;
     /**
-     * @var User 			A related user
+     * @var User|null 		A related user
      * @see fetch_user()
      */
     public $user;
     /**
-     * @var string 		The type of originating object. Combined with $origin_id, it allows to reload $origin_object
+     * @var string 			The type of originating object. Combined with $origin_id, it allows to reload $origin_object
      * @see fetch_origin()
      */
     public $origin_type;
     /**
-     * @var int 		The id of originating object. Combined with $origin_type, it allows to reload $origin_object
+     * @var int 			The id of originating object. Combined with $origin_type, it allows to reload $origin_object
      * @see fetch_origin()
      */
     public $origin_id;
@@ -548,7 +548,7 @@ abstract class CommonObject
      */
     public $user_creation;
     /**
-     * @var int			User id author/creation
+     * @var int|null	User id author/creation
      */
     public $user_creation_id;
     /**
@@ -2010,7 +2010,7 @@ abstract class CommonObject
      * @param float		$unitPrice			Product unit price
      * @param float		$discountPercent	Line discount percent
      * @param int		$fk_product			Product id
-     * @return float|int<-1,-1>				Return buy price if OK, integer <0 if KO
+     * @return float|int<-2,-1>				Return buy price if OK, integer <0 if KO
      */
     public function defineBuyPrice($unitPrice = 0.0, $discountPercent = 0.0, $fk_product = 0)
     {
@@ -2179,9 +2179,9 @@ abstract class CommonObject
     /**
      * Create object in the database
      *
-     * @param  User		$user		User that creates
-     * @param  int<0,1>	$notrigger	0=launch triggers after, 1=disable triggers
-     * @return int<-1,max>			Return integer <0 if KO, Id of created object if OK
+     * @param  User			$user		User that creates
+     * @param  int<0,1>		$notrigger	0=launch triggers after, 1=disable triggers
+     * @return int<-1,max>				Return integer <0 if KO, Id of created object if OK
      */
     public function createCommon(\User $user, $notrigger = 0)
     {

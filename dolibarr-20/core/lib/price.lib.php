@@ -57,8 +57,8 @@
  *						 1=total_vat, (main vat only)
  *						 2=total_ttc, (total_ht + main vat + local taxes)
  *						 3=pu_ht,
- *						 4=pu_vat, (main vat only)
- *						 5=pu_ttc,
+ *						 4=pu_vat, (main vat only)						!! should not be used
+ *						 5=pu_ttc,										!! should not be used except if it is stored in database one day
  *						 6=total_ht_without_discount,
  *						 7=total_vat_without_discount, (main vat only)
  *						 8=total_ttc_without_discount, (total_ht + main vat + local taxes)

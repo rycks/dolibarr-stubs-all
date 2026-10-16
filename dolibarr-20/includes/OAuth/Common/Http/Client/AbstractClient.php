@@ -46,7 +46,7 @@ abstract class AbstractClient implements \OAuth\Common\Http\Client\ClientInterfa
     /**
      * @param array $headers
      */
-    public function normalizeHeaders(&$headers)
+    public function normalizeHeaders($headers)
     {
     }
 }

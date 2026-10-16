@@ -87,6 +87,9 @@ class PaymentLoan extends \CommonObject
      * @var int
      */
     public $bank_account;
+    /**
+     * @var int
+     */
     public $bank_line;
     /**
      *	Constructor

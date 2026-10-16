@@ -41,7 +41,7 @@ class ModeleBoxes
      */
     public $param;
     /**
-     * @var array box info heads
+     * @var array box info heads. Example: array('text' => $langs->trans("BoxScheduledJobs", $max), 'nbcol' => 4);
      */
     public $info_box_head = array();
     /**

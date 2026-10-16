@@ -762,6 +762,15 @@ class DolibarrModules
     {
     }
     /**
+     * Check for module compliance with Dolibarr rules and law
+     * If a module is reported by this function,it is surely a malware. Delete it as soon as possible.
+     *
+     * @return int|string 	Return integer <0 if Error, 0 == not compliant, 'string' with message if module not compliant
+     */
+    public function checkForCompliance()
+    {
+    }
+    /**
      * Helper method to declare dictionaries one at a time (rather than declaring dictionaries property by property).
      *
      * @param array $dictionaryArray Array describing one dictionary. Keys are:

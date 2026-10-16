@@ -34,8 +34,7 @@ class Account extends \CommonObject
      * @deprecated
      * @see $type
      */
-    private $courant;
-    // @phpstan-ignore-line
+    public $courant;
     /**
      * Bank account type. Check TYPE_ constants. It's integer but Company bank account use string to identify type account
      * @var int|string
@@ -53,7 +52,7 @@ class Account extends \CommonObject
      * @deprecated 	Duplicate field. We already have the field $this->status
      * @see $status
      */
-    private $clos = self::STATUS_OPEN;
+    public $clos = self::STATUS_OPEN;
     /**
      * Does it need to be conciliated?
      * @var int
@@ -112,7 +111,7 @@ class Account extends \CommonObject
      * @deprecated
      * @see $owner_name
      */
-    private $proprio;
+    public $proprio;
     /**
      * Name of account holder
      * @var string
@@ -141,7 +140,7 @@ class Account extends \CommonObject
      * @deprecated
      * @see $address
      */
-    private $domiciliation;
+    public $domiciliation;
     /**
      * Address of the bank account
      * @var string
@@ -208,8 +207,7 @@ class Account extends \CommonObject
      * @deprecated
      * @see $balance
      */
-    private $solde;
-    // @phpstan-ignore-line
+    public $solde;
     /**
      * Balance. Used in Account::create
      * @var float
@@ -225,6 +223,10 @@ class Account extends \CommonObject
      * @var string
      */
     public $ics_transfer;
+    /**
+     * @var string The previous ref in case of rename on update to rename attachment folders
+     */
+    public $oldref;
     /**
      *  'type' if the field format ('integer', 'integer:ObjectClass:PathToClass[:AddCreateButtonOrNot[:Filter]]', 'varchar(x)', 'double(24,8)', 'real', 'price', 'text', 'html', 'date', 'datetime', 'timestamp', 'duration', 'mail', 'phone', 'url', 'password')
      *         Note: Filter can be a string like "(t.ref:like:'SO-%') or (t.date_creation:<:'20160101') or (t.nature:is:NULL)"
@@ -268,14 +270,6 @@ class Account extends \CommonObject
     const TYPE_SAVINGS = 0;
     const STATUS_OPEN = 0;
     const STATUS_CLOSED = 1;
-    /**
-     * Provide list of deprecated properties and replacements
-     *
-     * @return array<string,string>  Old property to new property mapping
-     */
-    protected function deprecatedProperties()
-    {
-    }
     /**
      *  Constructor
      *

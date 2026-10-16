@@ -111,8 +111,8 @@ class FormTicket
      *      @param  string|array	$selected		Id of preselected field or array of Ids
      *      @param  string			$htmlname		Nom de la zone select
      *      @param  string			$filtertype		To filter on field type in llx_c_ticket_type (array('code'=>xx,'label'=>zz))
-     *      @param  int				$format			0=id+libelle, 1=code+code, 2=code+libelle, 3=id+code
-     *      @param  int				$empty			1=peut etre vide, 0 sinon
+     *      @param  int				$format			0=id+label, 1=code+code, 2=code+label, 3=id+code
+     *      @param  int|string		$empty      	1 = can be empty or 'string' to show the string as the empty value, 0 = can't be empty, 'ifone' = can be empty but autoselected if there is one only
      *      @param  int				$noadmininfo	0=Add admin info, 1=Disable admin info
      *      @param  int				$maxlength		Max length of label
      *      @param	string			$morecss		More CSS
@@ -129,7 +129,7 @@ class FormTicket
      *      @param  string 		$htmlname   		Name of select component
      *      @param  string 		$filtertype 		To filter on some properties in llx_c_ticket_category ('public = 1'). This parameter must not come from input of users.
      *      @param  int    		$format     		0 = id+label, 1 = code+code, 2 = code+label, 3 = id+code
-     *      @param  int    		$empty      		1 = can be empty, 0 = or not
+     *      @param  int    		$empty      		1 = can be empty, 0 = or can't be empty
      *      @param  int    		$noadmininfo		0 = ddd admin info, 1 = disable admin info
      *      @param  int    		$maxlength  		Max length of label
      *      @param	string		$morecss			More CSS
@@ -143,14 +143,14 @@ class FormTicket
     /**
      *      Return html list of ticket severitys (priorities)
      *
-     *      @param  string  $selected    Id severity pre-selected
-     *      @param  string  $htmlname    Name of the select area
-     *      @param  string  $filtertype  To filter on field type in llx_c_ticket_severity (array('code'=>xx,'label'=>zz))
-     *      @param  int     $format      0 = id+label, 1 = code+code, 2 = code+label, 3 = id+code
-     *      @param  int     $empty       1 = can be empty, 0 = or not
-     *      @param  int     $noadmininfo 0 = add admin info, 1 = disable admin info
-     *      @param  int     $maxlength   Max length of label
-     *      @param  string  $morecss     More CSS
+     *      @param  string  	$selected    	Id severity pre-selected
+     *      @param  string  	$htmlname    	Name of the select area
+     *      @param  string  	$filtertype  	To filter on field type in llx_c_ticket_severity (array('code'=>xx,'label'=>zz))
+     *      @param  int     	$format      	0 = id+label, 1 = code+code, 2 = code+label, 3 = id+code
+     *      @param  int|string	$empty      	1 = can be empty or 'string' to show the string as the empty value, 0 = can't be empty, 'ifone' = can be empty but autoselected if there is one only
+     *      @param  int     	$noadmininfo 	0 = add admin info, 1 = disable admin info
+     *      @param  int     	$maxlength   	Max length of label
+     *      @param  string  	$morecss     	More CSS
      *      @return void
      */
     public function selectSeveritiesTickets($selected = '', $htmlname = 'ticketseverity', $filtertype = '', $format = 0, $empty = 0, $noadmininfo = 0, $maxlength = 0, $morecss = '')

@@ -107,7 +107,7 @@ class Contacts extends \DolibarrApi
      * Delete contact
      *
      * @param   int     $id Contact ID
-     * @return  integer
+     * @return  array[]
      */
     public function delete($id)
     {

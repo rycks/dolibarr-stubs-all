@@ -4,6 +4,7 @@
 \define("NOCSRFCHECK", 1);
 \define('NOBROWSERNOTIF', '1');
 \define("DOLENTITY", $entity);
+// fetch optionals attributes and labels
 /**
  * Show header for new prospect
  *

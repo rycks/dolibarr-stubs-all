@@ -9,7 +9,7 @@
 class Members extends \DolibarrApi
 {
     /**
-     * @var array   $FIELDS     Mandatory fields, checked when create and update object
+     * @var string[]       Mandatory fields, checked when create and update object
      */
     public static $FIELDS = array('morphy', 'typeid');
     /**
@@ -110,7 +110,9 @@ class Members extends \DolibarrApi
     /**
      * Create member object
      *
-     * @param array $request_data   Request data
+     * @param array	 $request_data   Request data
+     * @phan-param ?array<string,string>	$request_data
+     * @phpstan-param ?array<string,string>	$request_data
      * @return int  ID of member
      *
      * @throws	RestException	403		Access denied

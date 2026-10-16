@@ -144,8 +144,8 @@ class ProductAttribute extends \CommonObject
      * Updates a product attribute
      *
      * @param   User            $user           User who updates the attribute
-     * @param   0|1             $notrigger      1 = Do not execute trigger (0 by default)
-     * @return 	int<min,-1>|1                   <0 if KO, 1 if OK
+     * @param   int        		$notrigger      If 1 = Do not execute trigger (0 by default)
+     * @return 	int								Return <0 if KO, 1 if OK
      */
     public function update(\User $user, $notrigger = 0)
     {
@@ -237,7 +237,7 @@ class ProductAttribute extends \CommonObject
     /**
      * Test if this attribute is used by a Product
      *
-     * @return -1|0|1			Return -1 if KO, 0 if not used, 1 if used
+     * @return 	int			Return -1 if KO, 0 if not used, 1 if used
      */
     public function isUsed()
     {
@@ -339,6 +339,16 @@ class ProductAttribute extends \CommonObject
      *  @return	string                              String with URL
      */
     public function getNomUrl($withpicto = 0, $option = '', $notooltip = 0, $morecss = '', $save_lastsearch_value = -1)
+    {
+    }
+    /**
+     *	Return a thumb for kanban views
+     *
+     *	@param	string	    			$option		Where point the link (0=> main card, 1,2 => shipment, 'nolink'=>No link)
+     *  @param	?array<string,string>	$arraydata	Array of data
+     *  @return	string								HTML Code for Kanban thumb.
+     */
+    public function getKanbanView($option = '', $arraydata = \null)
     {
     }
     /**

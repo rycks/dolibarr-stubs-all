@@ -44,9 +44,9 @@ class mod_expedition_ribera extends \ModelNumRefExpedition
     /**
      *	Return next value
      *
-     *	@param	Societe		$objsoc     Third party object
-     *	@param	Expedition	$shipment	Shipment object
-     *	@return string|0      			Value if OK, 0 if KO
+     *	@param	Societe			$objsoc     Third party object
+     *	@param	Expedition		$shipment	Shipment object
+     *	@return string|int      			Value if OK, 0 if KO
      */
     public function getNextValue($objsoc, $shipment)
     {

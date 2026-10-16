@@ -120,7 +120,7 @@ class Stripe extends \CommonObject
     /**
      * Get the Stripe payment intent. Create it with confirmnow=false
      * Warning. If a payment was tried and failed, a payment intent was created.
-     * But if we change something on object to pay (amount or other), reusing same payment intent is not allowed by Stripe.
+     * But if we change something on object to pay (amount or other), reusing same payment intent, is not allowed by Stripe.
      * Recommended solution is to recreate a new payment intent each time we need one (old one will be automatically closed after a delay),
      * that's why i comment the part of code to retrieve a payment intent with object id (never mind if we cumulate payment intent with old ones that will not be used)
      * Note: This is used when option STRIPE_USE_INTENT_WITH_AUTOMATIC_CONFIRMATION is on when making a payment from the public/payment/newpayment.php page

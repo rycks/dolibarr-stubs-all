@@ -381,7 +381,7 @@ class ActionComm extends \CommonObject
     }
     /**
      *  Load all objects with filters.
-     *  @TODO WARNING: This make a fetch on all records instead of making one request with a join.
+     *  @TODO WARNING: This make a fetch on all records instead of making one request with a join, like done into show_actions_done.
      *
      *  @param		int		$socid			Filter by thirdparty
      *  @param		int		$fk_element		Id of element action is linked to
@@ -471,6 +471,15 @@ class ActionComm extends \CommonObject
      *  @return	string							HTML String
      */
     public function getTypePicto($morecss = 'pictofixedwidth paddingright valignmiddle', $titlealt = '')
+    {
+    }
+    /**
+     *  Return label of type of event
+     *
+     *  @param	int		$mode			0=Mode short, 1=Mode long
+     *  @return	string					HTML String
+     */
+    public function getTypeLabel($mode = 0)
     {
     }
     /**

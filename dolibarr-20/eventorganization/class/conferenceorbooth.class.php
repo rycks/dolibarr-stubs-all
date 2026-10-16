@@ -145,7 +145,7 @@ class ConferenceOrBooth extends \ActionComm
      * @param  string      	$sortfield    	Sort field
      * @param  int         	$limit        	limit
      * @param  int         	$offset       	Offset
-     * @param  string		$filter       	Filter as an Universal Search string.
+     * @param  string|array	$filter       	Filter as an Universal Search string.
      * 										Example: '((client:=:1) OR ((client:>=:2) AND (client:<=:3))) AND (client:!=:8) AND (nom:like:'a%')'
      * @param  string      	$filtermode   	No more used
      * @return array|int                 	int <0 if KO, array of pages if OK

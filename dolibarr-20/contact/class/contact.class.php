@@ -347,10 +347,27 @@ class Contact extends \CommonObject
      *  @param      ?User	$user       	Load also alerts of this user (subscribing to alerts) that want alerts about this contact
      *  @param      string  $ref_ext    	External reference, not given by Dolibarr
      *  @param		string	$email			Email
-     *  @param		int		$loadalsoroles	Load also roles. Try to always 0 here and load roles with a separate call of fetchRoles().
+     *  @param		int		$loadalsoroles	Load also roles. Try to always use 0 here and load roles with a separate call of fetchRoles().
+     *  @param		int		$socid			Filter on thirdparty id
      *  @return     int     		    	>0 if OK, <0 if KO or if two records found for same ref or idprof, 0 if not found.
      */
-    public function fetch($id, $user = \null, $ref_ext = '', $email = '', $loadalsoroles = 0)
+    public function fetch($id, $user = \null, $ref_ext = '', $email = '', $loadalsoroles = 0, $socid = 0)
+    {
+    }
+    /**
+     *    Search the contact that match the most the provided parameters.
+     *    Searching rules try to find the existing contact.
+     *
+     *  @param      int		$id         	Id of contact
+     *  @param      string  $lastname    	Lastname (TODO Not yet implemented)
+     *  @param      string  $firstname   	Firstname (TODO Not yet implemented)
+     *  @param      string  $ref_ext    	External reference, not given by Dolibarr
+     *  @param		string	$email			Email
+     *  @param		string	$ref_alias		Name alias (TODO Not yet implemented)
+     *  @param		int		$socid			Filter on thirdparty id
+     *  @return     int     		    	ID of contact if OK, <0 if KO or if two records found for same ref or idprof, 0 if not found.
+     */
+    public function findNearest($id = 0, $lastname = '', $firstname = '', $ref_ext = '', $email = '', $ref_alias = '', $socid = 0)
     {
     }
     /**

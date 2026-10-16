@@ -248,7 +248,7 @@ class FormSetupItem
     public $helpText = '';
     /** @var string $picto */
     public $picto = '';
-    /** @var string $fieldValue */
+    /** @var string|null $fieldValue */
     public $fieldValue;
     /** @var string $defaultFieldValue */
     public $defaultFieldValue = \null;

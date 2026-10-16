@@ -30,7 +30,7 @@ class BookKeeping extends \CommonObject
      */
     public $doc_date;
     /**
-     * @var int Deadline for payment
+     * @var int|null|'' Deadline for payment
      */
     public $date_lim_reglement;
     /**
@@ -54,11 +54,11 @@ class BookKeeping extends \CommonObject
      */
     public $thirdparty_code;
     /**
-     * @var string subledger account
+     * @var string|null subledger account
      */
     public $subledger_account;
     /**
-     * @var string subledger label
+     * @var string|null subledger label
      */
     public $subledger_label;
     /**
@@ -299,7 +299,7 @@ class BookKeeping extends \CommonObject
      *
      * @param 	int 	$piecenum 	Piecenum to delete
      * @param 	string 	$mode 		Mode ('' or '_tmp')
-     * @return 	int 				Result
+     * @return 	int 				Nb of record deleted
      */
     public function deleteMvtNum($piecenum, $mode = '')
     {
@@ -448,7 +448,7 @@ class BookKeeping extends \CommonObject
     {
     }
     /**
-     * Get list of fiscal period
+     * Get list of fiscal period ordered by start date.
      *
      * @param 	string	$filter		Filter
      * @return 	array<array{id:int,label:string,date_start:string,date_end:string,status:int}>|int			Return integer <0 if KO, Fiscal periods : [[id, date_start, date_end, label], ...]

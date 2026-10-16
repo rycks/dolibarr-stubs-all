@@ -71,6 +71,10 @@ class SMTPs
      */
     private $_smtpsToken = \null;
     /**
+     * @var string Authentication method ('LOGIN', 'PLAIN', 'XOAUTH2', 'NONE'). If empty, MAIN_MAIL_SMTPS_AUTH_TYPE is used.
+     */
+    private $_smtpsAuthType = '';
+    /**
      * Who sent the Message
      * This can be defined via a INI file or via a setter method
      */
@@ -101,7 +105,7 @@ class SMTPs
     /**
      * Message Content
      *
-     * @var array{html?:array{mimeType:string,data:string,dataText:string,md5?:string},plain?:array{mimeType:string,data:string,dataText:string,md5?:string},image:array<string,array{imageName:string,cid:string,md5?:string,data:string}>,attachment:array<string,array{filename:string,cid?:string,md5?:string,data:string}>}	$msgContent	Array of messages
+     * @var array{html?:array{mimeType:string,data:string,dataText:string,md5?:string},plain?:array{mimeType:string,data:string,dataText:string,md5?:string},image:array<string,array{imageName:string,cid:string,md5?:string,data:string}>,attachment:array<string,array{mimeType:string,fileName:string,cid:string,md5?:string,data:string}>}	$msgContent	Array of messages
      */
     private $_msgContent = array();
     /**
@@ -500,6 +504,15 @@ class SMTPs
      * @return 	void
      */
     public function setToken($_strToken)
+    {
+    }
+    /**
+     * Authentication method to use (the one of the send context)
+     *
+     * @param	string	$_strAuthType	'LOGIN', 'PLAIN', 'XOAUTH2' or 'NONE'. If empty, MAIN_MAIL_SMTPS_AUTH_TYPE is used.
+     * @return	void
+     */
+    public function setAuthType($_strAuthType)
     {
     }
     /**

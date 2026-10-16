@@ -105,7 +105,7 @@ class Users extends \DolibarrApi
      * @param array $request_data New user data
      * @return int
      *
-     * @throws RestException 401 Not allowed
+     * @throws RestException 403 Not allowed
      */
     public function post($request_data = \null)
     {

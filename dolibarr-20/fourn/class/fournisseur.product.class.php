@@ -209,7 +209,7 @@ class ProductFournisseur extends \Product
     /**
      *    Loads the price information of a provider
      *
-     *    @param    int     $rowid              Line id
+     *    @param    int     $rowid              Line id in product_fournisseur_price
      *    @param    int     $ignore_expression  Ignores the math expression for calculating price and uses the db value instead
      *    @return   int 					    Return integer < 0 if KO, 0 if OK but not found, > 0 if OK
      */
@@ -238,7 +238,7 @@ class ProductFournisseur extends \Product
      *
      *  @param	int		$prodid	    Product id
      *  @param	float	$qty		Minimum quantity
-     *  @param	int		$socid		get min price for specific supplier
+     *  @param	int		$socid		Load min price for this specific supplier
      *  @return int					Return integer <0 if KO, 0=Not found of no product id provided, >0 if OK
      *  @see list_product_fournisseur_price()
      */

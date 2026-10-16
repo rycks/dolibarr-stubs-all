@@ -129,6 +129,7 @@ class Invoices extends \DolibarrApi
      *
      * @throws RestException 400
      * @throws RestException 401
+     * @throws RestException 403		Access not allowed for login
      * @throws RestException 404
      * @throws RestException 405
      */
@@ -478,8 +479,8 @@ class Invoices extends \DolibarrApi
      * Warning: Take care that all invoices are owned by the same customer.
      * Example of value for parameter arrayofamounts: {"1": {"amount": "99.99", "multicurrency_amount": ""}, "2": {"amount": "", "multicurrency_amount": "10"}}
      *
-     * @param array   $arrayofamounts     {@from body}  Array with id of invoices with amount to pay for each invoice
-     * @param string  $datepaye           {@from body}  Payment date        {@type timestamp}
+     * @param array   $arrayofamounts      {@from body}  Array with id of invoices with amount to pay for each invoice
+     * @param string  $datepaye            {@from body}  Payment date        {@type timestamp}
      * @param int     $paymentid           {@from body}  Payment mode Id {@min 1}
      * @param string  $closepaidinvoices   {@from body}  Close paid invoices {@choice yes,no}
      * @param int     $accountid           {@from body}  Account Id {@min 1}

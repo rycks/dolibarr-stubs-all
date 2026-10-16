@@ -58,9 +58,11 @@ class FormResource
      *  @param  int		$empty			1=peut etre vide, 0 sinon
      *  @param	int		$noadmininfo	0=Add admin info, 1=Disable admin info
      *  @param  int		$maxlength      Max length of label
+     *  @param	int		$usejscombo		1=Use jscombo, 0=No js combo
+     *  @param	string	$morecss		Add more css
      * 	@return	void
      */
-    public function select_types_resource($selected = '', $htmlname = 'type_resource', $filtertype = '', $format = 0, $empty = 0, $noadmininfo = 0, $maxlength = 0)
+    public function select_types_resource($selected = '', $htmlname = 'type_resource', $filtertype = '', $format = 0, $empty = 0, $noadmininfo = 0, $maxlength = 0, $usejscombo = 0, $morecss = 'minwidth100')
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps

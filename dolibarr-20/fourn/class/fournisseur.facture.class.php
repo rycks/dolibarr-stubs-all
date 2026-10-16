@@ -288,7 +288,7 @@ class FactureFournisseur extends \CommonInvoice
      *
      *  @param      User	$user		    User object
      *	@param	    int		$notrigger	    1=Does not execute triggers, 0= execute triggers
-     *	@return		int						Return integer <0 if KO, >0 if OK
+     *	@return		int						Return integer <0 if KO, 0=Refused, >0 if OK
      */
     public function delete(\User $user, $notrigger = 0)
     {

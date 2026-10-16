@@ -115,7 +115,7 @@ function ajax_event($htmlname, $events)
  *  @param  int         $forcereload            Force to reload page if we click/change value (this is supported only when there is no 'alert' option in input)
  *  @param  int         $marginleftonlyshort    1 = Add a short left margin on picto, 2 = Add a larger left margin on picto, 0 = No left margin.
  *  @param  int	        $forcenoajax            1 = Force to use a ahref link instead of ajax code.
- *  @param  int         $setzeroinsteadofdel    1 = Set constantto '0' instead of deleting it
+ *  @param  int         $setzeroinsteadofdel    1 = Set constant to '0' instead of deleting it when $input is empty.
  *  @param  string      $suffix                 Suffix to use on the name of the switch picto when option is on. Example: '', '_red'
  *  @param  string      $mode                   Add parameter &mode= to the href link (Used for href link)
  *  @param  string      $morecss                More CSS
@@ -138,9 +138,10 @@ function ajax_constantonoff($code, $input = array(), $entity = \null, $revertono
  *  @param	string	$morecss	More CSS
  *  @param	string	$htmlname	Name of HTML component. Keep '' or use a different value if you need to use this component several time on the same page for the same field.
  *  @param	int		$forcenojs	Force the component to work as link post (without javascript) instead of ajax call
+ *  @param	string	$moreparam	When $forcenojs=1 then we can add more parameters to the backtopage URL. String must url encoded. Example: 'abc=def&fgh=ijk'
  *  @return string              html for button on/off
  *  @see ajax_constantonoff() to update that value of a constant
  */
-function ajax_object_onoff($object, $code, $field, $text_on, $text_off, $input = array(), $morecss = '', $htmlname = '', $forcenojs = 0)
+function ajax_object_onoff($object, $code, $field, $text_on, $text_off, $input = array(), $morecss = '', $htmlname = '', $forcenojs = 0, $moreparam = '')
 {
 }

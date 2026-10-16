@@ -16,7 +16,7 @@
  * Copyright (C) 2012-2016  Marcos García           <marcosgdf@gmail.com>
  * Copyright (C) 2012       Cedric Salvador         <csalvador@gpcsolutions.fr>
  * Copyright (C) 2012-2015  Raphaël Doursenaud      <rdoursenaud@gpcsolutions.fr>
- * Copyright (C) 2014-2023  Alexandre Spangaro      <aspangaro@open-dsi.fr>
+ * Copyright (C) 2014-2026  Alexandre Spangaro      <alexandre@inovea-conseil.com>
  * Copyright (C) 2018-2022  Ferran Marcet           <fmarcet@2byte.es>
  * Copyright (C) 2018-2024  Frédéric France         <frederic.france@free.fr>
  * Copyright (C) 2018       Nicolas ZABOURI	        <info@inovea-conseil.com>
@@ -390,8 +390,7 @@ class Form
      * @param 	string 				$htmlid 			Html id to use instead of htmlname
      * @param 	bool 				$multiple 			add [] in the name of element and add 'multiple' attribute
      * @param 	integer 			$disableifempty 	Set tag 'disabled' on select if there is no choice
-     * @param 	string 				$filter 			Optional filters criteras. WARNING: To avoid SQL injection, only few chars [.a-z0-9 =<>] are allowed here, example: 's.rowid <> x'
-     * 													If you need parenthesis, use the Universal Filter Syntax, example: '(s.client:in:1,3)'
+     * @param 	string 				$filter 			Optional filters criteras. You must use the USF (Universal Search Filter) syntax, example: '(s.client:in:1,3)'
      * 													Do not use a filter coming from input of users.
      * @return  int|string|array<int,array{key:int,value:string,label:string,labelhtml:string}>		Return integer <0 if KO, HTML with select string if OK.
      */
@@ -1257,7 +1256,7 @@ class Form
      *                                            Else, default proposed VAT==0. End of rule.
      *  @param	bool	     $options_only		  Return HTML options lines only (for ajax treatment)
      *  @param  int          $mode                0=Use vat rate as key in combo list, 1=Add VAT code after vat rate into key, -1=Use id of vat line as key
-     *  @param  int          $type_vat            0=All type, 1=VAT rate sale, 2=VAT rate purchase
+     *  @param  int          $type_vat            0=All types, 1=VAT rate for sales, 2=VAT rate for purchases
      *  @return	string
      */
     public function load_tva($htmlname = 'tauxtva', $selectedrate = '', $societe_vendeuse = \null, $societe_acheteuse = \null, $idprod = 0, $info_bits = 0, $type = '', $options_only = \false, $mode = 0, $type_vat = 0)
@@ -1582,23 +1581,23 @@ class Form
      *	Return a HTML select string, built from an array of key+value.
      *  Note: Do not apply langs->trans function on returned content, content may be entity encoded twice.
      *
-     * @param string 		$htmlname 			Name of html select area. Try to start name with "multi" or "search_multi" if this is a multiselect
+     * @param string 				$htmlname 			Name of html select area. Try to start name with "multi" or "search_multi" if this is a multiselect
      * @param array{label:string,data-html:string,disable?:int<0,1>,css?:string}	$array 	Array like array(key => value) or array(key=>array('label'=>..., 'data-...'=>..., 'disabled'=>..., 'css'=>...))
-     * @param string|string[] $id				Preselected key or array of preselected keys for multiselect. Use 'ifone' to autoselect record if there is only one record.
-     * @param int<0,1>|string 	$show_empty 		0 no empty value allowed, 1 or string to add an empty value into list (If 1: key is -1 and value is '' or '&nbsp;', If placeholder string: key is -1 and value is the string), <0 to add an empty value with key that is this value.
-     * @param int<0,1>		$key_in_label 		1 to show key into label with format "[key] value"
-     * @param int<0,1>		$value_as_key 		1 to use value as key
-     * @param string 		$moreparam 			Add more parameters onto the select tag. For example 'style="width: 95%"' to avoid select2 component to go over parent container
-     * @param int<0,1>		$translate 			1=Translate and encode value
-     * @param int 			$maxlen 			Length maximum for labels
-     * @param int<0,1>		$disabled 			Html select box is disabled
-     * @param string 		$sort 				'ASC' or 'DESC' = Sort on label, '' or 'NONE' or 'POS' = Do not sort, we keep original order
-     * @param string 		$morecss 			Add more class to css styles
-     * @param int 			$addjscombo 		Add js combo
-     * @param string 		$moreparamonempty 	Add more param on the empty option line. Not used if show_empty not set
-     * @param int 			$disablebademail 	1=Check if a not valid email, 2=Check string '---', and if found into value, disable and colorize entry
-     * @param int 			$nohtmlescape 		No html escaping (not recommended, use 'data-html' if you need to use label with HTML content).
-     * @return string							HTML select string.
+     * @param string|string[]|int 	$id					Preselected key or array of preselected keys for multiselect. Use 'ifone' to autoselect record if there is only one record.
+     * @param int<0,1>|string 		$show_empty 		0 no empty value allowed, 1 or string to add an empty value into list (If 1: key is -1 and value is '' or '&nbsp;', If placeholder string: key is -1 and value is the string), <0 to add an empty value with key that is this value.
+     * @param int<0,1>				$key_in_label 		1 to show key into label with format "[key] value"
+     * @param int<0,1>				$value_as_key 		1 to use value as key
+     * @param string 				$moreparam 			Add more parameters onto the select tag. For example 'style="width: 95%"' to avoid select2 component to go over parent container
+     * @param int<0,1>				$translate 			1=Translate and encode value
+     * @param int 					$maxlen 			Length maximum for labels
+     * @param int<0,1>				$disabled 			Html select box is disabled
+     * @param string 				$sort 				'ASC' or 'DESC' = Sort on label, '' or 'NONE' or 'POS' = Do not sort, we keep original order
+     * @param string 				$morecss 			Add more class to css styles
+     * @param int 					$addjscombo 		Add js combo
+     * @param string 				$moreparamonempty 	Add more param on the empty option line. Not used if show_empty not set
+     * @param int 					$disablebademail 	1=Check if a not valid email, 2=Check string '---', and if found into value, disable and colorize entry
+     * @param int 					$nohtmlescape 		No html escaping (not recommended, use 'data-html' if you need to use label with HTML content).
+     * @return string									HTML select string.
      * @see multiselectarray(), selectArrayAjax(), selectArrayFilter()
      */
     public static function selectarray($htmlname, $array, $id = '', $show_empty = 0, $key_in_label = 0, $value_as_key = 0, $moreparam = '', $translate = 0, $maxlen = 0, $disabled = 0, $sort = '', $morecss = 'minwidth75', $addjscombo = 1, $moreparamonempty = '', $disablebademail = 0, $nohtmlescape = 0)

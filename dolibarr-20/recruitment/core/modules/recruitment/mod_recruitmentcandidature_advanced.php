@@ -40,7 +40,7 @@ class mod_recruitmentcandidature_advanced extends \ModeleNumRefRecruitmentCandid
      * 	Return next free value
      *
      *  @param  RecruitmentCandidature	$object		Object we need next value for
-     *  @return string|0                Next value if OK, 0 if KO
+     *  @return string|int		                Next value if OK, 0 if KO
      */
     public function getNextValue($object)
     {

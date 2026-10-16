@@ -27,13 +27,12 @@ class Interventions extends \DolibarrApi
     {
     }
     /**
-     * Get properties of a Expense Report object
-     * Return an array with Expense Report information
+     * Get properties of an intervention object
      *
      * @param       int         $id         ID of Expense Report
      * @return		Object					Object with cleaned properties
      *
-     * @throws	RestException
+     * @throws		RestException
      */
     public function get($id)
     {
@@ -111,9 +110,9 @@ class Interventions extends \DolibarrApi
     {
     }
     /**
-     * Delete order
+     * Delete intervention
      *
-     * @param   int     $id         Order ID
+     * @param   int     $id         Intervention ID
      * @return  array
      */
     public function delete($id)
