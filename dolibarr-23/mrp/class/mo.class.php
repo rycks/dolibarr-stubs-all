@@ -260,6 +260,15 @@ class Mo extends \CommonObject
     {
     }
     /**
+     * Return if consumption or production has started on the MO (it has consumed or produced lines).
+     * If yes, $this->error is set with the message to show.
+     *
+     * @return 	bool		True if the MO has consumed or produced lines
+     */
+    public function hasConsumedOrProducedLines()
+    {
+    }
+    /**
      * Count number of movement with origin of MO
      *
      * @return 	int			Number of movements

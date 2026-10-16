@@ -88,6 +88,10 @@ class Commande extends \CommonOrder
      */
     public $cond_reglement_doc;
     /**
+     * @var string Label of the payment terms, used when there is no label for documents
+     */
+    public $cond_reglement_label;
+    /**
      * @var string|float 	Deposit percent for payment terms. Populated by $CommonObject->setPaymentTerms().
      * @see setPaymentTerms()
      */

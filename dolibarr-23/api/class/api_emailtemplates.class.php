@@ -21,6 +21,10 @@ class EmailTemplates extends \DolibarrApi
      */
     public $email_template;
     /**
+     * @var string 	Name of element.
+     */
+    public $element = 'email_templates';
+    /**
      * @var string 	Name of table without prefix where object is stored. This is also the key used for extrafields management (so extrafields know the link to the parent table).
      */
     public $table_element = 'c_email_templates';
@@ -109,7 +113,7 @@ class EmailTemplates extends \DolibarrApi
      * @param string	$sortorder			Sort order
      * @param int		$limit				Limit for list
      * @param int		$page				Page number
-     * @param string	$fk_user			User ids to filter email templates of (example '1' or '1,2,3') {@pattern /^[0-9,]*$/i}
+     * @param string	$fk_user			User id to filter email templates of (example '1')
      * @param string	$sqlfilters			Other criteria to filter answers separated by a comma. Syntax example "(e.active:=:1) and (e.module:=:'adherent')"
      * @param string	$properties			Restrict the data returned to these properties. Ignored if empty. Comma separated list of properties names
      * @param bool		$pagination_data	If this parameter is set to true the response will include pagination data. Default value is false. Page starts from 0*

@@ -1,3 +1,0 @@
-<?php
-
-$selected = 1;

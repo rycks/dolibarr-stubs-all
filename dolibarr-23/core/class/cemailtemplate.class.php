@@ -162,11 +162,12 @@ class CEmailTemplate extends \CommonObject
     /**
      *	Get email template from database.
      *
-     *	@param      int			$id       	row Id of email template
-     *	@param      string		$label    	label of email template
-     *	@return     int         			>0 if OK, <0 if KO, 0 if not found
+     *	@param      int			$id       		row Id of email template
+     *	@param      string		$label    		label of email template
+     * 	@param		User		$userrequest	User request
+     *	@return     int         				Return >0 if OK, <0 if KO, 0 if not found
      */
-    public function apifetch($id, $label = '')
+    public function apiFetch($id, $label = '', $userrequest = \null)
     {
     }
 }
