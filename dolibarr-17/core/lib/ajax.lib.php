@@ -93,6 +93,17 @@ function ajax_combobox($htmlname, $events = array(), $minLengthToAutocomplete = 
 {
 }
 /**
+ * Add event management script.
+ *
+ * @param	string	$htmlname					Name of html select field ('myid' or '.myclass')
+ * @param	array	$events						Add some Ajax events option on change of $htmlname component to call ajax to autofill a HTML element (select#htmlname and #inputautocompletehtmlname)
+ * 												Example: array(array('method'=>'getContacts', 'url'=>dol_buildpath('/core/ajax/contacts.php',1), 'htmlname'=>'contactid', 'params'=>array('add-customer-contact'=>'disabled')))
+ * @return	string								Return JS string to manage event
+ */
+function ajax_event($htmlname, $events)
+{
+}
+/**
  * 	On/off button for constant
  *
  * 	@param	string	$code					Name of constant

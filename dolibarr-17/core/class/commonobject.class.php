@@ -481,6 +481,16 @@ abstract class CommonObject
      * @var int			User id last modifier
      */
     public $user_modification_id;
+    /**
+     * @var int ID
+     * @deprecated	Use $user_creation_id
+     */
+    public $fk_user_creat;
+    /**
+     * @var int ID
+     * @deprecated 	Use $user_modification_id
+     */
+    public $fk_user_modif;
     public $next_prev_filter;
     /**
      * @var int 1 if object is specimen
@@ -496,6 +506,10 @@ abstract class CommonObject
     public $alreadypaid;
     protected $labelStatus;
     protected $labelStatusShort;
+    /**
+     * @var string output
+     */
+    public $output;
     /**
      * @var array	List of child tables. To test if we can delete object.
      */
@@ -1367,8 +1381,8 @@ abstract class CommonObject
      *	But for the moment we don't know if it's possible as we keep a method available on overloaded objects.
      *
      *	@param	string		$action				Action code
-     *	@param  string		$seller            	Object of seller third party
-     *	@param  string  	$buyer             	Object of buyer third party
+     *	@param  Societe		$seller            	Object of seller third party
+     *	@param  Societe  	$buyer             	Object of buyer third party
      *	@param	int			$selected		   	Object line selected
      *	@param  int	    	$dateSelector      	1=Show also date range input fields
      *  @param	string		$defaulttpldir		Directory where to find the template
@@ -1885,9 +1899,9 @@ abstract class CommonObject
     {
     }
     /**
-     * Function to prepare a part of the query for insert by returning an array with all properties of object.
+     * Function to return the array of data key-value from the ->fields and all the ->properties of an object.
      *
-     * Note $this->${field} are set by the page that make the createCommon() or the updateCommon().
+     * Note: $this->${field} are set by the page that make the createCommon() or the updateCommon().
      * $this->${field} should be a clean and string value (so date are formated for SQL insert).
      *
      * @return array		Array with all values of each properties to update
