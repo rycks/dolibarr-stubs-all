@@ -42,6 +42,11 @@
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
 /**
+ * @var Conf $conf
+ * @var Translate $langs
+ */
+$grant_query = '';
+/**
  * Records payment links for an invoice in a join table (link n<-->n for payments<-->invoices)
  *
  * @param	DoliDB		$db		Database handler
@@ -569,7 +574,7 @@ function migrate_reload_menu($db, $langs, $conf)
 /**
  * Migrate file from old path to new one for lot path
  *
- * @return    void
+ * @return	int						Return integer <0 if KO, >0 if OK
  */
 function migrate_productlot_path()
 {
@@ -651,5 +656,13 @@ function migrate_export_import_profiles($mode = 'export')
  * @return  void
  */
 function migrate_contractdet_rank()
+{
+}
+/**
+ * Invoice exports been shifted (facture_1 => facture_0, facture_2 => facture_1) in version 20, shift export models accordingly
+ *
+ * @return  void
+ */
+function migrate_invoice_export_models()
 {
 }

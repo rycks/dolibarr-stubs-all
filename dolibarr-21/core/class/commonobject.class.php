@@ -182,17 +182,17 @@ abstract class CommonObject
      */
     public $thirdparty;
     /**
-     * @var User 			A related user
+     * @var User|null 		A related user
      * @see fetch_user()
      */
     public $user;
     /**
-     * @var string 		The type of originating object. Combined with $origin_id, it allows to reload $origin_object
+     * @var string 			The type of originating object. Combined with $origin_id, it allows to reload $origin_object
      * @see fetch_origin()
      */
     public $origin_type;
     /**
-     * @var int 		The id of originating object. Combined with $origin_type, it allows to reload $origin_object
+     * @var int 			The id of originating object. Combined with $origin_type, it allows to reload $origin_object
      * @see fetch_origin()
      */
     public $origin_id;
@@ -334,17 +334,17 @@ abstract class CommonObject
      */
     public $barcode_type_coder;
     /**
-     * @var int 		Payment method ID (cheque, cash, ...)
+     * @var ?int 		Payment method ID (cheque, cash, ...)
      * @see setPaymentMethods()
      */
     public $mode_reglement_id;
     /**
-     * @var int 		Payment terms ID
+     * @var ?int 		Payment terms ID
      * @see setPaymentTerms()
      */
     public $cond_reglement_id;
     /**
-     * @var int 		Demand reason ID
+     * @var ?int 		Demand reason ID
      */
     public $demand_reason_id;
     /**
@@ -373,7 +373,7 @@ abstract class CommonObject
      */
     public $fk_delivery_address;
     /**
-     * @var int 		Shipping method ID
+     * @var ?int 		Shipping method ID
      * @see setShippingMethod()
      */
     public $shipping_method_id;
@@ -621,7 +621,7 @@ abstract class CommonObject
      */
     public $labelStatusShort = array();
     /**
-     * @var array<string,int|string>	Array to store lists of tpl
+     * @var array<string,int|float|string|null>	Array to store lists of tpl
      */
     public $tpl;
     /**
@@ -2036,7 +2036,7 @@ abstract class CommonObject
      * @param float		$unitPrice			Product unit price
      * @param float		$discountPercent	Line discount percent
      * @param int		$fk_product			Product id
-     * @return float|int<-1,-1>				Return buy price if OK, integer <0 if KO
+     * @return float|int<-2,-1>				Return buy price if OK, integer <0 if KO
      */
     public function defineBuyPrice($unitPrice = 0.0, $discountPercent = 0.0, $fk_product = 0)
     {

@@ -156,6 +156,10 @@ class Propal extends \CommonObject
      */
     public $cond_reglement_doc;
     /**
+     * @var string Label of the payment terms, used when there is no label for documents
+     */
+    public $cond_reglement_label;
+    /**
      * @var string method of payment code
      */
     public $mode_reglement_code;
@@ -185,11 +189,11 @@ class Propal extends \CommonObject
      */
     public $address;
     /**
-     * @var int availability ID
+     * @var ?int availability ID can be null in db
      */
     public $availability_id;
     /**
-     * @var int availability ID
+     * @var ?int availability ID
      * @deprecated
      * @see $availability_id
      */

@@ -135,9 +135,10 @@ class EcmFiles extends \CommonObject
      * @param  string $hashforshare    	Hash of file sharing, or 'shared'
      * @param  string $src_object_type 	src_object_type to search (value of object->table_element)
      * @param  int    $src_object_id 	src_object_id to search
+     * @param  int    $entity 	        entity
      * @return int                 	   	Return integer <0 if KO, 0 if not found, >0 if OK
      */
-    public function fetch($id, $ref = '', $relativepath = '', $hashoffile = '', $hashforshare = '', $src_object_type = '', $src_object_id = 0)
+    public function fetch($id, $ref = '', $relativepath = '', $hashoffile = '', $hashforshare = '', $src_object_type = '', $src_object_id = 0, $entity = 0)
     {
     }
     /**

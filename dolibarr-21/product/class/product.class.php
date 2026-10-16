@@ -272,11 +272,13 @@ class Product extends \CommonObject
     /**
      * Cost price
      *
-     * @var float
+     * @var ?float
      */
     public $cost_price;
     /**
-     * @var float Average price value for product entry in stock (PMP)
+     * Average price value for product entry into stock (PMP)
+     *
+     * @var ?float
      */
     public $pmp;
     /**
@@ -634,7 +636,7 @@ class Product extends \CommonObject
      *
      * @var array<string,array<int,array{0:int,1:float,2:int,3:string,4:int,5:string}>>
      */
-    public $sousprods;
+    public $sousprods = array();
     /**
      * @var array<int,array{id:int,id_parent:int,ref:string,nb:int,nb_total:int,stock:float,stock_alert:float,label:string,fullpath:string,type:int,desiredstick:float,level:int,incdec:int<0,1>,entity:CommonObject}> Path of subproducts. Build from ->sousprods with get_arbo_each_prod()
      */
@@ -804,17 +806,17 @@ class Product extends \CommonObject
     {
     }
     /**
-     * Get sell or eat by mandatory list
+     * Get the array of labels of Sell by or Eat by all mandatory flags for each status
      *
-     * @return 	array{0:string,1:string,2:string,3:string}	Sell or eat by mandatory list
+     * @return 	array{0:string,1:string,2:string,3:string}	Array of labels of Sell by or Eat by all mandatory flags
      */
     public static function getSellOrEatByMandatoryList()
     {
     }
     /**
-     * Get sell or eat by mandatory label
+     * Get the label for sell by or eat by mandatory flag of the current product
      *
-     * @return 	string	Sell or eat by mandatory label
+     * @return 	string		Sell or eat by mandatory label
      */
     public function getSellOrEatByMandatoryLabel()
     {
@@ -822,8 +824,8 @@ class Product extends \CommonObject
     /**
      *    Update or add a translation for a product
      *
-     * @param  User $user Object user making update
-     * @return int        Return integer <0 if KO, >0 if OK
+     * @param  User $user 	Object user making update
+     * @return int        	Return integer <0 if KO, >0 if OK
      */
     public function setMultiLangs($user)
     {
@@ -1700,12 +1702,15 @@ class Product extends \CommonObject
     {
     }
     /**
-     *    Returns the text label from units dictionary
+     * Reads the units dictionary to return the translation code of a unit (if type='code'), or translated long label (if type='long') or short label (if type='short').
+     * TODO Duplicate of getLabelOfUnit() in commonobjectline.class.php
      *
-     * @param  string $type Label type (long or short)
-     * @return string|int Return integer <0 if ko, label if ok
+     * @param  	string 			$type 			Code type ('code', 'long' or 'short')
+     * @param	Translate|null	$outputlangs	Language to use for long label translation
+     * @param	int				$noentities		No entities
+     * @return 	string|int 						Return integer <0 if KO, code or label of unit if OK.
      */
-    public function getLabelOfUnit($type = 'long')
+    public function getLabelOfUnit($type = 'long', $outputlangs = \null, $noentities = 0)
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps

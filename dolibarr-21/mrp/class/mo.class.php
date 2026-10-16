@@ -183,8 +183,8 @@ class Mo extends \CommonObject
      */
     public $fk_parent_line;
     /**
-    @ var array{id:int,label:string,qty_bom:int|float,stock:float,seuil_stock_alerte:float,virtual_stock:float,qty:float,fk_unit:int,qty_frozen:float,disable_stock_change:int<0,1>,efficiency:float}	tpl
-    */
+     * @var array{}|array{id:int,label:string,qty_bom:int|float,stock:float,seuil_stock_alerte:float,virtual_stock:float,qty:float,fk_unit:int,qty_frozen:float,disable_stock_change:int<0,1>,efficiency:float}	tpl
+     */
     public $tpl = array();
     /**
      * Constructor
@@ -254,6 +254,15 @@ class Mo extends \CommonObject
      * @return 	array<array{rowid:int,date:int|string,qty:float,role:string,fk_product:int,fk_warehouse:int,batch:string,fk_stock_movement:int,fk_unit:int}>	Array of lines
      */
     public function fetchLinesLinked($role, $lineid = 0)
+    {
+    }
+    /**
+     * Return if consumption or production has started on the MO (it has consumed or produced lines).
+     * If yes, $this->error is set with the message to show.
+     *
+     * @return 	bool		True if the MO has consumed or produced lines
+     */
+    public function hasConsumedOrProducedLines()
     {
     }
     /**

@@ -425,14 +425,18 @@ class BookKeeping extends \CommonObject
     {
     }
     /**
-     * Generate label operation when operation is transferred into accounting
+     * Generate label operation when operation is transferred into accounting according to ACCOUNTING_LABEL_OPERATION_ON_TRANSFER
+     * If ACCOUNTING_LABEL_OPERATION_ON_TRANSFER is 0, we concat thirdparty name, ref and label.
+     * If ACCOUNTING_LABEL_OPERATION_ON_TRANSFER is 1, we concat thirdparty name, ref.
+     * If ACCOUNTING_LABEL_OPERATION_ON_TRANSFER is 2, we return just thirdparty name
      *
      * @param 	string  $thirdpartyname         Thirdparty name
      * @param 	string  $reference              Reference of the element
      * @param 	string  $labelaccount           Label of the accounting account
+     * @param	int<0,1> $full					0=Default, 1=Keep label intact (no trunc so HTML content is not corrupted)
      * @return	string                          Label of the operation
      */
-    public function accountingLabelForOperation($thirdpartyname, $reference, $labelaccount)
+    public function accountingLabelForOperation($thirdpartyname, $reference, $labelaccount, $full = 0)
     {
     }
     /**

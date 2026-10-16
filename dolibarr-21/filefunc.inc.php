@@ -1,7 +1,7 @@
 <?php
 
 \define('DOL_APPLICATION_TITLE', 'Dolibarr');
-\define('DOL_VERSION', '21.0.1');
+\define('DOL_VERSION', '21.0.4');
 \define('EURO', \chr(128));
 /**
  * Replace session_start()

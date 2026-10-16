@@ -38,3 +38,8 @@
  *      \brief      Run migration script
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
+/**
+ * @var Conf $conf
+ * @var Translate $langs
+ */
+$grant_query = '';

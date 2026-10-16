@@ -71,11 +71,12 @@ function dol_dir_list($utf8_path, $types = "all", $recursive = 0, $filter = "", 
  * @param	int			$sortorder		Sort order (SORT_ASC, SORT_DESC)
  * @param	int			$mode			0=Return array minimum keys loaded (faster), 1=Force all keys like description
  * @param	string		$sqlfilters		Filter as an Universal Search string.
+ * @param	?Object		$object			Object used
  * 										Example: '((client:=:1) OR ((client:>=:2) AND (client:<=:3))) AND (client:!=:8) AND (nom:like:'a%')'
  * @return	array<array{rowid:string,label:string,name:string,path:string,level1name:string,fullname:string,fullpath_orig:string,date_c:string,date_m:string,type:string,keywords:string,cover:string,position:int,acl:string,share:string,description:string}> Array of array('name'=>'xxx','fullname'=>'/abc/xxx','date'=>'yyy','size'=>99,'type'=>'dir|file',...)
  * @see dol_dir_list()
  */
-function dol_dir_list_in_database($path, $filter = "", $excludefilter = \null, $sortcriteria = "name", $sortorder = \SORT_ASC, $mode = 0, $sqlfilters = "")
+function dol_dir_list_in_database($path, $filter = "", $excludefilter = \null, $sortcriteria = "name", $sortorder = \SORT_ASC, $mode = 0, $sqlfilters = "", $object = \null)
 {
 }
 /**
@@ -84,9 +85,10 @@ function dol_dir_list_in_database($path, $filter = "", $excludefilter = \null, $
  *
  * @param	array<array{name:string,path:string,level1name:string,relativename:string,fullname:string,date:string,size:int,perm:int,type:string}>	$filearray	Array of array('name'=>'xxx','fullname'=>'/abc/xxx','date'=>'yyy','size'=>99,'type'=>'dir|file',...) Array of files obtained using dol_dir_list
  * @param	string	$relativedir		Relative dir from DOL_DATA_ROOT
+ * @param	?Object	$object				Object used
  * @return	void
  */
-function completeFileArrayWithDatabaseInfo(&$filearray, $relativedir)
+function completeFileArrayWithDatabaseInfo(&$filearray, $relativedir, $object = \null)
 {
 }
 /**
@@ -262,11 +264,12 @@ function dolCopyDir($srcfile, $destfile, $newmask, $overwriteifexists, $arrayrep
  * @param   int<0,1>	$overwriteifexists  Overwrite file if exists (1 by default)
  * @param   int<0,1>	$testvirus          Do an antivirus test. Move is canceled if a virus is found.
  * @param	int<0,1>	$indexdatabase		Index new file into database.
- * @param	array<string,mixed>	$moreinfo			Array with more information to set in index table
+ * @param	array<string,mixed>	$moreinfo   Array with more information to set in index table
+ * @param	int			$entity				Entity
  * @return  boolean 		            True if OK, false if KO
  * @see dol_move_uploaded_file()
  */
-function dol_move($srcfile, $destfile, $newmask = '0', $overwriteifexists = 1, $testvirus = 0, $indexdatabase = 1, $moreinfo = array())
+function dol_move($srcfile, $destfile, $newmask = '0', $overwriteifexists = 1, $testvirus = 0, $indexdatabase = 1, $moreinfo = array(), $entity = 0)
 {
 }
 /**
@@ -428,11 +431,11 @@ function dol_init_file_process($pathtoscan = '', $trackid = '')
  * @param   string		$trackid			Track id (used to prefix name of session vars to avoid conflict)
  * @param	int<0,1>	$generatethumbs		1=Generate also thumbs for uploaded image files
  * @param   ?Object		$object				Object used to set 'src_object_*' fields
- * @param	string		$forceFullTestIndexation		'1'=Force full text storage in database even if global option not set (consume a high level of data)
+ * @param	string		$forceFullTextIndexation		'1'=Force full text storage in database even if global option not set (consume a high level of data)
  * @return	int                             Return integer <=0 if KO, nb of success if OK (>0)
  * @see dol_remove_file_process()
  */
-function dol_add_file_process($upload_dir, $allowoverwrite = 0, $updatesessionordb = 0, $varfiles = 'addedfile', $savingdocmask = '', $link = \null, $trackid = '', $generatethumbs = 1, $object = \null, $forceFullTestIndexation = '')
+function dol_add_file_process($upload_dir, $allowoverwrite = 0, $updatesessionordb = 0, $varfiles = 'addedfile', $savingdocmask = '', $link = \null, $trackid = '', $generatethumbs = 1, $object = \null, $forceFullTextIndexation = '')
 {
 }
 /**
@@ -472,9 +475,10 @@ function addFileIntoDatabaseIndex($dir, $file, $fullpathorig = '', $mode = 'uplo
  *  @param      string	$dir			Directory name (full real path without ending /)
  *  @param		string	$file			File name
  *  @param		string	$mode			How file was created ('uploaded', 'generated', ...)
+ *  @param		Object	$object			object used for entity
  *	@return		int						Return integer <0 if KO, 0 if nothing done, >0 if OK
  */
-function deleteFilesIntoDatabaseIndex($dir, $file, $mode = 'uploaded')
+function deleteFilesIntoDatabaseIndex($dir, $file, $mode = 'uploaded', $object = \null)
 {
 }
 /**

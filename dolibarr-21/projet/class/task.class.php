@@ -513,7 +513,7 @@ class Task extends \CommonObjectLine
     {
     }
     /**
-     *	Update time spent
+     *	Update time spent line with id $this->timespent_id. New values are into ->timespent_xxx fields.
      *
      *  @param	User	$user           User id
      *  @param  int		$notrigger	    0=launch triggers after, 1=disable triggers

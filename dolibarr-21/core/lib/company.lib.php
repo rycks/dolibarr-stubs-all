@@ -250,9 +250,10 @@ function addMailingEventTypeSQL($actioncode, $objcon, $filterobj)
  *
  * @param   Societe		$mysoc			Third party
  * @param   Translate	$langs			Output language
+ * @param	string		$suffix			Suffix
  * @return	void
  */
-function htmlPrintOnlineHeader($mysoc, $langs)
+function htmlPrintOnlineHeader($mysoc, $langs, $suffix = '')
 {
 }
 /**

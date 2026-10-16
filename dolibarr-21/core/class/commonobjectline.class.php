@@ -224,6 +224,10 @@ abstract class CommonObjectLine extends \CommonObject
      */
     public $multicurrency_subprice;
     /**
+     * @var float Multicurrency subprice
+     */
+    public $multicurrency_subprice_ttc;
+    /**
      * @var float Multicurrency total without tax
      */
     public $multicurrency_total_ht;
@@ -244,13 +248,15 @@ abstract class CommonObjectLine extends \CommonObject
     {
     }
     /**
-     *	Returns the label, short_label or code found in units dictionary from ->fk_unit.
-     *  A langs->trans() must be called on result to get translated value.
+     * Reads the units dictionary to return the translation code of a unit (if type='code'), or translated long label (if type='long') or short label (if type='short').
+     * TODO Duplicate of getLabelOfUnit() in product.class.php
      *
-     * 	@param	string $type 	Label type ('long', 'short' or 'code'). This can be a translation key.
-     *	@return	string|int<-1,1>	Return integer <0 if KO, label if OK (Example: 'long', 'short' or 'unitCODE')
+     * @param  	string 			$type 			Code type ('code', 'long' or 'short')
+     * @param	Translate|null	$outputlangs	Language to use for long label translation
+     * @param	int				$noentities		No entities
+     * @return 	string|int 						Return integer <0 if KO, code or label of unit if OK.
      */
-    public function getLabelOfUnit($type = 'long')
+    public function getLabelOfUnit($type = 'long', $outputlangs = \null, $noentities = 0)
     {
     }
     /**
