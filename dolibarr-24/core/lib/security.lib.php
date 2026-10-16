@@ -66,6 +66,21 @@ function restrictedArea(\User $user, $features, $object = 0, $tableandshare = ''
 {
 }
 /**
+ * Check that a user can access the object a document is attached to. The permission on the module must have been checked
+ * before with dol_check_secure_access_document().
+ * This function adds the check per object (thirdparties of a restricted sales representative, ...) by calling restrictedArea().
+ *
+ * @param	User		$user			User to check
+ * @param	string		$modulepart		Modulepart of the document
+ * @param	string		$original_file	Path of the file relative to the directory of the modulepart (for example 'IN2601-0001/IN2601-0001.pdf')
+ * @param	string		$mode			Check permission for 'read' or 'write'
+ * @return	int<0,1>					1 if access is allowed, 0 if not
+ * @see dol_check_secure_access_document(), restrictedArea()
+ */
+function checkUserAccessToDocumentObject(\User $user, $modulepart, $original_file, $mode = 'read')
+{
+}
+/**
  * Check that access by a given user to an object is ok.
  * This function is also called by restrictedArea() that check before if module is enabled and if permission of user for $action is ok.
  *

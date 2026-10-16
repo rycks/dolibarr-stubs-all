@@ -106,6 +106,16 @@ class Paiements extends \DolibarrApi
     /* END MODULEBUILDER API PAIEMENT */
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.PublicUnderscore
     /**
+     * Check that an external user can access a payment: all invoices of the payment must belong to the user's thirdparty
+     *
+     * @param	int		$paymentid		ID of payment
+     * @return	bool					True if access is allowed (always true for internal users)
+     */
+    protected function _checkAccessToPaymentForExternalUser($paymentid)
+    {
+    }
+    // phpcs:disable PEAR.NamingConventions.ValidFunctionName.PublicUnderscore
+    /**
      * Clean sensitive object data fields
      * @phpstan-template T
      *

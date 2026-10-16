@@ -78,10 +78,11 @@ class FormCompany extends \Form
      *    @param    int|string	$country_codeid    	Country code or id: 0=list for all countries, otherwise country code or country rowid to show
      *    @param    string		$htmlname			Id of department. If '', we want only the string with <option>
      *    @param	string		$morecss			Add more css
+     *    @param	int			$showempty			Show an empty option even when listing all countries
      * 	  @return	string							String with HTML select
      *    @see select_country()
      */
-    public function select_state($selected = 0, $country_codeid = 0, $htmlname = 'state_id', $morecss = 'maxwidth200onsmartphone  minwidth300')
+    public function select_state($selected = 0, $country_codeid = 0, $htmlname = 'state_id', $morecss = 'maxwidth200onsmartphone  minwidth300', $showempty = 0)
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps

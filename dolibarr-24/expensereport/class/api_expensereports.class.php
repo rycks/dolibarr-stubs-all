@@ -27,6 +27,10 @@ class ExpenseReports extends \DolibarrApi
      */
     public $expensereport;
     /**
+     * @var string[]	Properties never taken from the request by post() and put(): set by the workflow methods or computed from the lines
+     */
+    public static $FIELDSNOTUPDATABLE = array('fk_statut', 'status', 'statut', 'paid', 'fk_user_valid', 'fk_user_approve', 'fk_user_refuse', 'fk_user_cancel', 'fk_user_creat', 'fk_user_modif', 'date_valid', 'date_approve', 'date_refuse', 'date_cancel', 'detail_refuse', 'detail_cancel', 'total_ht', 'total_tva', 'total_ttc', 'total_localtax1', 'total_localtax2', 'ref', 'entity');
+    /**
      * Constructor
      */
     public function __construct()
