@@ -157,6 +157,15 @@ class ChargeSociales extends \CommonObject
     public function create($user)
     {
     }
+    // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
+    /**
+     *  Return if a social contribution can be deleted: not once a payment exists, as for invoices
+     *
+     *  @return    int         Return integer <=0 if no, >0 if yes
+     */
+    public function is_erasable()
+    {
+    }
     /**
      *      Delete a social contribution
      *

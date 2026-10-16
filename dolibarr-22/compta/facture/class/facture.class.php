@@ -356,9 +356,10 @@ class Facture extends \CommonInvoice
      *
      *	@param      User	$user        	User that clone
      *  @param  	int 	$fromid         Id of object to clone
+     *  @param		int		$forceentity	Entity id to force (used by multicompany to clone into another entity)
      * 	@return		int					    New id of clone
      */
-    public function createFromClone(\User $user, $fromid = 0)
+    public function createFromClone(\User $user, $fromid = 0, $forceentity = \null)
     {
     }
     /**

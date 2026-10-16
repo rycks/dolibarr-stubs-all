@@ -131,7 +131,7 @@ class EcmDirectory extends \CommonObject
     /**
      *	Update cache of nb of documents into database
      *
-     * 	@param	string	$value		'+' or '-' or new number
+     * 	@param	string	$value		'+' (one more) or '-' (one less) or new number (like '5') or 'database' (recompute from database)
      *  @return int		         	Return integer <0 if KO, >0 if OK
      */
     public function changeNbOfFiles($value)

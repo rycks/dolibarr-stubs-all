@@ -31,6 +31,7 @@
  * @var Translate $langs
  *
  * @var string $action
+ * @var int $id
  * @var int $permissiondellink
  */
 $dellinkid = \GETPOSTINT('dellinkid');

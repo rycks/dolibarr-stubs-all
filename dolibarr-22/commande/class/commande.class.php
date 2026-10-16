@@ -83,6 +83,10 @@ class Commande extends \CommonOrder
      */
     public $cond_reglement_doc;
     /**
+     * @var string Label of the payment terms, used when there is no label for documents
+     */
+    public $cond_reglement_label;
+    /**
      * @var float 	Deposit percent for payment terms.
      *				Populated by $CommonObject->setPaymentTerms().
      * @see setPaymentTerms()
@@ -381,9 +385,10 @@ class Commande extends \CommonOrder
      *
      * 	@param      User	$user       Object user that close
      *  @param		int		$notrigger	1=Does not execute triggers, 0=Execute triggers
+     *  @param		int		$checkpermission	1=Check the user can close the order, 0=Do not check (automatic action such as a workflow trigger)
      *	@return		int					Return integer <0 if KO, 0=Nothing done, >0 if OK
      */
-    public function cloture($user, $notrigger = 0)
+    public function cloture($user, $notrigger = 0, $checkpermission = 1)
     {
     }
     /**

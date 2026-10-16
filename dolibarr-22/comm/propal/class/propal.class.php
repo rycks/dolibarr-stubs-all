@@ -157,6 +157,10 @@ class Propal extends \CommonObject
      */
     public $cond_reglement_doc;
     /**
+     * @var string Label of the payment terms, used when there is no label for documents
+     */
+    public $cond_reglement_label;
+    /**
      * @var string method of payment code
      */
     public $mode_reglement_code;

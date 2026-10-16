@@ -115,6 +115,14 @@ class Reception extends \CommonObject
      */
     public $date_valid;
     /**
+     * @var int ID of user author
+     */
+    public $fk_user_author;
+    /**
+     * @var int ID of user who validated
+     */
+    public $fk_user_valid;
+    /**
      * @var array<int,string>
      */
     public $meths;

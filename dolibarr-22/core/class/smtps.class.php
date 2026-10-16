@@ -75,6 +75,10 @@ class SMTPs
      */
     private $_msgId = \null;
     /**
+     * @var string Authentication method ('LOGIN', 'PLAIN', 'XOAUTH2', 'NONE'). If empty, MAIN_MAIL_SMTPS_AUTH_TYPE is used.
+     */
+    private $_smtpsAuthType = '';
+    /**
      * @var ?array{org:string,real?:string,addr:string,user:string,host:string} Who sends the Message
      * This can be defined via a INI file or via a setter method
      */
@@ -551,6 +555,15 @@ class SMTPs
      * @return 	void
      */
     public function setToken($_strToken)
+    {
+    }
+    /**
+     * Authentication method to use (the one of the send context)
+     *
+     * @param	string	$_strAuthType	'LOGIN', 'PLAIN', 'XOAUTH2' or 'NONE'. If empty, MAIN_MAIL_SMTPS_AUTH_TYPE is used.
+     * @return	void
+     */
+    public function setAuthType($_strAuthType)
     {
     }
     /**

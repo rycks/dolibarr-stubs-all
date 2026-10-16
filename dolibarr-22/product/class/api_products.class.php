@@ -809,6 +809,7 @@ class Products extends \DolibarrApi
      *
      * @throws RestException 500	System error
      * @throws RestException 401
+     * @throws RestException 404
      *
      * @url PUT variants/{id}
      */
@@ -825,6 +826,7 @@ class Products extends \DolibarrApi
      *
      * @throws RestException 500	System error
      * @throws RestException 401
+     * @throws RestException 404
      *
      * @url DELETE variants/{id}
      */

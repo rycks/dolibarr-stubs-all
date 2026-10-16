@@ -21,7 +21,7 @@ function install_usage($program, $header)
 \define('MAIN_DB_PREFIX', isset($dolibarr_main_db_prefix) ? $dolibarr_main_db_prefix : '');
 \define('DOL_CLASS_PATH', 'class/');
 // Filesystem path to class dir
-\define('DOL_DATA_ROOT', isset($dolibarr_main_data_root) ? $dolibarr_main_data_root : \DOL_DOCUMENT_ROOT . '/../documents');
+\define('DOL_DATA_ROOT', !empty($dolibarr_main_data_root) ? $dolibarr_main_data_root : \DOL_DOCUMENT_ROOT . '/../documents');
 \define('DOL_MAIN_URL_ROOT', isset($dolibarr_main_url_root) ? $dolibarr_main_url_root : '');
 \define('DOL_URL_ROOT', $suburi);
 \define('SYSLOG_HANDLERS', '["mod_syslog_file"]');

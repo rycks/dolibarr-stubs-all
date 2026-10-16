@@ -1709,9 +1709,9 @@ class Product extends \CommonObject
     {
     }
     /**
-     * Return if the object has a sell-by or eat-by date.
+     * Return if the object has a batch management.
      *
-     * @return boolean     True if the object has a sell-by or eat-by date, false otherwise.
+     * @return boolean     True if the object has a batch management, false otherwise.
      */
     public function hasbatch()
     {

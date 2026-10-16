@@ -43,6 +43,10 @@ class Expedition extends \CommonObject
      */
     public $fk_user_author;
     /**
+     * @var int ID of user who validated
+     */
+    public $fk_user_valid;
+    /**
      * @var int
      */
     public $socid;

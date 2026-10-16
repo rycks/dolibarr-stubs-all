@@ -131,7 +131,7 @@ class Users extends \DolibarrApi
      * @phpstan-param ?array<string,mixed> $request_data
      * @return int
      *
-     * @throws RestException 401 Not allowed
+     * @throws RestException 403 Not allowed
      */
     public function post($request_data = \null)
     {
