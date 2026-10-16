@@ -369,9 +369,9 @@ class EmailCollector extends \CommonObject
      * @param 	Object $mbox     	Structure
      * @param 	string $mid		    UID email
      * @param 	string $destdir	    Target dir for attachments. Leave blank to parse without writing to disk.
-     * @return 	void
+     * @return 	int
      */
-    private function getmsg($mbox, $mid, $destdir = '')
+    private function getmsg($mbox, $mid, $destdir = '') : int
     {
     }
     /* partno string

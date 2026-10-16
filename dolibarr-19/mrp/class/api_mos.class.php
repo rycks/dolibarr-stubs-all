@@ -85,6 +85,39 @@ class Mos extends \DolibarrApi
     {
     }
     /**
+     * Produce and consume all
+     *
+     * - If arraytoconsume and arraytoproduce are both filled, this fill an empty MO with the lines to consume and produce and record the consumption and production.
+     * - If arraytoconsume and arraytoproduce are not provided, it consumes and produces all existing lines.
+     *
+     * Example:
+     * {
+     *   "inventorylabel": "Produce and consume using API",
+     *   "inventorycode": "PRODUCEAPI-YY-MM-DD",
+     *   "autoclose": 1,
+     *   "arraytoconsume": [
+     *       "objectid": 123, -- ID_of_product
+     *       "qty": "2",
+     *       "fk_warehouse": "789"
+     *   ],
+     *   "arraytoproduce": [
+     *       "objectid": 456, -- ID_of_product
+     *       "qty": "1",
+     *       "fk_warehouse": "789"
+     *   ]
+     * }
+     *
+     * @param int       $id				ID of state
+     * @param array		$request_data   Request datas
+     *
+     * @url     POST {id}/produceandconsumeall
+     *
+     * @return int  ID of MO
+     */
+    public function produceAndConsumeAll($id, $request_data = \null)
+    {
+    }
+    /**
      * Produce and consume
      *
      * Example:
@@ -92,8 +125,21 @@ class Mos extends \DolibarrApi
      *   "inventorylabel": "Produce and consume using API",
      *   "inventorycode": "PRODUCEAPI-YY-MM-DD",
      *   "autoclose": 1,
-     *   "arraytoconsume": [],
-     *   "arraytoproduce": []
+     *   "arraytoconsume": [
+     *     {
+     *       "objectid": "123",  -- rowid of MoLine
+     *       "qty": "2",
+     *       "fk_warehouse": "789" -- "0" or empty, if stock change is disabled.
+     *     }
+     *   ],
+     *   "arraytoproduce": [
+     *     {
+     *       "objectid": "456",  -- rowid of MoLine
+     *       "qty": "1",
+     *       "fk_warehouse": "789",
+     *       "pricetoproduce": "12.3"  -- optional
+     *     }
+     *   ]
      * }
      *
      * @param int       $id				ID of state

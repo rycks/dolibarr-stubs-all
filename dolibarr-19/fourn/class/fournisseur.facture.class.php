@@ -163,7 +163,6 @@ class FactureFournisseur extends \CommonInvoice
     public $extraparams = array();
     /**
      * Invoice lines
-     * @var SupplierInvoiceLine[]
      */
     public $lines = array();
     /**

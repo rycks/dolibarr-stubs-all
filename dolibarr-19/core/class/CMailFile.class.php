@@ -43,18 +43,18 @@ class CMailFile
      * @var string[] Array of Error code (or message)
      */
     public $errors = array();
+    /**
+     * @var SMTPS (if this method is used)
+     */
     public $smtps;
-    // Contains SMTPs object (if this method is used)
-    public $phpmailer;
-    // Contains PHPMailer object (if this method is used)
+    /**
+     * @var Swift_Mailer (if the method is used)
+     */
+    public $mailer;
     /**
      * @var Swift_SmtpTransport
      */
     public $transport;
-    /**
-     * @var Swift_Mailer
-     */
-    public $mailer;
     /**
      * @var Swift_Plugins_Loggers_ArrayLogger
      */
@@ -67,6 +67,9 @@ class CMailFile
     public $styleCSS;
     //! Defined background directly in body tag
     public $bodyCSS;
+    /**
+     * @var string	Message-ID of the email to send (generated)
+     */
     public $msgid;
     public $headers;
     public $message;

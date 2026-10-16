@@ -209,23 +209,25 @@ class Categorie extends \CommonObject
      *  Add category into database
      *
      *  @param	User	$user		Object user
+     *  @param	int		$notrigger	1=Does not execute triggers, 0= execute triggers
      *  @return	int 				-1 : SQL error
      *          					-2 : new ID unknown
      *          					-3 : Invalid category
      * 								-4 : category already exists
      */
-    public function create($user)
+    public function create($user, $notrigger = 0)
     {
     }
     /**
      * 	Update category
      *
      *	@param	User	$user		Object user
+     *  @param	int		$notrigger	1=Does not execute triggers, 0= execute triggers
      * 	@return	int		 			1 : OK
      *          					-1 : SQL error
      *          					-2 : invalid category
      */
-    public function update(\User $user)
+    public function update(\User $user, $notrigger = 0)
     {
     }
     /**
@@ -519,10 +521,11 @@ class Categorie extends \CommonObject
      *	Update ou cree les traductions des infos produits
      *
      *	@param	User	$user		Object user
+     *  @param	int		$notrigger	1=Does not execute triggers, 0= execute triggers
      *
      *	@return		int		Return integer <0 if KO, >0 if OK
      */
-    public function setMultiLangs($user)
+    public function setMultiLangs(\User $user, $notrigger = 0)
     {
     }
     /**

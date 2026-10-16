@@ -278,6 +278,11 @@ class User extends \CommonObject
      * @var int egroupware id
      */
     public $egroupware_id;
+    /**
+     * @var array		Entity in table llx_user_group
+     * @deprecated		Seems not used.
+     */
+    public $usergroup_entity;
     public $fields = array('rowid' => array('type' => 'integer', 'label' => 'TechnicalID', 'enabled' => 1, 'visible' => -2, 'notnull' => 1, 'index' => 1, 'position' => 1, 'comment' => 'Id'), 'lastname' => array('type' => 'varchar(50)', 'label' => 'LastName', 'enabled' => 1, 'visible' => 1, 'notnull' => 1, 'showoncombobox' => 1, 'index' => 1, 'position' => 20, 'searchall' => 1), 'firstname' => array('type' => 'varchar(50)', 'label' => 'FirstName', 'enabled' => 1, 'visible' => 1, 'notnull' => 1, 'showoncombobox' => 1, 'index' => 1, 'position' => 10, 'searchall' => 1), 'ref_employee' => array('type' => 'varchar(50)', 'label' => 'RefEmployee', 'enabled' => 1, 'visible' => 1, 'notnull' => 1, 'showoncombobox' => 1, 'index' => 1, 'position' => 30, 'searchall' => 1), 'national_registration_number' => array('type' => 'varchar(50)', 'label' => 'NationalRegistrationNumber', 'enabled' => 1, 'visible' => 1, 'notnull' => 1, 'showoncombobox' => 1, 'index' => 1, 'position' => 40, 'searchall' => 1));
     const STATUS_DISABLED = 0;
     const STATUS_ENABLED = 1;

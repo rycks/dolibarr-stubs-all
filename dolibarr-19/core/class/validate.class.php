@@ -190,4 +190,16 @@ class Validate
     public function isFetchable($id, $classname, $classpath)
     {
     }
+    /**
+     * Check for all values in db for an element
+     * @see self::isFetchable()
+     *
+     * @param integer  $id of element
+     * @param string $element_type the element type
+     * @return boolean Validity is ok or not
+     * @throws Exception
+     */
+    public function isFetchableElement($id, $element_type)
+    {
+    }
 }

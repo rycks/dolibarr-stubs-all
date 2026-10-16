@@ -144,6 +144,7 @@ class Conf extends \stdClass
     public $notification;
     public $expensereport;
     public $productbatch;
+    public $api;
     /**
      * @deprecated Use project
      */

@@ -16,6 +16,14 @@ abstract class CommonOrder extends \CommonObject
     public function getKanbanView($option = '', $arraydata = \null)
     {
     }
+    /** return nb of fines of order where products or services that can be buyed
+     *
+     * @param	boolean		$ignoreFree		Ignore free lines
+     * @return	int							number of products or services on buy in a command
+     */
+    public function getNbLinesProductOrServiceOnBuy($ignoreFree = \false)
+    {
+    }
     /**
      * @var string code
      */

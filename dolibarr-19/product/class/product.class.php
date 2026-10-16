@@ -20,7 +20,7 @@ class Product extends \CommonObject
     /**
      * @var array	List of child tables. To test if we can delete object.
      */
-    protected $childtables = array('supplier_proposaldet' => array('name' => 'SupplierProposal', 'parent' => 'supplier_proposal', 'parentkey' => 'fk_supplier_proposal'), 'propaldet' => array('name' => 'Proposal', 'parent' => 'propal', 'parentkey' => 'fk_propal'), 'commandedet' => array('name' => 'Order', 'parent' => 'commande', 'parentkey' => 'fk_commande'), 'facturedet' => array('name' => 'Invoice', 'parent' => 'facture', 'parentkey' => 'fk_facture'), 'contratdet' => array('name' => 'Contract', 'parent' => 'contrat', 'parentkey' => 'fk_contrat'), 'facture_fourn_det' => array('name' => 'SupplierInvoice', 'parent' => 'facture_fourn', 'parentkey' => 'fk_facture_fourn'), 'commande_fournisseurdet' => array('name' => 'SupplierOrder', 'parent' => 'commande_fournisseur', 'parentkey' => 'fk_commande'));
+    protected $childtables = array('supplier_proposaldet' => array('name' => 'SupplierProposal', 'parent' => 'supplier_proposal', 'parentkey' => 'fk_supplier_proposal'), 'propaldet' => array('name' => 'Proposal', 'parent' => 'propal', 'parentkey' => 'fk_propal'), 'commandedet' => array('name' => 'Order', 'parent' => 'commande', 'parentkey' => 'fk_commande'), 'facturedet' => array('name' => 'Invoice', 'parent' => 'facture', 'parentkey' => 'fk_facture'), 'contratdet' => array('name' => 'Contract', 'parent' => 'contrat', 'parentkey' => 'fk_contrat'), 'facture_fourn_det' => array('name' => 'SupplierInvoice', 'parent' => 'facture_fourn', 'parentkey' => 'fk_facture_fourn'), 'commande_fournisseurdet' => array('name' => 'SupplierOrder', 'parent' => 'commande_fournisseur', 'parentkey' => 'fk_commande'), 'mrp_production' => array('name' => 'Mo', 'parent' => 'mrp_mo', 'parentkey' => 'fk_mo'), 'bom_bom' => array('name' => 'BOM'), 'bom_bomline' => array('name' => 'BOMLine', 'parent' => 'bom_bom', 'parentkey' => 'fk_bom'));
     /**
      * 0=No test on entity, 1=Test with field entity, 2=Test with link by societe
      *
@@ -166,10 +166,14 @@ class Product extends \CommonObject
     /**
      * Cost price
      *
-     * @var float
+     * @var ?float
      */
     public $cost_price;
-    //! Average price value for product entry into stock (PMP)
+    /**
+     * Average price value for product entry into stock (PMP)
+     *
+     * @var ?float
+     */
     public $pmp;
     /**
      * Stock alert
@@ -394,7 +398,7 @@ class Product extends \CommonObject
      *
      * @var array
      */
-    public $sousprods;
+    public $sousprods = array();
     /**
      * Path of subproducts. Build from ->sousprods with get_arbo_each_prod()
      */

@@ -16,7 +16,7 @@
  * Copyright (C) 2012-2016  Marcos García           <marcosgdf@gmail.com>
  * Copyright (C) 2012       Cedric Salvador         <csalvador@gpcsolutions.fr>
  * Copyright (C) 2012-2015  Raphaël Doursenaud      <rdoursenaud@gpcsolutions.fr>
- * Copyright (C) 2014-2023  Alexandre Spangaro      <aspangaro@open-dsi.fr>
+ * Copyright (C) 2014-2026  Alexandre Spangaro      <alexandre@inovea-conseil.com>
  * Copyright (C) 2018-2022  Ferran Marcet           <fmarcet@2byte.es>
  * Copyright (C) 2018-2021  Frédéric France         <frederic.france@netlogic.fr>
  * Copyright (C) 2018       Nicolas ZABOURI	        <info@inovea-conseil.com>
@@ -1520,22 +1520,22 @@ class Form
      * Can use autocomplete with ajax after x key pressed or a full combo, depending on setup.
      * This is the generic method that will replace all specific existing methods.
      *
-     * @param 	string 	$objectdesc 			'ObjectClass:PathToClass[:AddCreateButtonOrNot[:Filter[:Sortfield]]]'. For hard coded custom needs. Try to prefer method using $objectfield instead of $objectdesc.
-     * @param 	string 	$htmlname 				Name of HTML select component
-     * @param 	int 	$preselectedvalue 		Preselected value (ID of element)
-     * @param 	string 	$showempty 				''=empty values not allowed, 'string'=value show if we allow empty values (for example 'All', ...)
-     * @param 	string 	$searchkey 				Search criteria
-     * @param 	string 	$placeholder 			Place holder
-     * @param 	string 	$morecss 				More CSS
-     * @param 	string 	$moreparams 			More params provided to ajax call
-     * @param 	int 	$forcecombo 			Force to load all values and output a standard combobox (with no beautification)
-     * @param 	int 	$disabled 				1=Html component is disabled
-     * @param 	string 	$selected_input_value 	Value of preselected input text (for use with ajax)
-     * @param	string	$objectfield			Object:Field that contains the definition (in table $fields or $extrafields). Example: 'Object:xxx' or 'Module_Object:xxx' or 'Object:options_xxx' or 'Module_Object:options_xxx'
+     * @param 	string $objectdesc           'ObjectClass:PathToClass[:AddCreateButtonOrNot[:Filter[:Sortfield]]]'. For hard coded custom needs. Try to prefer method using $objectfield instead of $objectdesc.
+     * @param 	string $htmlname             Name of HTML select component
+     * @param 	int    $preSelectedValue     Preselected value (ID of element)
+     * @param 	string $showempty            ''=empty values not allowed, 'string'=value show if we allow empty values (for example 'All', ...)
+     * @param 	string $searchkey            Search criteria
+     * @param 	string $placeholder          Place holder
+     * @param 	string $morecss              More CSS
+     * @param 	string $moreparams           More params provided to ajax call
+     * @param 	int    $forcecombo           Force to load all values and output a standard combobox (with no beautification)
+     * @param 	int    $disabled             1=Html component is disabled
+     * @param 	string $selected_input_value Value of preselected input text (for use with ajax)
+     * @param	string $objectfield          Object:Field that contains the definition (in table $fields or $extrafields). Example: 'Object:xxx' or 'Module_Object:xxx' or 'Object:options_xxx' or 'Module_Object:options_xxx'
      * @return  string	                      	Return HTML string
      * @see selectForFormsList(), select_thirdparty_list()
      */
-    public function selectForForms($objectdesc, $htmlname, $preselectedvalue, $showempty = '', $searchkey = '', $placeholder = '', $morecss = '', $moreparams = '', $forcecombo = 0, $disabled = 0, $selected_input_value = '', $objectfield = '')
+    public function selectForForms($objectdesc, $htmlname, $preSelectedValue, $showempty = '', $searchkey = '', $placeholder = '', $morecss = '', $moreparams = '', $forcecombo = 0, $disabled = 0, $selected_input_value = '', $objectfield = '')
     {
     }
     /**

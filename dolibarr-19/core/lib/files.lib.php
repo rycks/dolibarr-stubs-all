@@ -81,9 +81,10 @@ function dol_dir_list_in_database($path, $filter = "", $excludefilter = \null, $
  *
  * @param	array	$filearray			Array of files obtained using dol_dir_list
  * @param	string	$relativedir		Relative dir from DOL_DATA_ROOT
+ * @param	int		$noCreateEcmFile	Manages ECM file creation
  * @return	void
  */
-function completeFileArrayWithDatabaseInfo(&$filearray, $relativedir)
+function completeFileArrayWithDatabaseInfo(&$filearray, $relativedir, $noCreateEcmFile = 0)
 {
 }
 /**

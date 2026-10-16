@@ -217,7 +217,7 @@ class Ticket extends \CommonObject
      *         Note: Filter can be a string like "(t.ref:like:'SO-%') or (t.date_creation:<:'20160101') or (t.nature:is:NULL)"
      *  'label' the translation key.
      *  'picto' is code of a picto to show before value in forms
-     *  'enabled' is a condition when the field must be managed (Example: 1 or '$conf->global->MY_SETUP_PARAM)
+     *  'enabled' is a condition when the field must be managed (Example: 1 or 'getDolGlobalString('MY_SETUP_PARAM'))
      *  'position' is the sort order of field.
      *  'notnull' is set to 1 if not null in database. Set to -1 if we must set data to null if empty ('' or 0).
      *  'visible' says if field is visible in list (Examples: 0=Not visible, 1=Visible on list and create/update/view forms, 2=Visible on list only, 3=Visible on create/update/view form only (not list), 4=Visible on list and update/view form only (not create). 5=Visible on list and view only (not create/not update). Using a negative value means field is not shown by default on list but can be selected for viewing)
@@ -689,7 +689,7 @@ class Ticket extends \CommonObject
      *
      * @param string $subject          	  Email subject
      * @param string $message          	  Email message
-     * @param int    $send_internal_cc 	  Receive a copy on internal email ($conf->global->TICKET_NOTIFICATION_EMAIL_FROM)
+     * @param int    $send_internal_cc 	  Receive a copy on internal email (getDolGlobalString('TICKET_NOTIFICATION_EMAIL_FROM')
      * @param array  $array_receiver   	  Array of receiver. exemple array('name' => 'John Doe', 'email' => 'john@doe.com', etc...)
      * @param array	 $filename_list       List of files to attach (full path of filename on file system)
      * @param array	 $mimetype_list       List of MIME type of attached files

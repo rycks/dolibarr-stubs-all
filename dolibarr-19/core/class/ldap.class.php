@@ -237,8 +237,8 @@ class Ldap
     /**
      * Unbind of LDAP server (close connection).
      *
-     * @return	boolean					true or false
-     * @see close()
+     * @return		boolean		true or false
+     * @see	close()
      */
     public function unbind()
     {

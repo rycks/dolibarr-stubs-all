@@ -101,6 +101,7 @@ class SupplierProposal extends \CommonObject
     public $cond_reglement_code;
     public $cond_reglement_doc;
     // label doc
+    public $cond_reglement_label;
     public $mode_reglement_code;
     /**
      * @deprecated

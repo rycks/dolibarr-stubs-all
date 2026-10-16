@@ -12,6 +12,7 @@
  * Copyright (C) 2017       Nicolas ZABOURI         <info@inovea-conseil.com>
  * Copyright (C) 2018-2022  Frédéric France         <frederic.france@netlogic.fr>
  * Copyright (C) 2022 		Antonin MARCHAL         <antonin@letempledujeu.fr>
+ * Copyright (C) 2024		Joachim Kueter			<git-jk@bloxera.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -297,9 +298,10 @@ class ExtraFields
      * @param   string	$value          		Value to show
      * @param	string	$moreparam				To add more parameters on html input tag (only checkbox use html input for output rendering)
      * @param	string	$extrafieldsobjectkey	Required (for example $object->table_element).
+     * @param 	Translate $outputlangs 			Output language
      * @return	string							Formated value
      */
-    public function showOutputField($key, $value, $moreparam = '', $extrafieldsobjectkey = '')
+    public function showOutputField($key, $value, $moreparam = '', $extrafieldsobjectkey = '', $outputlangs = \null)
     {
     }
     /**

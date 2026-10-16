@@ -1,7 +1,7 @@
 <?php
 
 /**
- *	Class to manage withdrawal receipts
+ *	Class to manage direct debit.
  */
 class BonPrelevement extends \CommonObject
 {

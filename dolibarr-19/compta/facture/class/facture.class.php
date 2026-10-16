@@ -18,6 +18,10 @@ class Facture extends \CommonInvoice
      */
     public $table_element_line = 'facturedet';
     /**
+     * @var string Name of class line
+     */
+    public $class_element_line = 'FactureLigne';
+    /**
      * @var string Fieldname with ID of parent key if this field has a parent
      */
     public $fk_element = 'fk_facture';
@@ -592,7 +596,7 @@ class Facture extends \CommonInvoice
      *
      * @param	User	$user           Object user that validate
      * @param   string	$force_number	Reference to force on invoice
-     * @param	int		$idwarehouse	Id of warehouse to use for stock decrease if option to decreasenon stock is on (0=no decrease)
+     * @param	int		$idwarehouse	Id of warehouse to use for stock decrease if option to decrease on stock is on (0=no decrease)
      * @param	int		$notrigger		1=Does not execute triggers, 0= execute triggers
      * @param	int		$batch_rule		0=do not decrement batch, else batch rule to use, 1=take in batches ordered by sellby and eatby dates
      * @return	int						Return integer <0 if KO, 0=Nothing done because invoice is not a draft, >0 if OK
@@ -673,7 +677,7 @@ class Facture extends \CommonInvoice
      *  @param     	double		$remise_percent  	Percentage discount of the line
      *  @param     	int		    $date_start      	Date de debut de validite du service
      *  @param     	int		    $date_end        	Date de fin de validite du service
-     *  @param     	double		$txtva          	VAT Rate (Can be '8.5', '8.5 (ABC)')
+     *  @param     	double|string	$txtva          	VAT Rate (Can be '8.5', '8.5 (ABC)')
      * 	@param		double		$txlocaltax1		Local tax 1 rate
      *  @param		double		$txlocaltax2		Local tax 2 rate
      * 	@param     	string		$price_base_type 	HT or TTC

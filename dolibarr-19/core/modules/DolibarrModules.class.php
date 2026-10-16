@@ -757,4 +757,13 @@ class DolibarrModules
     public function checkForUpdate()
     {
     }
+    /**
+     * Check for module compliance with Dolibarr rules and law
+     * If a module is reported by this function,it is surely a malware. Delete it as soon as possible.
+     *
+     * @return int|string 	Return integer <0 if Error, 0 == not compliant, 'string' with message if module not compliant
+     */
+    public function checkForCompliance()
+    {
+    }
 }

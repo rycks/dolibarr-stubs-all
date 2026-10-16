@@ -17,6 +17,10 @@ class StockTransfer extends \CommonObject
      */
     public $table_element = 'stocktransfer_stocktransfer';
     /**
+     * @var string    Name of subtable line
+     */
+    public $table_element_line = 'stocktransfer_stocktransferline';
+    /**
      * @var int  Does this object support multicompany module ?
      * 0=No test on entity, 1=Test with field entity, 'field@table'=Test with link by field@table
      */
@@ -25,6 +29,10 @@ class StockTransfer extends \CommonObject
      * @var int  Does object support extrafields ? 0=No, 1=Yes
      */
     public $isextrafieldmanaged = 1;
+    /**
+     * @var string    Field with ID of parent key if this object has a parent
+     */
+    public $fk_element = 'fk_stocktransfer';
     /**
      * @var array    List of child tables. To know object to delete on cascade.
      *               If name matches '@ClassNAme:FilePathClass;ParentFkFieldName' it will

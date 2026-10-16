@@ -40,6 +40,11 @@
  */
 \define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
 /**
+ * @var Conf $conf
+ * @var Translate $langs
+ */
+$grant_query = '';
+/**
  * Reporte liens vers une facture de paiements sur table de jointure (lien n-n paiements factures)
  *
  * @param	DoliDB		$db		Database handler

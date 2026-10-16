@@ -184,11 +184,10 @@ class BookKeeping extends \CommonObject
     /**
      * Load object in memory from the database
      *
-     * @param int $id Id object
-     * @param string $ref Ref
-     * @param string $mode 	Mode
-     *
-     * @return int Return integer <0 if KO, 0 if not found, >0 if OK
+     * @param int 		$id 	Id object
+     * @param string 	$ref 	Ref
+     * @param string 	$mode 	Mode ('' or 'tmp_')
+     * @return int 				Return integer <0 if KO, 0 if not found, >0 if OK
      */
     public function fetch($id, $ref = \null, $mode = '')
     {
@@ -265,12 +264,12 @@ class BookKeeping extends \CommonObject
     /**
      * Delete object in database
      *
-     * @param User $user User that deletes
-     * @param bool $notrigger false=launch triggers after, true=disable triggers
-     * @param string $mode Mode
-     * @return int Return integer <0 if KO, >0 if OK
+     * @param User 		$user 		User that deletes
+     * @param int 		$notrigger 	0=launch triggers after, 1=disable triggers
+     * @param string 	$mode 		Mode ('' or 'tmp_')
+     * @return int 					Return integer <0 if KO, >0 if OK
      */
-    public function delete(\User $user, $notrigger = \false, $mode = '')
+    public function delete(\User $user, $notrigger = 0, $mode = '')
     {
     }
     /**
@@ -423,9 +422,10 @@ class BookKeeping extends \CommonObject
      * Is the bookkeeping can be modified or deleted ?
      *
      * @param 	int		$id		Bookkeeping ID
+     * @param 	string 	$mode 	Mode ('' or 'tmp_')
      * @return 	int				Return integer <0 if KO, == 0 if No, == 1 if Yes
      */
-    public function canModifyBookkeeping($id)
+    public function canModifyBookkeeping($id, $mode = '')
     {
     }
     /**
@@ -448,7 +448,7 @@ class BookKeeping extends \CommonObject
     {
     }
     /**
-     * Get list of fiscal period
+     * Get list of fiscal period ordered by start date.
      *
      * @param 	string	$filter		Filter
      * @return 	array|int			Return integer <0 if KO, Fiscal periods : [[id, date_start, date_end, label], ...]
