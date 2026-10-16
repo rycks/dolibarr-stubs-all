@@ -67,7 +67,7 @@ class Facture extends \CommonInvoice
     /**
      * @var int	Date expected for delivery
      * @deprecated
-     * @see delivery_date
+     * @see $delivery_date
      */
     public $date_livraison;
     /**
@@ -78,7 +78,7 @@ class Facture extends \CommonInvoice
     /**
      * @var string customer ref
      * @deprecated
-     * @see ref_customer
+     * @see $ref_customer
      */
     public $ref_client;
     /**

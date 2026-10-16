@@ -116,7 +116,6 @@ class Propal extends \CommonObject
     // Date expected of shipment (date starting shipment, not the reception that occurs some days after)
     public $fin_validite;
     public $user_author_id;
-    public $user_valid_id;
     public $user_close_id;
     /**
      * @deprecated
