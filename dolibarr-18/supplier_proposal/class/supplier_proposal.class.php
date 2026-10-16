@@ -103,6 +103,7 @@ class SupplierProposal extends \CommonObject
      */
     public $total;
     public $cond_reglement_code;
+    public $cond_reglement_label;
     public $mode_reglement_code;
     public $remise = 0;
     public $remise_percent = 0;

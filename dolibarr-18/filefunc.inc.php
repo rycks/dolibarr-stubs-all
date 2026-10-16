@@ -1,7 +1,7 @@
 <?php
 
 \define('DOL_APPLICATION_TITLE', 'Dolibarr');
-\define('DOL_VERSION', '18.0.4');
+\define('DOL_VERSION', '18.0.10');
 \define('EURO', \chr(128));
 \define('DOL_DOCUMENT_ROOT', $dolibarr_main_document_root);
 // Define some constants

@@ -97,9 +97,10 @@ class pdf_soleil extends \ModelePDFFicheinter
      *   @param		Translate	$outputlangs	Langs object
      *   @param		int			$hidetop		Hide top bar of array
      *   @param		int			$hidebottom		Hide bottom bar of array
+     *   @param		Fichinter	$object			FichInter Object
      *   @return	void
      */
-    protected function _tableau(&$pdf, $tab_top, $tab_height, $nexY, $outputlangs, $hidetop = 0, $hidebottom = 0)
+    protected function _tableau(&$pdf, $tab_top, $tab_height, $nexY, $outputlangs, $hidetop = 0, $hidebottom = 0, \FichInter $object = \null)
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.PublicUnderscore

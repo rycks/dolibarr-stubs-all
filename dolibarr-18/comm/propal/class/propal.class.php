@@ -121,7 +121,6 @@ class Propal extends \CommonObject
     // Date expected of shipment (date starting shipment, not the reception that occurs some days after)
     public $fin_validite;
     public $user_author_id;
-    public $user_valid_id;
     public $user_close_id;
     /**
      * @deprecated
@@ -140,6 +139,7 @@ class Propal extends \CommonObject
     public $total;
     public $cond_reglement_code;
     public $cond_reglement_doc;
+    public $cond_reglement_label;
     public $mode_reglement_code;
     public $deposit_percent;
     /**
@@ -185,6 +185,10 @@ class Propal extends \CommonObject
     public $multicurrency_total_ht;
     public $multicurrency_total_tva;
     public $multicurrency_total_ttc;
+    public $multicurrency_total_localtax1;
+    // not in database
+    public $multicurrency_total_localtax2;
+    // not in database
     /**
      *  'type' if the field format ('integer', 'integer:ObjectClass:PathToClass[:AddCreateButtonOrNot[:Filter]]', 'varchar(x)', 'double(24,8)', 'real', 'price', 'text', 'html', 'date', 'datetime', 'timestamp', 'duration', 'mail', 'phone', 'url', 'password')
      *         Note: Filter can be a string like "(t.ref:like:'SO-%') or (t.date_creation:<:'20160101') or (t.nature:is:NULL)"

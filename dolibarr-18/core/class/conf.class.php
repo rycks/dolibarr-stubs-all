@@ -115,6 +115,7 @@ class Conf
     public $notification;
     public $expensereport;
     public $productbatch;
+    public $api;
     /**
      * Constructor
      */

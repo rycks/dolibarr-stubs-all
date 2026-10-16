@@ -128,6 +128,7 @@ class Invoices extends \DolibarrApi
      *
      * @throws RestException 400
      * @throws RestException 401
+     * @throws RestException 403		Access not allowed for login
      * @throws RestException 404
      * @throws RestException 405
      */

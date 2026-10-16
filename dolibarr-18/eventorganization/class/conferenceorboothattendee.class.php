@@ -383,6 +383,18 @@ class ConferenceOrBoothAttendee extends \CommonObject
     public static function replaceThirdparty(\DoliDB $dbs, $origin_id, $dest_id)
     {
     }
+    /**
+     *	Return full name ('name+' '+lastname)
+     *
+     *	@param	Translate	$langs			Language object for translation of civility (used only if option is 1)
+     *	@param	int			$option			0=No option
+     * 	@param	int			$nameorder		-1=Auto, 0=Lastname+Firstname, 1=Firstname+Lastname, 2=Firstname, 3=Firstname if defined else lastname, 4=Lastname, 5=Lastname if defined else firstname
+     * 	@param	int			$maxlen			Maximum length
+     * 	@return	string						String with full name
+     */
+    public function getFullName($langs, $option = 0, $nameorder = -1, $maxlen = 0)
+    {
+    }
 }
 /**
  * Class ConferenceOrBoothAttendeeLine. You can also remove this and generate a CRUD class for lines objects.

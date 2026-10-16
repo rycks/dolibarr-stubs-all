@@ -224,16 +224,16 @@ class ProductCombination
      * [...]
      * )
      *
-     * @param User 			$user 				Object user
-     * @param Product 		$product 			Parent product
-     * @param array 		$combinations 		Attribute and value combinations.
-     * @param array 		$variations 		Price and weight variations
-     * @param bool|array 	$price_var_percent 	Is the price variation a relative variation?
-     * @param bool|float 	$forced_pricevar 	If the price variation is forced
-     * @param bool|float 	$forced_weightvar 	If the weight variation is forced
-     * @param bool|string 	$forced_refvar 		If the reference is forced
-     * @param string 	    $ref_ext            External reference
-     * @return int 								<0 KO, >0 OK
+     * @param User 				$user 				Object user
+     * @param Product 			$product 			Parent product
+     * @param array 			$combinations 		Attribute and value combinations.
+     * @param array 			$variations 		Price and weight variations
+     * @param bool|array		$price_var_percent 	Is the price variation a relative variation?
+     * @param bool|float|array	$forced_pricevar 	If the price variation is forced
+     * @param bool|float 		$forced_weightvar 	If the weight variation is forced
+     * @param bool|string 		$forced_refvar 		If the reference is forced
+     * @param string 	    	$ref_ext            External reference
+     * @return int 									<0 KO, >0 OK
      */
     public function createProductCombination(\User $user, \Product $product, array $combinations, array $variations, $price_var_percent = \false, $forced_pricevar = \false, $forced_weightvar = \false, $forced_refvar = \false, $ref_ext = '')
     {

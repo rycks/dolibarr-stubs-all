@@ -9,7 +9,7 @@ namespace Luracast\Restler {
      *
      * @category   Framework
      * @package    Restler
-     * @subpackage helper
+     * @subpackage Helper
      * @author     Nick Lombard <github@jigsoft.co.za>
      * @copyright  2012 Luracast
      *
@@ -63,13 +63,13 @@ namespace Luracast\Restler {
          * value once, this will be truthy for life.
          *
          * @param $key   mixed class name considered or a collection of
-         *                     classMap entries
+         *               classMap entries
          * @param $value mixed optional not required when doing a query on
-         *                     key. Default is false we haven't seen this
-         *                     class. Most of the time it will be the filename
-         *                     for include and is set to true if we are unable
-         *                     to load this class iow true == it does not exist.
-         *                     value may also be a callable auto loader function.
+         *               key. Default is false we haven't seen this
+         *               class. Most of the time it will be the filename
+         *               for include and is set to true if we are unable
+         *               to load this class iow true == it does not exist.
+         *               value may also be a callable auto loader function.
          *
          * @return mixed The known value for the key or false if key has no value
          */
@@ -149,6 +149,7 @@ namespace Luracast\Restler {
          *
          * @param $className    string the name of the alias class
          * @param $currentClass string the current class this alias references
+         * @return void
          */
         private function alias($className, $currentClass)
         {

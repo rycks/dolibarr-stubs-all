@@ -369,9 +369,9 @@ class EmailCollector extends \CommonObject
      * @param 	Object $mbox     	Structure
      * @param 	string $mid		    UID email
      * @param 	string $destdir	    Target dir for attachments
-     * @return 	void
+     * @return 	int
      */
-    private function getmsg($mbox, $mid, $destdir = '')
+    private function getmsg($mbox, $mid, $destdir = '') : int
     {
     }
     /* partno string
@@ -434,6 +434,15 @@ class EmailCollector extends \CommonObject
      * @return string				Sanitized string
      */
     protected function removeEmoji($text)
+    {
+    }
+    /**
+     * Get UID of message as a string
+     *
+     * @param int|Webklex\PHPIMAP\Message	$imapemail		UID as int (if native IMAP) or as object (if external library)
+     * @return string						UID as string
+     */
+    protected function uidAsString($imapemail)
     {
     }
 }

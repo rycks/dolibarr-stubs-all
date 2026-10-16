@@ -166,7 +166,7 @@ class Boms extends \DolibarrApi
      *
      * @return void
      */
-    private function checkRefNumbering() : void
+    private function checkRefNumbering()
     {
     }
 }

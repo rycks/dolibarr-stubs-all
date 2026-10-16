@@ -196,12 +196,12 @@ abstract class CommonObject
      */
     public $contact_id;
     /**
-     * @var Societe 	A related thirdparty object
+     * @var ?Societe 	A related thirdparty object
      * @see fetch_thirdparty()
      */
     public $thirdparty;
     /**
-     * @var User A related user
+     * @var ?User A related user
      * @see fetch_user()
      */
     public $user;
@@ -521,6 +521,16 @@ abstract class CommonObject
      * @var int			User id last modifier
      */
     public $user_modification_id;
+    /**
+     * @var int ID
+     * @deprecated	Use $user_creation_id
+     */
+    public $fk_user_creat;
+    /**
+     * @var int ID
+     * @deprecated 	Use $user_modification_id
+     */
+    public $fk_user_modif;
     public $next_prev_filter;
     /**
      * @var int 1 if object is specimen
@@ -1947,9 +1957,9 @@ abstract class CommonObject
     {
     }
     /**
-     * Function to prepare a part of the query for insert by returning an array with all properties of object.
+     * Function to return the array of data key-value from the ->fields and all the ->properties of an object.
      *
-     * Note $this->${field} are set by the page that make the createCommon() or the updateCommon().
+     * Note: $this->${field} are set by the page that make the createCommon() or the updateCommon().
      * $this->${field} should be a clean and string value (so date are formated for SQL insert).
      *
      * @return array		Array with all values of each properties to update

@@ -81,6 +81,10 @@ class Commande extends \CommonOrder
      */
     public $cond_reglement_doc;
     /**
+     * @var string Label of the payment terms, used when there is no label for documents
+     */
+    public $cond_reglement_label;
+    /**
      * @var double Deposit % for payment terms
      */
     public $deposit_percent;
@@ -192,6 +196,10 @@ class Commande extends \CommonOrder
     public $multicurrency_total_ht;
     public $multicurrency_total_tva;
     public $multicurrency_total_ttc;
+    public $multicurrency_total_localtax1;
+    // not in database
+    public $multicurrency_total_localtax2;
+    // not in database
     //! key of module source when order generated from a dedicated module ('cashdesk', 'takepos', ...)
     public $module_source;
     //! key of pos source ('0', '1', ...)

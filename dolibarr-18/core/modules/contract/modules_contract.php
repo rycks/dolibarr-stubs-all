@@ -9,6 +9,7 @@ abstract class ModelePDFContract extends \CommonDocGenerator
      * @var string Error code (or message)
      */
     public $error = '';
+    public $posxdesc;
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
      *	Return list of active generation modules

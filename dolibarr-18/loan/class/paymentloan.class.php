@@ -59,6 +59,10 @@ class PaymentLoan extends \CommonObject
     public $type_code;
     public $type_label;
     /**
+     * @var int
+     */
+    public $bank_line;
+    /**
      *	Constructor
      *
      *  @param		DoliDB		$db      Database handler

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *	Class to manage withdrawal receipts
+ *  Class to manage direct debit.
  */
 class BonPrelevement extends \CommonObject
 {
@@ -37,7 +37,7 @@ class BonPrelevement extends \CommonObject
     public $invoice_in_error = array();
     public $thirdparty_in_error = array();
     /**
-     * @var resource	Handler of the file for direct debit or credit transfer order
+     * @var resource    Handler of the file for direct debit or credit transfer order
      */
     public $file;
     const STATUS_DRAFT = 0;
@@ -48,17 +48,17 @@ class BonPrelevement extends \CommonObject
     // STATUS_CREDITED and STATUS_DEBITED is same. Difference is in ->type
     /**
      *  'type' field format:
-     *  	'integer', 'integer:ObjectClass:PathToClass[:AddCreateButtonOrNot[:Filter[:Sortfield]]]',
-     *  	'select' (list of values are in 'options'),
-     *  	'sellist:TableName:LabelFieldName[:KeyFieldName[:KeyFieldParent[:Filter[:Sortfield]]]]',
-     *  	'chkbxlst:...',
-     *  	'varchar(x)',
-     *  	'text', 'text:none', 'html',
-     *   	'double(24,8)', 'real', 'price',
-     *  	'date', 'datetime', 'timestamp', 'duration',
-     *  	'boolean', 'checkbox', 'radio', 'array',
-     *  	'mail', 'phone', 'url', 'password', 'ip'
-     *		Note: Filter must be a Dolibarr filter syntax string. Example: "(t.ref:like:'SO-%') or (t.date_creation:<:'20160101') or (t.status:!=:0) or (t.nature:is:NULL)"
+     *      'integer', 'integer:ObjectClass:PathToClass[:AddCreateButtonOrNot[:Filter[:Sortfield]]]',
+     *      'select' (list of values are in 'options'),
+     *      'sellist:TableName:LabelFieldName[:KeyFieldName[:KeyFieldParent[:Filter[:Sortfield]]]]',
+     *      'chkbxlst:...',
+     *      'varchar(x)',
+     *      'text', 'text:none', 'html',
+     *      'double(24,8)', 'real', 'price',
+     *      'date', 'datetime', 'timestamp', 'duration',
+     *      'boolean', 'checkbox', 'radio', 'array',
+     *      'mail', 'phone', 'url', 'password', 'ip'
+     *      Note: Filter must be a Dolibarr filter syntax string. Example: "(t.ref:like:'SO-%') or (t.date_creation:<:'20160101') or (t.status:!=:0) or (t.nature:is:NULL)"
      *  'label' the translation key.
      *  'picto' is code of a picto to show before value in forms
      *  'enabled' is a condition when the field must be managed (Example: 1 or '$conf->global->MY_SETUP_PARAM' or 'isModEnabled("multicurrency")' ...)
@@ -79,7 +79,7 @@ class BonPrelevement extends \CommonObject
      *  'arrayofkeyval' to set a list of values if type is a list of predefined values. For example: array("0"=>"Draft","1"=>"Active","-1"=>"Cancel"). Note that type can be 'integer' or 'varchar'
      *  'autofocusoncreate' to have field having the focus on a create form. Only 1 field should have this property set to 1.
      *  'comment' is not used. You can store here any text of your choice. It is not used by application.
-     *	'validate' is 1 if need to validate with $this->validateField()
+     *  'validate' is 1 if need to validate with $this->validateField()
      *  'copytoclipboard' is 1 or 2 to allow to add a picto to copy value into clipboard (1=picto after label, 2=picto after value)
      *
      *  Note: To have value dynamic, you can set value to 0 in definition and edit the value on the fly into the constructor.
@@ -105,9 +105,9 @@ class BonPrelevement extends \CommonObject
     public $fk_bank_account;
     // END MODULEBUILDER PROPERTIES
     /**
-     *	Constructor
+     *  Constructor
      *
-     *  @param		DoliDB		$db      	Database handler
+     *  @param      DoliDB      $db         Database handler
      */
     public function __construct($db)
     {
@@ -116,51 +116,51 @@ class BonPrelevement extends \CommonObject
     /**
      * Add invoice to withdrawal
      *
-     * @param	int		$invoice_id 	id invoice to add
-     * @param	int		$client_id  	id invoice customer
-     * @param	string	$client_nom 	customer name
-     * @param	int		$amount 		amount of invoice
-     * @param	string	$code_banque 	code of bank withdrawal
-     * @param	string	$code_guichet 	code of bank's office
-     * @param	string	$number bank 	account number
-     * @param	string	$number_key 	number key of account number
-     * @param	string	$type			'debit-order' or 'bank-transfer'
-     * @return	int						>0 if OK, <0 if KO
+     * @param   int     $invoice_id     id invoice to add
+     * @param   int     $client_id      id invoice customer
+     * @param   string  $client_nom     customer name
+     * @param   int     $amount         amount of invoice
+     * @param   string  $code_banque    code of bank withdrawal
+     * @param   string  $code_guichet   code of bank's office
+     * @param   string  $number bank    account number
+     * @param   string  $number_key     number key of account number
+     * @param   string  $type           'debit-order' or 'bank-transfer'
+     * @return  int                     >0 if OK, <0 if KO
      */
     public function AddFacture($invoice_id, $client_id, $client_nom, $amount, $code_banque, $code_guichet, $number, $number_key, $type = 'debit-order')
     {
     }
     /**
-     *	Add line to withdrawal
+     *  Add line to withdrawal
      *
-     *	@param	int		$line_id 		id line to add
-     *	@param	int		$client_id  	id invoice customer
-     *	@param	string	$client_nom 	customer name
-     *	@param	int		$amount 		amount of invoice
-     *	@param	string	$code_banque 	code of bank withdrawal
-     *	@param	string	$code_guichet 	code of bank's office
-     *	@param	string	$number 		bank account number
-     *	@param  string	$number_key 	number key of account number
-     *	@return	int						>0 if OK, <0 if KO
+     *  @param  int     $line_id        id line to add
+     *  @param  int     $client_id      id invoice customer
+     *  @param  string  $client_nom     customer name
+     *  @param  int     $amount         amount of invoice
+     *  @param  string  $code_banque    code of bank withdrawal
+     *  @param  string  $code_guichet   code of bank's office
+     *  @param  string  $number         bank account number
+     *  @param  string  $number_key     number key of account number
+     *  @return int                     >0 if OK, <0 if KO
      */
     public function addline(&$line_id, $client_id, $client_nom, $amount, $code_banque, $code_guichet, $number, $number_key)
     {
     }
     /**
-     *	Return error string
+     *  Return error string
      *
-     *  @param	int		$error 		 Id of error
-     *	@return	string               Error string
+     *  @param  int     $error       Id of error
+     *  @return string               Error string
      */
     public function getErrorString($error)
     {
     }
     /**
-     *	Get object and lines from database
+     *  Get object and lines from database
      *
-     *	@param	int		$rowid		Id of object to load
-     *  @param	string	$ref		Ref of direct debit
-     *	@return	int					>0 if OK, <0 if KO
+     *  @param  int     $rowid      Id of object to load
+     *  @param  string  $ref        Ref of direct debit
+     *  @return int                 >0 if OK, <0 if KO
      */
     public function fetch($rowid, $ref = '')
     {
@@ -177,85 +177,85 @@ class BonPrelevement extends \CommonObject
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Set direct debit or credit transfer order to "paid" status.
+     *  Set direct debit or credit transfer order to "paid" status.
      *  Then create the payment for each invoice of the prelemevement_bon.
      *
-     *	@param	User	$user			Id of user
-     *	@param 	int		$date			date of action
-     *	@return	int						>0 if OK, <0 if KO
+     *  @param  User    $user           Id of user
+     *  @param  int     $date           date of action
+     *  @return int                     >0 if OK, <0 if KO
      */
     public function set_infocredit($user, $date)
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Set withdrawal to transmited status
+     *  Set withdrawal to transmitted status
      *
-     *	@param	User		$user		id of user
-     *	@param 	int	$date		date of action
-     *	@param	string		$method		method of transmision to bank (0=Internet, 1=Api...)
-     *	@return	int						>0 if OK, <0 if KO
+     *  @param  User        $user       id of user
+     *  @param  int 		$date       date of action
+     *  @param  string      $method     method of transmission to bank (0=Internet, 1=Api...)
+     *  @return int                     >0 if OK, <0 if KO
      */
     public function set_infotrans($user, $date, $method)
     {
     }
     /**
-     *	Get invoice list
+     *  Get invoice list
      *
-     *  @param 	int		$amounts 	If you want to get the amount of the order for each invoice
-     *	@return	array 				Id of invoices
+     *  @param  int     $amounts    If you want to get the amount of the order for each invoice
+     *  @return array               Id of invoices
      */
     private function getListInvoices($amounts = 0)
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Returns amount waiting for direct debit payment or credit transfer payment
+     *  Returns amount waiting for direct debit payment or credit transfer payment
      *
-     *	@param	string	$mode		'direct-debit' or 'bank-transfer'
-     *	@return	double	 			<O if KO, Total amount
+     *  @param  string  $mode       'direct-debit' or 'bank-transfer'
+     *  @return double              <O if KO, Total amount
      */
     public function SommeAPrelever($mode = 'direct-debit')
     {
     }
     /**
-     *	Get number of invoices waiting for payment
+     *  Get number of invoices waiting for payment
      *
-     *	@param	string	$mode		'direct-debit' or 'bank-transfer'
-     *	@return	int					<O if KO, number of invoices if OK
+     *  @param  string  $mode       'direct-debit' or 'bank-transfer'
+     *  @return int                 <O if KO, number of invoices if OK
      */
     public function nbOfInvoiceToPay($mode = 'direct-debit')
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Get number of invoices to pay
+     *  Get number of invoices to pay
      *
-     *	@param	string	$type		'direct-debit' or 'bank-transfer'
-     *	@return	int					<O if KO, number of invoices if OK
+     *  @param  string  $type       'direct-debit' or 'bank-transfer'
+     *  @return int                 <O if KO, number of invoices if OK
      */
     public function NbFactureAPrelever($type = 'direct-debit')
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Create a BAN payment order:
+     *  Create a BAN payment order:
      *  - Select waiting requests from prelevement_demande (or use $did if provided)
      *  - Check BAN values
      *  - Then create a direct debit order or a credit transfer order
      *  - Link the order with the prelevement_demande lines
      *  TODO delete params banque and agence when not necessary
      *
-     *	@param 	int		$banque				dolibarr mysoc bank
-     *	@param	int		$agence				dolibarr mysoc bank office (guichet)
-     *	@param	string	$mode				real=do action, simu=test only
-     *  @param	string	$format				FRST, RCUR or ALL
-     *  @param  string  $executiondate		Date to execute the transfer
-     *  @param	int	    $notrigger			Disable triggers
-     *  @param	string	$type				'direct-debit' or 'bank-transfer'
-     *  @param	int		$did				ID of an existing payment request. If $did is defined, no entry
-     *  @param	int		$fk_bank_account	Bank account ID the receipt is generated for. Will use the ID into the setup of module Direct Debit or Credit Transfer if 0.
-     *	@return	int							<0 if KO, No of invoice included into file if OK
+     *  @param  int     $banque             dolibarr mysoc bank
+     *  @param  int     $agence             dolibarr mysoc bank office (guichet)
+     *  @param  string  $mode               real=do action, simu=test only
+     *  @param  string  $format             FRST, RCUR or ALL
+     *  @param  string  $executiondate      Date to execute the transfer
+     *  @param  int     $notrigger          Disable triggers
+     *  @param  string  $type               'direct-debit' or 'bank-transfer'
+     *  @param  int     $did                ID of an existing payment request. If $did is defined, no entry
+     *  @param  int     $fk_bank_account    Bank account ID the receipt is generated for. Will use the ID into the setup of module Direct Debit or Credit Transfer if 0.
+     *  @return int                         <0 if KO, No of invoice included into file if OK
      */
     public function create($banque = 0, $agence = 0, $mode = 'real', $format = 'ALL', $executiondate = '', $notrigger = 0, $type = 'direct-debit', $did = 0, $fk_bank_account = 0)
     {
@@ -263,53 +263,53 @@ class BonPrelevement extends \CommonObject
     /**
      *  Get object and lines from database
      *
-     *  @param	User	$user		Object user that delete
-     *  @param	int		$notrigger	1=Does not execute triggers, 0= execute triggers
-     *  @return	int					>0 if OK, <0 if KO
+     *  @param  User    $user       Object user that delete
+     *  @param  int     $notrigger  1=Does not execute triggers, 0= execute triggers
+     *  @return int                 >0 if OK, <0 if KO
      */
     public function delete($user = \null, $notrigger = 0)
     {
     }
     /**
-     *	Returns clickable name (with picto)
+     *  Returns clickable name (with picto)
      *
      *  @param  int     $withpicto                  Include picto in link (0=No picto, 1=Include picto into link, 2=Only picto)
      *  @param  string  $option                     On what the link point to ('nolink', ...)
      *  @param  int     $notooltip                  1=Disable tooltip
      *  @param  string  $morecss                    Add more css on link
      *  @param  int     $save_lastsearch_value      -1=Auto, 0=No save of lastsearch_values when clicking, 1=Save lastsearch_values whenclicking
-     *	@return	string								URL of target
+     *  @return string                              URL of target
      */
     public function getNomUrl($withpicto = 0, $option = '', $notooltip = 0, $morecss = '', $save_lastsearch_value = -1)
     {
     }
     /**
-     *	Delete a notification def by id
+     *  Delete a notification def by id
      *
-     *	@param	int		$rowid		id of notification
-     *	@return	int					0 if OK, <0 if KO
+     *  @param  int     $rowid      id of notification
+     *  @return int                 0 if OK, <0 if KO
      */
     public function deleteNotificationById($rowid)
     {
     }
     /**
-     *	Delete a notification
+     *  Delete a notification
      *
-     *	@param	int|User	$user		notification user
-     *	@param	string		$action		notification action
-     *	@return	int						>0 if OK, <0 if KO
+     *  @param  int|User    $user       notification user
+     *  @param  string      $action     notification action
+     *  @return int                     >0 if OK, <0 if KO
      */
     public function deleteNotification($user, $action)
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Add a notification
+     *  Add a notification
      *
-     *	@param	DoliDB		$db			database handler
-     *	@param	int|User	$user		notification user
-     *	@param	string		$action		notification action
-     *	@return	int						0 if OK, <0 if KO
+     *  @param  DoliDB      $db         database handler
+     *  @param  int|User    $user       notification user
+     *  @param  string      $action     notification action
+     *  @return int                     0 if OK, <0 if KO
      */
     public function addNotification($db, $user, $action)
     {
@@ -321,11 +321,11 @@ class BonPrelevement extends \CommonObject
      * - Others countries: Warning message
      * File is generated with name this->filename
      *
-     * @param	string	$format				FRST, RCUR or ALL
-     * @param 	int 	$executiondate		Timestamp date to execute transfer
-     * @param	string	$type				'direct-debit' or 'bank-transfer'
-     * @param	int		$fk_bank_account	Bank account ID the receipt is generated for. Will use the ID into the setup of module Direct Debit or Credit Transfer if 0.
-     * @return	int							>=0 if OK, <0 if KO
+     * @param   string  $format             FRST, RCUR or ALL
+     * @param   int     $executiondate      Timestamp date to execute transfer
+     * @param   string  $type               'direct-debit' or 'bank-transfer'
+     * @param   int     $fk_bank_account    Bank account ID the receipt is generated for. Will use the ID into the setup of module Direct Debit or Credit Transfer if 0.
+     * @return  int                         >=0 if OK, <0 if KO
      */
     public function generate($format = 'ALL', $executiondate = 0, $type = 'direct-debit', $fk_bank_account = 0)
     {
@@ -333,29 +333,29 @@ class BonPrelevement extends \CommonObject
     /**
      * Generate dynamically a RUM number for a customer bank account
      *
-     * @param	string		$row_code_client	Customer code (soc.code_client)
-     * @param	int			$row_datec			Creation date of bank account (rib.datec)
-     * @param	string		$row_drum			Id of customer bank account (rib.rowid)
-     * @return 	string		RUM number
+     * @param   string      $row_code_client    Customer code (soc.code_client)
+     * @param   int         $row_datec          Creation date of bank account (rib.datec)
+     * @param   string      $row_drum           Id of customer bank account (rib.rowid)
+     * @return  string      RUM number
      */
     public static function buildRumNumber($row_code_client, $row_datec, $row_drum)
     {
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Write recipient of request (customer)
+     *  Write recipient of request (customer)
      *
-     *	@param	int		$rowid			id of line
-     *	@param	string	$client_nom		name of customer
-     *	@param	string	$rib_banque		code of bank
-     *	@param	string	$rib_guichet 	code of bank office
-     *	@param	string	$rib_number		bank account
-     *	@param	float	$amount			amount
-     *	@param	string	$ref		ref of invoice
-     *	@param	int		$facid			id of invoice
-     *  @param	string	$rib_dom		rib domiciliation
-     *  @param	string	$type			'direct-debit' or 'bank-transfer'
-     *	@return	void
+     *  @param  int     $rowid          id of line
+     *  @param  string  $client_nom     name of customer
+     *  @param  string  $rib_banque     code of bank
+     *  @param  string  $rib_guichet    code of bank office
+     *  @param  string  $rib_number     bank account
+     *  @param  float   $amount         amount
+     *  @param  string  $ref        ref of invoice
+     *  @param  int     $facid          id of invoice
+     *  @param  string  $rib_dom        rib domiciliation
+     *  @param  string  $type           'direct-debit' or 'bank-transfer'
+     *  @return void
      *  @see EnregDestinataireSEPA()
      */
     public function EnregDestinataire($rowid, $client_nom, $rib_banque, $rib_guichet, $rib_number, $amount, $ref, $facid, $rib_dom = '', $type = 'direct-debit')
@@ -363,28 +363,28 @@ class BonPrelevement extends \CommonObject
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Write recipient (thirdparty concerned by request)
+     *  Write recipient (thirdparty concerned by request)
      *
-     *	@param	string		$row_code_client	soc.code_client as code,
-     *	@param	string		$row_nom			pl.client_nom AS name,
-     *	@param	string		$row_address		soc.address AS adr,
-     *	@param	string		$row_zip			soc.zip
-     *  @param	string		$row_town			soc.town
-     *	@param	string		$row_country_code	c.code AS country,
-     *	@param	string		$row_cb				pl.code_banque AS cb,		Not used for SEPA
-     *	@param	string		$row_cg				pl.code_guichet AS cg,		Not used for SEPA
-     *	@param	string		$row_cc				pl.number AS cc,			Not used for SEPA
-     *	@param	string		$row_somme			pl.amount AS somme,
-     *	@param	string		$row_ref			Invoice ref (f.ref)
-     *	@param	string		$row_idfac			pf.fk_facture AS idfac,
-     *	@param	string		$row_iban			rib.iban_prefix AS iban,
-     *	@param	string		$row_bic			rib.bic AS bic,
-     *	@param	string		$row_datec			rib.datec,
-     *	@param	string		$row_drum			rib.rowid used to generate rum
-     * 	@param	string		$row_rum			rib.rum Rum defined on company bank account
-     *  @param	string		$type				'direct-debit' or 'bank-transfer'
-     *  @param  string      $row_comment		A free text string for the Unstructured data field
-     *	@return	string							Return string with SEPA part DrctDbtTxInf
+     *  @param  string      $row_code_client    soc.code_client as code,
+     *  @param  string      $row_nom            pl.client_nom AS name,
+     *  @param  string      $row_address        soc.address AS adr,
+     *  @param  string      $row_zip            soc.zip
+     *  @param  string      $row_town           soc.town
+     *  @param  string      $row_country_code   c.code AS country,
+     *  @param  string      $row_cb             pl.code_banque AS cb,       Not used for SEPA
+     *  @param  string      $row_cg             pl.code_guichet AS cg,      Not used for SEPA
+     *  @param  string      $row_cc             pl.number AS cc,            Not used for SEPA
+     *  @param  string      $row_somme          pl.amount AS somme,
+     *  @param  string      $row_ref            Invoice ref (f.ref)
+     *  @param  string      $row_idfac          pf.fk_facture AS idfac,
+     *  @param  string      $row_iban           rib.iban_prefix AS iban,
+     *  @param  string      $row_bic            rib.bic AS bic,
+     *  @param  string      $row_datec          rib.datec,
+     *  @param  string      $row_drum           rib.rowid used to generate rum
+     *  @param  string      $row_rum            rib.rum Rum defined on company bank account
+     *  @param  string      $type               'direct-debit' or 'bank-transfer'
+     *  @param  string      $row_comment        A free text string for the Unstructured data field
+     *  @return string                          Return string with SEPA part DrctDbtTxInf
      *  @see EnregDestinataire()
      */
     public function EnregDestinataireSEPA($row_code_client, $row_nom, $row_address, $row_zip, $row_town, $row_country_code, $row_cb, $row_cg, $row_cc, $row_somme, $row_ref, $row_idfac, $row_iban, $row_bic, $row_datec, $row_drum, $row_rum, $type = 'direct-debit', $row_comment = '')
@@ -392,10 +392,10 @@ class BonPrelevement extends \CommonObject
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Write sender of request (me).
+     *  Write sender of request (me).
      *
-     *  @param	string		$type				'direct-debit' or 'bank-transfer'
-     *	@return	void
+     *  @param  string      $type               'direct-debit' or 'bank-transfer'
+     *  @return void
      *  @see EnregEmetteurSEPA()
      */
     public function EnregEmetteur($type = 'direct-debit')
@@ -403,18 +403,18 @@ class BonPrelevement extends \CommonObject
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Write sender of request (me).
+     *  Write sender of request (me).
      *  Note: The tag PmtInf is opened here but closed into caller
      *
-     *	@param	Conf	$configuration		conf
-     *	@param	int     $ladate				Date
-     *	@param	int		$nombre				0 or 1
-     *	@param	float	$total				Total
-     *	@param	string	$CrLf				End of line character
-     *  @param	string	$format				FRST or RCUR or ALL
-     *  @param	string	$type				'direct-debit' or 'bank-transfer'
-     *  @param	int		$fk_bank_account	Bank account ID the receipt is generated for. Will use the ID into the setup of module Direct Debit or Credit Transfer if 0.
-     *	@return	string						String with SEPA Sender
+     *  @param  Conf    $configuration      conf
+     *  @param  int     $ladate             Date
+     *  @param  int     $nombre             0 or 1
+     *  @param  float   $total              Total
+     *  @param  string  $CrLf               End of line character
+     *  @param  string  $format             FRST or RCUR or ALL
+     *  @param  string  $type               'direct-debit' or 'bank-transfer'
+     *  @param  int     $fk_bank_account    Bank account ID the receipt is generated for. Will use the ID into the setup of module Direct Debit or Credit Transfer if 0.
+     *  @return string                      String with SEPA Sender
      *  @see EnregEmetteur()
      */
     public function EnregEmetteurSEPA($configuration, $ladate, $nombre, $total, $CrLf = '\\n', $format = 'FRST', $type = 'direct-debit', $fk_bank_account = 0)
@@ -422,10 +422,10 @@ class BonPrelevement extends \CommonObject
     }
     // phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
     /**
-     *	Write end
+     *  Write end
      *
-     *	@param	int		$total	total amount
-     *	@return	void
+     *  @param  int     $total  total amount
+     *  @return void
      */
     public function EnregTotal($total)
     {
@@ -433,8 +433,8 @@ class BonPrelevement extends \CommonObject
     /**
      *  Return status label of object
      *
-     *  @param  int		$mode       0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto, 6=Long label + Picto
-     * 	@return	string     			Label
+     *  @param  int     $mode       0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto, 6=Long label + Picto
+     *  @return string              Label
      */
     public function getLibStatut($mode = 0)
     {
@@ -443,9 +443,9 @@ class BonPrelevement extends \CommonObject
     /**
      *  Return status label for a status
      *
-     *  @param	int		$status     Id status
-     *  @param  int		$mode       0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto, 6=Long label + Picto
-     * 	@return	string  		    Label
+     *  @param  int     $status     Id status
+     *  @param  int     $mode       0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto, 6=Long label + Picto
+     *  @return string              Label
      */
     public function LibStatut($status, $mode = 0)
     {
@@ -454,19 +454,19 @@ class BonPrelevement extends \CommonObject
     /**
      *      Load indicators for dashboard (this->nbtodo and this->nbtodolate)
      *
-     *      @param      User	$user       	Objet user
-     *      @param		string	$mode			Mode 'direct_debit' or 'credit_transfer'
-     *      @return 	WorkboardResponse|int 	<0 if KO, WorkboardResponse if OK
+     *      @param      User    $user           Object user
+     *      @param      string  $mode           Mode 'direct_debit' or 'credit_transfer'
+     *      @return     WorkboardResponse|int   <0 if KO, WorkboardResponse if OK
      */
     public function load_board($user, $mode)
     {
     }
     /**
-     *	Return clicable link of object (with eventually picto)
+     *  Return clicable link of object (with eventually picto)
      *
-     *	@param      string	    $option                 Where point the link (0=> main card, 1,2 => shipment, 'nolink'=>No link)
-     *  @param		array		$arraydata				Array of data
-     *  @return		string								HTML Code for Kanban thumb.
+     *  @param      string      $option                 Where point the link (0=> main card, 1,2 => shipment, 'nolink'=>No link)
+     *  @param      array       $arraydata              Array of data
+     *  @return     string                              HTML Code for Kanban thumb.
      */
     public function getKanbanView($option = '', $arraydata = \null)
     {

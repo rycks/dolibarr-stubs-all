@@ -64,6 +64,14 @@ class Reception extends \CommonObject
      * @var integer|string date_validation
      */
     public $date_valid;
+    /**
+     * @var int ID of user author
+     */
+    public $fk_user_author;
+    /**
+     * @var int ID of user who validated
+     */
+    public $fk_user_valid;
     public $meths;
     public $listmeths;
     // List of carriers
@@ -270,7 +278,7 @@ class Reception extends \CommonObject
     {
     }
     /**
-     *	Classify the reception as invoiced (used when WORKFLOW_EXPEDITION_CLASSIFY_CLOSED_INVOICE is on)
+     *	Classify the reception as invoiced (used when WORKFLOW_RECEPTION_CLASSIFY_CLOSED_INVOICE is on)
      *
      *	@return     int     <0 if ko, >0 if ok
      */

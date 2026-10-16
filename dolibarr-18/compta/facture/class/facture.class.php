@@ -144,6 +144,7 @@ class Facture extends \CommonInvoice
     public $date_lim_reglement;
     public $cond_reglement_code;
     // Code in llx_c_paiement
+    public $cond_reglement_label;
     public $cond_reglement_doc;
     // Code in llx_c_paiement
     public $mode_reglement_code;
@@ -176,6 +177,10 @@ class Facture extends \CommonInvoice
     public $multicurrency_total_ht;
     public $multicurrency_total_tva;
     public $multicurrency_total_ttc;
+    public $multicurrency_total_localtax1;
+    // not in database
+    public $multicurrency_total_localtax2;
+    // not in database
     /**
      * @var int Situation cycle reference number
      */

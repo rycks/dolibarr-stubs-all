@@ -49,15 +49,15 @@ class RejetPrelevement
     {
     }
     /**
-     * Create
+     * Create a reject
      *
      * @param 	User		$user				User object
      * @param 	int			$id					Id
      * @param 	string		$motif				Motif
-     * @param 	int	$date_rejet			Date rejet
+     * @param 	int			$date_rejet			Date reject
      * @param 	int			$bonid				Bon id
-     * @param 	int			$facturation		Facturation
-     * @return	void
+     * @param 	int			$facturation		1=Bill the reject
+     * @return	int								Return >=0 if OK, <0 if KO
      */
     public function create($user, $id, $motif, $date_rejet, $bonid, $facturation = 0)
     {

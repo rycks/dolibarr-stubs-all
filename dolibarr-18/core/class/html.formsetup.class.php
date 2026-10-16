@@ -24,6 +24,8 @@ class FormSetup
      * @var DoliDB Database handler.
      */
     public $db;
+    /** @var int */
+    public $entity;
     /** @var FormSetupItem[]  */
     public $items = array();
     /**
@@ -65,6 +67,10 @@ class FormSetup
      * @var array
      */
     public $formHiddenInputs = array();
+    /**
+     * @var string[] $errors
+     */
+    public $errors = array();
     /**
      * Constructor
      *
@@ -273,7 +279,7 @@ class FormSetupItem
     /**
      * Constructor
      *
-     * @param string $confKey the conf key used in database
+     * @param string	$confKey	the conf key used in database
      */
     public function __construct($confKey)
     {

@@ -977,7 +977,7 @@ function dol_strlen($string, $stringencoding = 'UTF-8')
  * Make a substring. Works even if mbstring module is not enabled for better compatibility.
  *
  * @param	string		$string				String to scan
- * @param	string		$start				Start position
+ * @param	int			$start				Start position (0 for first char)
  * @param	int|null	$length				Length (in nb of characters or nb of bytes depending on trunconbytes param)
  * @param   string		$stringencoding		Page code used for input string encoding
  * @param	int			$trunconbytes		1=Length is max of bytes instead of max of characters
@@ -1935,12 +1935,14 @@ function dol_htmlentities($string, $flags = \ENT_QUOTES | \ENT_SUBSTITUTE, $enco
 }
 /**
  *	Check if a string is a correct iso string
- *	If not, it will we considered not HTML encoded even if it is by FPDF.
+ *	If not, it will not be considered as HTML encoded even if it is by FPDF.
  *	Example, if string contains euro symbol that has ascii code 128
  *
  *	@param	string		$s      	String to check
  *  @param	string		$clean		Clean if it is not an ISO. Warning, if file is utf8, you will get a bad formated file.
  *	@return	int|string  	   		0 if bad iso, 1 if good iso, Or the clean string if $clean is 1
+ *  @deprecated Duplicate of ascii_check()
+ *  @see ascii_check()
  */
 function dol_string_is_good_iso($s, $clean = 0)
 {
@@ -2247,10 +2249,11 @@ function dol_osencode($str)
  * 		@param	string	$fieldid		Field to get
  *      @param  int		$entityfilter	Filter by entity
  *      @param	string	$filters		Filters to add. WARNING: string must be escaped for SQL and not coming from user input.
+ *      @param	bool    $useCache       If true (default), cache will be queried and updated.
  *      @return int						<0 if KO, Id of code if OK
  *      @see $langs->getLabelFromKey
  */
-function dol_getIdFromCode($db, $key, $tablename, $fieldkey = 'code', $fieldid = 'id', $entityfilter = 0, $filters = '')
+function dol_getIdFromCode($db, $key, $tablename, $fieldkey = 'code', $fieldid = 'id', $entityfilter = 0, $filters = '', $useCache = \true)
 {
 }
 /**
@@ -2264,7 +2267,7 @@ function verifCond($strToEvaluate)
 }
 /**
  * Replace eval function to add more security.
- * This function is called by verifCond() or trans() and transnoentitiesnoconv().
+ * This function is called by verifCond() for example.
  *
  * @param 	string	$s					String to evaluate
  * @param	int		$returnvalue		0=No return (used to execute eval($a=something)). 1=Value of eval is returned (used to eval($something)).
@@ -2563,11 +2566,11 @@ function dolGetStatus($statusLabel = '', $statusLabelShort = '', $html = '', $st
  *                              'classOverride' => '' // to replace class attribute of the button
  *                              ],
  *                              'confirm' => [
- *                              'url' => 'http://', // Overide Url to go when user click on action btn, if empty default url is $url.?confirm=yes, for no js compatibility use $url for fallback confirm.
- *                              'title' => '', // Overide title of modal,  if empty default title use "ConfirmBtnCommonTitle" lang key
- *                              'action-btn-label' => '', // Overide label of action button,  if empty default label use "Confirm" lang key
- *                              'cancel-btn-label' => '', // Overide label of cancel button,  if empty default label use "CloseDialog" lang key
- *                              'content' => '', // Overide text of content,  if empty default content use "ConfirmBtnCommonContent" lang key
+ *                              'url' => 'http://', // Override Url to go when user click on action btn, if empty default url is $url.?confirm=yes, for no js compatibility use $url for fallback confirm.
+ *                              'title' => '', // Override title of modal,  if empty default title use "ConfirmBtnCommonTitle" lang key
+ *                              'action-btn-label' => '', // Override label of action button,  if empty default label use "Confirm" lang key
+ *                              'cancel-btn-label' => '', // Override label of cancel button,  if empty default label use "CloseDialog" lang key
+ *                              'content' => '', // Override text of content,  if empty default content use "ConfirmBtnCommonContent" lang key
  *                              'modal' => true, // true|false to display dialog as a modal (with dark background)
  *                              'isDropDrown' => false, // true|false to display dialog as a dropdown (with dark background)
  *                              ],

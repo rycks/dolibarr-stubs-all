@@ -131,6 +131,7 @@ class Cronjob extends \CommonObject
     const STATUS_DISABLED = 0;
     const STATUS_ENABLED = 1;
     const STATUS_ARCHIVED = 2;
+    const MAXIMUM_LENGTH_FOR_LASTOUTPUT_FIELD = 65535;
     /**
      *  Constructor
      *
